@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{registerResult}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="content-primary">
+  <div class="wrap" margin padding text-center>
+    <i class="iconfont success" *ngIf="isOk">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-wode-qianbao-chongzhiwancheng"></use>
+      </svg></i>
+    <i class="iconfont fail" *ngIf="isFail">&#xe652;</i>
+    <p [class.success]="isOk">{{tip}}</p>
+    <div class="result-main">
+      <ion-row>
+        <ion-col>
+          <span class="text-grey">会员编码：</span>
+          <span>admin111</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text-grey">默认密码：</span>
+          <span style="color: #ffa64c;">1234456</span>
+        </ion-col>
+      </ion-row>
+    </div>
+     <button type="submit" (click)="gowallet()" ion-button color="winter" block>返回我的余额</button>
+    <button type="submit" (click)="goHome()" ion-button color="secondary" block>返回首页</button>
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>我的收货地址</ion-title>
+    <ion-buttons right>
+      <button class="f-1-6" end (click)="goAddAddress()" icon-only color="secondary" ion-button>
+        新增地址
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary">
+  <ion-grid no-padding margin-top class='bg-white'>
+    <ion-row (click)="selectAddress(item)" *ngFor="let item of items" padding class="b-b-light">
+      <ion-col col-10>
+        <p class="text-default f-1-5" no-margin>{{item.USER_NAME}}&nbsp;{{item.PHONE}}
+          <span *ngIf="item.ISDEFAULT == 1" class="tag-default">默认</span>
+        </p>
+        <p class="text-lightdark f-1-5 ellipsis-3" no-margin>
+          {{item.STATE_PROVINCE_NAME}}&nbsp; {{item.CITY_NAME}}&nbsp; {{item.DISTRICT_NAME}}&nbsp; {{item.ADDRESS}}
+        </p>
+      </ion-col>
+      <ion-col (click)="goAddAddress(item.ID)" text-center col-2>
+        <div padding-vertical text-right>
+          <i class="iconfont text-gray f-2">&#xe668;</i>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--null data-->
+  <div class="show-default" *ngIf="showNull">
+    <img src="../../../assets/img/bg_null_data.png">
+    <p class="message">没有相关数据</p>
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="winter">
+    <ion-title align-title="center">{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="content-primary">
+  <form [formGroup]="form">
+    <div class="check-code-wrap" margin-top>
+      <div class="left-icon">
+        <i class="iconfont icon-large">&#xe64f;</i>
+      </div>
+      <input type="text" maxlength="11" class="check-code" placeholder="新的手机号码" formControlName="newMobile" [(ngModel)]="newMobile">
+    </div>
+    <p padding-left *ngIf="form.controls.newMobile.invalid  && form.controls.newMobile.dirty" class="text-red">请输入正确的手机号码格式</p>
+    <div class="check-code-wrap">
+      <div class="left-icon">
+        <i class="iconfont icon-large">&#xe658;</i>
+      </div>
+      <input type="text" class="check-code" placeholder="输入验证码" formControlName="checkCode" [(ngModel)]="checkCode">
+      <div class="right-btn">
+        <button [disabled]="!verifyCode.disable" (click)="sendCode()" ion-button [color]="btnColor" class="send-code">{{verifyCode.verifyCodeTips}}</button>
+      </div>
+    </div>
+    <div margin-top padding-left padding-right>
+      <button type="submit" (click)="next()" [disabled]="!form.valid" ion-button color="secondary" block>下一步</button>
+    </div>
+  </form>
+</ion-content>

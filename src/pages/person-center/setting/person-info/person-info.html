@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">个人资料</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item margin-top>
+        <ion-label class="title" fixed>姓名</ion-label>
+        <span class="txt" item-end>{{user.FIRST_NAME}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>会员编码</ion-label>
+        <span class="txt" item-end>{{user.USER_CODE}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>加入时间</ion-label>
+        <span class="txt" item-end>{{user.JOIN_DATE | date: 'yyyy-MM-dd'}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>加盟资格</ion-label>
+        <span class="txt" item-end>{{user.CARD_TYPE}}
+          <svg viewBox="0,0,50,50" class="level" aria-hidden="true">
+            <use xlink:href="#icon-wode-dengji-jiamengzige-yinqia"></use>
+          </svg>
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>会员级别</ion-label>
+        <span class="txt" item-end>{{user.MEMBER_LEVEL}}
+          <svg viewBox="0,0,50,50" class="member" aria-hidden="true">
+            <use xlink:href="#icon-wode-dengji-huiyuandengji-huiyuan"></use>
+          </svg>
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>生日</ion-label>
+        <span class="txt" item-end>{{user.BIRTHDAY | date: 'yyyy-MM-dd'}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>性别</ion-label>
+        <span class="txt" item-end>{{user.SEX == 'M' ? '男' : '女'}}
+          <i *ngIf="user.SEX == 'F'" class="iconfont male">&#xe647;</i>
+          <i *ngIf="user.SEX == 'M'" class="iconfont female">&#xe646;</i>
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>证件类型</ion-label>
+        <span class="txt" item-end>{{user.PAPERTYPE == 1 ? '身份证' : '护照'}}</span>
+      </ion-item>
+      <ion-item no-lines margin-bottom>
+        <ion-label class="title" fixed>证件号码</ion-label>
+        <span class="txt" item-end>{{user.PAPERNUMBER}}</span>
+      </ion-item>
+
+      <button no-lines ion-item (click)="goEditMobile()" margin-bottom>
+        <ion-label class="title" fixed>手机号</ion-label>
+        <span class="txt" item-end>{{user.MOBILETELE}}</span>
+      </button>
+
+      <ion-item>
+        <ion-label class="title" fixed>所在地区
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-multi-picker (ionChange)="changeAddress()" placeholder="请选择" item-content class="txt" [multiPickerColumns]="cityColumns"
+          cancelText="取消" doneText="确认" formControlName="area" [(ngModel)]="area">
+        </ion-multi-picker>
+        <i class="iconfont i-right" item-end>&#xe640;</i>
+      </ion-item>
+      <button ion-item (click)="goSaveAddress()">
+        <ion-label class="title" fixed>详细地址
+          <span class="text-red">*</span>
+        </ion-label>
+        <span class="txt" item-end>{{user.ADDRESS}}</span>
+      </button>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-toolbar class="b-b-shaow" color="winter">
+		<ion-buttons left>
+			<button (click)="goBack()" ion-button icon-only>
+				<ion-icon name="arrow-back"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title align-title="center">忘记密码</ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+	<form [formGroup]="form">
+		<p class="tip">验证码将发送至
+			<span class="mobile">{{ mobile }}</span>
+		</p>
+		<div class="check-code-wrap">
+			<div class="left-icon">
+				<i class="iconfont icon-large">&#xe658;</i>
+			</div>
+			<input type="text" class="check-code" placeholder="输入验证码" formControlName="checkCode" [(ngModel)]="checkCode">
+			<div class="right-btn">
+				<button [disabled]="!verifyCode.disable" (click)="sendCode()" ion-button [color]="btnColor" class="send-code">{{verifyCode.verifyCodeTips}}</button>
+			</div>
+		</div>
+		<div padding-left padding-right>
+			<button type="submit" (click)="submit()" [disabled]="!form.valid" ion-button color="secondary" block>下一步</button>
+		</div>
+	</form>
+</ion-content>

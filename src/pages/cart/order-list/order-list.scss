@@ -1,0 +1,368 @@
+page-order-list {
+  .header {
+    ion-buttons {
+      position: absolute;
+      right: 0;
+      top: 1.5rem;
+
+      button {
+        background: none;
+      }
+
+    }
+
+  }
+
+  .first-tip{
+    padding:0 1rem;
+  }
+
+  .cart-sort{
+    margin-bottom: 1rem;
+  }
+
+  .cart-main {
+    border-bottom: 1px #eee solid;
+    background: #ffffff;
+
+    &>ion-row {
+      align-items: center;
+    }
+
+    .pic {
+      max-width: 9.0rem;
+      max-height: 9.0rem;
+    }
+
+    .name {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .p-l-0 {
+      padding-left: 0;
+    }
+
+    .p-0 {
+      padding: 0;
+    }
+
+  }
+
+  .num-container {
+    width: 8.0rem;
+    height: 2.1rem;
+    border: 1px #ccc solid;
+    border-radius: 0.2rem;
+    display: inline-block;
+    float: right;
+
+    label {
+      &.number {
+        width: 3.4rem;
+        height: 100%;
+        border-left: 1px #ccc solid;
+        border-right: 1px #ccc solid;
+        display: inline-block;
+        text-align: center;
+        float: left;
+      }
+
+      &.reduce,
+      &.add {
+        width: 2rem;
+        display: inline-block;
+        float: left;
+        text-align: center;
+        line-height: 2rem;
+
+        .iconfont {
+          font-size: 10px;
+          position: relative;
+          bottom: 0.2rem;
+        }
+
+      }
+
+      &.add .iconfont {
+        left: 0.2rem;
+      }
+
+    }
+
+  }
+
+  .pv {
+    width: 7.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    line-height: 1.5rem;
+    text-align: center;
+    border: 0.1rem #ffe6cc solid;
+    border-radius: 0.2rem;
+    font-size: 12px;
+    color: #ffa64c;
+  }
+
+  .cart-footer {
+    border-top: 0 !important;
+    -webkit-box-shadow: 0 -1px 3px #ccc;
+    box-shadow: 0 -1px 3px #ccc;
+
+    .toolbar-ios {
+      padding: 0;
+      line-height: 4.4rem;
+    }
+
+    .type-main {
+      height: 4.4rem;
+
+      .total {
+        .number {
+          position: absolute;
+          right: 35%;
+          top: 0;
+          padding-right: 10px;
+          line-height: 32px;
+        }
+
+        .pv {
+          position: relative;
+          top: 10px;
+          right: 10px;
+        }
+
+      }
+
+    }
+
+    .type-number {
+      padding-left: 1.0rem;
+      color: #666666;
+      position: relative;
+
+      .iconfont {
+        color: #13bfbf;
+        position: relative;
+        top: 1px;
+        margin-right: 3px;
+      }
+
+    }
+
+    .icon-gouwuche-tips-guanbi {
+      position: absolute;
+      right: 1.2rem;
+      font-size: 1.2rem;
+      color: #fff;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: block;
+      background: #ddd;
+      border-radius: 50%;
+      line-height: 2.5rem;
+      top: 0.9rem;
+    }
+
+    .type-btn {
+      width: 35%;
+      height: 100%;
+      background-color: #13bfbf;
+      color: #fff;
+      text-align: center;
+    }
+
+    .del-btn {
+      width: 35%;
+      height: 100%;
+      background-color: #13bfbf;
+      color: #fff;
+      text-align: center;
+    }
+
+  }
+
+  .footer-ios .toolbar-background-ios {
+    background-color: #fff !important;
+  }
+
+  .cart-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    z-index: 10;
+    display: none;
+    opacity: 0;
+
+    &.show {
+      display: block;
+      opacity: 0.5;
+    }
+
+  }
+
+  .cart-choose {
+    background-color: #fff;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: -101%;
+    z-index: 11;
+    transition: all 0.2s ease;
+
+    &.show {
+      bottom: 4.5rem;
+    }
+
+  }
+
+  .list-ios > .item-block:first-child {
+    border-top: 0;
+  }
+
+  .cart-type-list {
+    padding: 1.5rem 1.0rem;
+    border-bottom: 1px #eee solid;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .choose {
+      font-size: 14px;
+      color: #4ca6ff;
+
+      .iconfont {
+        font-size: 12px;
+        margin-left: 0.5rem;
+      }
+
+    }
+
+  }
+
+  .cart-type-head {
+    padding: 1.2rem 0;
+    border-bottom: 1px #eee solid;
+    text-align: center;
+    background-color: #f7f7f7;
+
+    .icon-gouwuche-dingdanjieguo-shibai {
+      position: absolute;
+      right: 10px;
+    }
+
+  }
+
+  .checkbox-ios .checkbox-checked {
+    border-color: #13bfbf;
+    background-color: #13bfbf;
+  }
+
+  .all-check {
+    font-size: 12px;
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    width: 30px;
+    transform: translateX(-20%);
+  }
+
+  .checkbox-ios .checkbox-icon {
+    border-color: #ababab;
+  }
+
+  .scroll-content{
+    background: #f0f2f7;
+  }
+
+  .cart-package{
+
+  }
+
+  .small-pic{
+    width:6rem;
+    height:6rem;
+  }
+  .no-padding{
+    padding:0;
+    padding-right: 0.5rem;
+
+    ion-row{
+      position: relative;
+      bottom: 14px;
+    }
+
+    .price,
+    .number{
+      padding:0;
+    }
+
+    .number{
+      position: relative;
+      top: 3px;
+    }
+  }
+  .text-right{
+    text-align: right;
+  }
+
+  .cart-package-title{
+    background: #ffffff;
+    border-bottom: 1px #eee solid;
+  }
+
+
+  .icon-tabbar-shouye-xuanzhong{
+    color: #0f9999;
+    font-size: 18px;
+  }
+  
+  .text-warning{
+    color: #ffb266;
+  }
+  
+  .color-theme{
+    color: #12b3b3;
+  }
+
+  .small-btn{
+    width: 78px;
+    height: 35px;
+    font-size: 14px;
+    background: #12b3b3;
+  }
+
+  .order-type{
+    color: #666;
+    padding:0 10px;
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    right: 10px;
+    &.act{
+      color: #12b3b3;
+    }
+
+    &.act:after{
+      content: '';
+      width:80%;
+      height: 2px;
+      background: #12b3b3;
+      position: absolute;
+      display: block;
+      bottom: -17px;
+      left:5px;
+    }
+  }
+
+  .icon-wode-dingdan-sousuo{
+    font-size: 20px;
+    padding-right: 5px;
+  }
+}

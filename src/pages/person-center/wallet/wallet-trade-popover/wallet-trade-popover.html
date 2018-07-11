@@ -1,0 +1,14 @@
+<ion-list [(ngModel)]="timeType" radio-group no-margin>
+  <ion-item>
+    <ion-label>最近一周</ion-label>
+    <ion-radio (ionSelect)="radioChange()" checked="timeType" value="7"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>最近一月</ion-label>
+    <ion-radio (ionSelect)="radioChange()" checked="timeType" value="30"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>最近三月</ion-label>
+    <ion-radio (ionSelect)="radioChange()" checked="timeType" value="90"></ion-radio>
+  </ion-item>
+</ion-list>

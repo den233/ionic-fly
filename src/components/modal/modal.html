@@ -1,0 +1,58 @@
+<!-- Generated template for the ModalComponent component -->
+<div class ="bg-model bg-model1" *ngIf="modals.model==1">
+  　　<div class = 'model-box'>
+          <h3 class="b-b"><img  class="pic" onerror='this.src="assets/img/null-img.png"'  [(src)]="modals.cartImg">  
+            <div class='top'>
+               <div class='title1'>{{modals.value.PRODUCT_NAME}}</div>
+               <div class='title-mony'>¥{{modals.value.FP_PRICE}}</div>  
+               <div class='tittle-type'>{{modals.select_type}}</div> 
+            </div>
+            <i (click)='closeModal()' class="icon-gouwuche-tips-guanbi iconfont"></i></h3>
+          <div class="content">
+              <div class='title' *ngIf="modals.colorGroup1.length>0"> 颜色分类</div> 
+              
+                <div class="box">
+                    <div *ngFor='let item of modals.colorGroup1; let i = index' class="flex1" > 
+                      
+                       <ion-item>
+                          <ion-label>{{item.name}}</ion-label>
+                          <ion-checkbox  [(checked)]='item.checked' [(disabled)]='item.disabled' (click)="updateCucumber(item.checked,i)" [(ngModel)]="item.checked"></ion-checkbox>
+                        </ion-item>
+                      
+                    </div>
+                    
+                      <div class="clear"></div>
+                </div>
+                
+             
+                <div class='title title-size' *ngIf="modals.sizeGroup1.length>0"> 尺码</div> 
+              
+                <div class="box">
+                    <div *ngFor='let item of modals.sizeGroup1; let i = index' class="flex1" >  
+                        <ion-item>
+                            <ion-label>{{item.name}}</ion-label>
+                            <ion-checkbox   [(checked)]='item.checked' [(disabled)]='item.disabled' (click)="sizeCucumber(item.checked,i)" [(ngModel)]="item.checked"></ion-checkbox>
+                          </ion-item>
+                    </div>
+                </div>
+                <div class="clear"></div>
+               
+              <ion-row *ngIf=false class="bg-white m-t p" >
+                    <ion-col col-6 class='f-1-5'>商品数量</ion-col>
+                    <ion-col col-6>
+                      <div>
+                        <span class="num-container">
+                            <label class="reduce" (click)="reduce(item,i)"><i class="iconfont icon-gouwuche-shuliangjian"></i></label>
+                            <input type="number" class="number" value="{{item.QTY}}" [(ngModel)]="item.QTY" (ngModelChange)="inputCheck(item)" >
+                            <label class="add" (click)="add(item)"><i class="iconfont icon-gouwuche-shuliangjia"></i></label>
+                          </span>
+                      </div>
+                    </ion-col>
+              </ion-row>
+          </div>
+          <div class="footer b-t">
+              
+              <button class="footer-btn"  (click)="confirm()">确定</button>
+          </div>
+  　　</div>
+  </div>

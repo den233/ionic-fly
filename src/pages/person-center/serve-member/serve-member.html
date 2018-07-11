@@ -1,0 +1,153 @@
+<!--
+  Generated template for the ServeMemberPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="winter" class="b-b-shaow">
+       <ion-buttons (click)="goBack()"  left>
+          <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      </ion-buttons>
+      <ion-title>服务会员</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary" padding>
+  <div class="person-card">
+    <div style="padding-left:1rem;">
+        <div class="avator">
+            <i class="iconfont">&#xe638;</i>
+        </div>
+        <div class="info">
+          <h3>{{thisMember.MI_USER_NAME}}
+            <i class="iconfont male" *ngIf="thisMember.SEX && thisMember.SEX == 'F'">&#xe647;</i>
+            <i class="iconfont female" *ngIf="thisMember.SEX && thisMember.SEX == 'M'">&#xe646;</i>
+          </h3>
+          <span class="tag">
+            <svg viewBox="0,0,50,50" class="level" aria-hidden="true">
+              <use xlink:href="#icon-wode-dengji-jiamengzige-yinqia"></use>
+            </svg>
+            &nbsp;{{thisMember.CARD_TYPE}}</span>
+          <span class="tag">
+            <svg viewBox="0,0,50,50" class="member" aria-hidden="true">
+              <use xlink:href="#icon-wode-dengji-huiyuandengji-huiyuan"></use>
+            </svg>&nbsp;{{thisMember.MEMBER_LEVEL}}</span>
+        </div>
+    </div>
+   
+    <div style="clear:both;"></div>
+    <div class="serve-box">
+        <!--服务会员：<span class="num">{{thisMember.LINK_NUM}}</span>-->
+        <button class="serve-btn" (click)="performance(thisMember)">服务业绩</button>
+    </div>
+  </div>
+  
+  <div class="member-box" *ngIf="lowerMemberList.length > 0">
+      <ul class="serve-lines">
+        <li class="first">
+            <div class="person-card no-bg">
+                <div style="padding-left:1rem;">
+                    <div class="avator">
+                        <i class="iconfont">&#xe688;</i>
+                    </div>
+                    <div class="info">
+                      <h3>{{lowerMember.MI_USER_NAME}}
+                        <i class="iconfont male" *ngIf="lowerMember.SEX && lowerMember.SEX == 'M'">&#xe647;</i>
+                        <i class="iconfont female" *ngIf="lowerMember.SEX && lowerMember.SEX == 'F'">&#xe646;</i>
+                      </h3>
+                      <span class="tag">
+                        <svg viewBox="0,0,50,50" class="level" aria-hidden="true">
+                          <use xlink:href="#icon-wode-dengji-jiamengzige-yinqia"></use>
+                        </svg>
+                        &nbsp;{{lowerMember.CARD_TYPE}}</span>
+                      <span class="tag">
+                        <svg viewBox="0,0,50,50" class="member" aria-hidden="true">
+                          <use xlink:href="#icon-wode-dengji-huiyuandengji-huiyuan"></use>
+                        </svg>&nbsp;{{lowerMember.MEMBER_LEVEL}}</span>
+                    </div>
+                </div>
+               
+                <div style="clear:both;"></div>
+                <div class="result-main">
+                  <ion-row>
+                    <ion-col>
+                      <span class="text-grey">会员编码：</span>
+                      <span>{{lowerMember.USER_CODE}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col>
+                        <span class="text-grey">手机号码：</span>
+                        <span>{{lowerMember.MOBILETELE}}</span>
+                      </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <span class="text-grey">加盟时间：</span>
+                      <span>{{lowerMember.JOIN_DATE | date: 'yyyy-MM-dd'}}</span>
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <div class="serve-box">
+                    服务网成员
+                    <button class="serve-btn" (click)="performance(lowerMember)">服务业绩</button>
+                </div>
+            </div>
+        </li>
+        <li class="second" *ngIf="lowerMemberList.length == 2">
+            <div class="person-card no-bg" style="top:67%;">
+                <div style="padding-left:1rem;">
+                    <div class="avator">
+                        <i class="iconfont">&#xe688;</i>
+                    </div>
+                    <div class="info">
+                      <h3>{{lowerMember2.MI_USER_NAME}}
+                        <i class="iconfont male" *ngIf="lowerMember2.SEX && lowerMember2.SEX == 'M'">&#xe647;</i>
+                        <i class="iconfont female" *ngIf="lowerMember2.SEX && lowerMember2.SEX == 'F'">&#xe646;</i>
+                      </h3>
+                      <span class="tag">
+                        <svg viewBox="0,0,50,50" class="level" aria-hidden="true">
+                          <use xlink:href="#icon-wode-dengji-jiamengzige-yinqia"></use>
+                        </svg>
+                        &nbsp;{{lowerMember2.CARD_TYPE}}</span>
+                      <span class="tag">
+                        <svg viewBox="0,0,50,50" class="member" aria-hidden="true">
+                          <use xlink:href="#icon-wode-dengji-huiyuandengji-huiyuan"></use>
+                        </svg>&nbsp;{{lowerMember2.MEMBER_LEVEL}}</span>
+                    </div>
+                </div>
+               
+                <div style="clear:both;"></div>
+                <div class="result-main">
+                  <ion-row>
+                    <ion-col>
+                      <span class="text-grey">会员编码：</span>
+                      <span>{{lowerMember2.USER_CODE}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col>
+                        <span class="text-grey">手机号码：</span>
+                        <span>{{lowerMember2.MOBILETELE}}</span>
+                      </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <span class="text-grey">加盟时间：</span>
+                      <span>{{lowerMember2.JOIN_DATE | date: 'yyyy-MM-dd'}}</span>
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <div class="serve-box">
+                    服务成员
+                    <button class="serve-btn" (click)="performance(lowerMember2)">服务业绩</button>
+                </div>
+            </div>
+        </li>
+      </ul>
+      
+  </div>
+</ion-content>

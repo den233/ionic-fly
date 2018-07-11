@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar color="winter" id="header" class="head-wrap">
+    <ion-buttons left>
+      <button (click)="goSetting()" class="text-white" ion-button icon-only>
+        设置
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">个人中心</ion-title>
+    <ion-buttons right>
+      <button (click)="goMsg()" ion-button icon-only>
+        <i class="iconfont text-white i-message">&#xe63d;</i>
+        <!-- <span *ngIf="isMsg" class="msg-tip"></span> -->
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <div id="card" class="person-card">
+    <div class="avator">
+      <i class="iconfont">&#xe638;</i>
+    </div>
+    <div class="info">
+      <h3>{{ user.FIRST_NAME || user.USER_CODE }}
+        <i *ngIf="user.SEX == 'F'" class="iconfont male">&#xe647;</i>
+        <i *ngIf="user.SEX == 'M'" class="iconfont female">&#xe646;</i>
+      </h3>
+      <span class="tag">
+        <svg viewBox="0,0,50,50" class="level" aria-hidden="true">
+          <use xlink:href="#icon-wode-dengji-jiamengzige-yinqia"></use>
+        </svg>
+        &nbsp;{{user.CARD_TYPE}}</span>
+      <span class="tag">
+        <svg viewBox="0,0,50,50" class="member" aria-hidden="true">
+          <use xlink:href="#icon-wode-dengji-huiyuandengji-huiyuan"></use>
+        </svg>&nbsp;会员</span>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item class="top-bar" no-lines>
+      <!-- <i class="iconfont package">&#xe63e;</i> -->
+      <ion-label class="txt">现金账户
+        <i *ngIf="!hidWallet" (click)="toggleWallet()" class="iconfont look">&#xe632;</i>
+        <i *ngIf="hidWallet" (click)="toggleWallet()" class="iconfont look">&#xe631;</i>
+      </ion-label>&nbsp;
+      <div class="right-wrap" item-end col-7 (click)="gowallet()">
+        <div float-left class="ellipsis" col-10>
+          <span *ngIf="!hidWallet">{{wallet}}</span>
+          <span *ngIf="hidWallet"> **** </span>
+        </div>
+        <div float-left col-2>
+          <i class="iconfont i-right">&#xe640;</i>
+        </div>
+      </div>
+    </ion-item>
+
+    <button ion-item no-lines class="m-t" (click)="myOrder()">
+      <h2>订单</h2>
+      <ion-note class="left-tip" item-end>全部订单</ion-note>
+    </button>
+    <div class="order-wrap">
+      <div class="order-item" (click)="myOrder(1)">
+        <div class="wrap">
+          <svg viewBox="0,0,50,50" class="order" aria-hidden="true">
+            <use xlink:href="#icon-wode-dingdan-yifukuan"></use>
+          </svg>
+          <span class="num">{{orderStatus.noSend}}</span>
+        </div>
+        <p>待发货</p>
+      </div>
+      <div class="order-item" (click)="myOrder(2)">
+        <div class="wrap">
+          <svg viewBox="0,0,50,50" class="order" aria-hidden="true">
+            <use xlink:href="#icon-wode-dingdan-daishouhuo"></use>
+          </svg>
+          <span class="num">{{orderStatus.waitReceive}}</span>
+        </div>
+        <p>待收货</p>
+      </div>
+      <div class="order-item" (click)="myOrder(99)">
+        <div class="wrap">
+          <svg viewBox="0,0,50,50" class="order" aria-hidden="true">
+            <use xlink:href="#icon-wode-dingdan-yiwancheng"></use>
+          </svg>
+          <span class="num">{{orderStatus.finished}}</span>
+        </div>
+
+        <p>已完成</p>
+      </div>
+    </div>
+
+    <div class="test" #container></div>
+
+    <ion-item no-lines class="m-t">
+      <h2>功能</h2>
+    </ion-item>
+    <div class="module-wrap">
+      <div class="module-item" (click)="addMember()">
+        <img src="../../assets/img/my/new_member.png">
+        <p>新会员注册</p>
+      </div>
+      <!--<div class="module-item" (click)="oldMemberAct()">-->
+        <!--<img src="../../assets/img/my/old_member.png">-->
+        <!--<p>老会员激活</p>-->
+      <!--</div>-->
+      <div class="module-item" (click)="goBonus()">
+        <img src="../../assets/img/my/bonus.png">
+        <p>我的奖金</p>
+      </div>
+      <div class="module-item" (click)="transfer()">
+        <img src="../../assets/img/my/Transfer.png">
+        <p>会员转账</p>
+      </div>
+      <div class="module-item" (click)="serve()">
+        <img src="../../assets/img/my/service.png">
+        <p>服务业绩</p>
+      </div>
+      <div class="module-item" (click)="sell()">
+        <img src="../../assets/img/my/Sales.png">
+        <p>销售业绩</p>
+      </div>
+      <div class="module-item" (click)="repeatSales()">
+        <img src="../../assets/img/my/retail.png">
+        <p>重销零售</p>
+      </div>
+      <div class="module-item" (click)="remit()">
+        <img src="../../assets/img/my/money_transfer.png">
+        <p>汇款登记</p>
+      </div>
+      <!--<div class="module-item" (click)="backfill()">-->
+        <!--<img src="../../assets/img/my/Account2.png">-->
+        <!--<p>回填账户</p>-->
+      <!--</div>-->
+      <!--<div class="module-item" (click)="frozenAccount()">-->
+        <!--<img src="../../assets/img/my/Account3.png">-->
+        <!--<p>冻结账户</p>-->
+      <!--</div>-->
+      <!--<div class="module-item" (click)="bonusPoints()">-->
+        <!--<img src="../../assets/img/my/Account4.png">-->
+        <!--<p>消费积分</p>-->
+      <!--</div>-->
+    </div>
+  </ion-list>
+
+
+</ion-content>

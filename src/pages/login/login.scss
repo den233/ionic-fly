@@ -1,0 +1,139 @@
+page-login {
+  .item-block:first-child {
+    border-top: 0 !important;
+  }
+  .icon-large {
+    font-size: 2rem;
+    color: #14c2bc;
+  }
+  .head-logo {
+    margin: 15% 0 10%;
+    text-align: center;
+    .logo {
+      height: 110px;
+    }
+  }
+
+  .item-block {
+    background-color: transparent;
+    margin-bottom: 20px;
+    padding-right: 16px;
+    height: 52px;
+  }
+  .item-inner {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding-right: 0 !important;
+  }
+
+  .item-input ion-label {
+    text-align: center;
+  }
+  //   .item-block:last-child {
+  //     border: none !important;
+  //   }
+  .icons {
+    width: 20px;
+  }
+
+  .icons-eye {
+    width: 17px;
+  }
+
+  .btn-login {
+    background-color: #2bc1c1;
+    color: #fff !important;
+  }
+
+  .btn-login[disabled]{
+    background: #ccc;
+  }
+
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .forget {
+    color: #12b3b3;
+    text-align: center;
+    margin-top: 100px !important;
+  }
+  .left-icon {
+    border-right: 1px solid #eee;
+  }
+  .text-input {
+    font-size: 1.4rem;
+    padding-right: 0 !important;
+  }
+  .tip {
+    color: #aaa;
+    font-size: 13px;
+    position: relative;
+    top: 3px;
+    left: 6px;
+  }
+  .check-code{
+      height: 52px;
+      padding-right: 16px;
+      img{
+          height: 100%;
+      }
+  }
+  .icon-eyes{
+      font-size: 2rem;
+  }
+
+  /**
+    checkbox修改
+   */
+
+  .checkbox-main{
+    ion-col{
+      position: relative;
+      right: 6px;
+      padding:0;
+      cursor: pointer;
+    }
+  }
+
+  #save-checkbox{
+    opacity: 0;
+    display: none;
+
+    & + label{
+      width: 17px;
+      height:17px;
+      position: relative;
+      display: inline-block;
+      border:1px #ccc solid;
+      border-radius: 2px;
+      position: relative;
+      top: 4px;
+      margin-right: 5px;
+
+    }
+  }
+
+  .icon-gouwuche-dingdan-checkduihao{
+    opacity: 0;
+    color: #666666;
+    font-size: 13px;
+    position: relative;
+    left: 1px;
+    bottom: 1px;
+  }
+
+  .remeber{
+    .icon-gouwuche-dingdan-checkduihao{
+      opacity: 1;
+    }
+  }
+
+  .save-remember{
+    font-size: 13px;
+    color: #666;
+    position: relative;
+    top: 2px;
+  }
+}

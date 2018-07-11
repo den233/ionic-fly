@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons (click)="goBack()"  left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">汇款单详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="bg-main"></div>
+
+    <img src="assets/img/remit-money-bg2.png" alt="" class="main-pic">
+
+    <div class="main-pannel m-b">
+      <div class="top clearfix">
+        <span class="pull-left">
+          <label class="text-gray">汇款方式</label>
+          &nbsp;
+          <label class="text-lightdark">{{item.typeName}}</label>
+        </span>
+        <span class="pull-right">
+            <label class="text-warning" *ngIf="item.status == '1'">未审核</label>
+            <label class="text-success" *ngIf="item.status == '2'">已审核</label>
+        </span>
+      </div>
+      <div class="main">
+        <div class="money">
+          <span class="text-gray">汇款金额</span>
+          <h2><small>&yen;</small>{{item.remitMoney}}</h2>
+        </div>
+      </div>
+      <div class="money-pannel clearfix">
+          <div class="pull-left m-r">
+            <i class="iconfont text-gray icon-wode-huikuan-xiangqing"></i>
+          </div>
+          <div class="pull-right">
+              <span class="text-lightdark">
+                {{item.accountName}}
+              </span>
+              <span class="text-lightdark">
+                汇款时间：{{item.accountDate}}
+              </span>
+          </div>
+      </div>
+    </div>
+
+    <div class="remit-detail-list m-b">
+        <div class="item clearfix">
+            <span class="pull-left text-lightdark">
+              用户编号
+            </span>
+            <span class="pull-right text-right">
+              {{item.userCode}}
+            </span>
+        </div>
+        <div class="item clearfix">
+              <span class="pull-left text-lightdark">
+                汇款人姓名
+              </span>
+          <span class="pull-right text-right">
+                {{item.remitName}}
+              </span>
+        </div>
+        <div class="item clearfix">
+              <span class="pull-left text-lightdark">
+                汇款人手机
+              </span>
+          <span class="pull-right text-right">
+                {{item.phone}}
+              </span>
+        </div>
+        <div class="item clearfix">
+              <span class="pull-left text-lightdark">
+                汇款时间
+              </span>
+          <span class="pull-right text-right">
+                {{item.remitTime}}
+              </span>
+        </div>
+        <div class="item clearfix">
+              <span class="pull-left text-lightdark">
+                汇款地点
+              </span>
+          <span class="pull-right text-right">
+                {{item.remitAddress}}
+              </span>
+        </div>
+        <div class="item clearfix">
+              <span class="pull-left text-lightdark">
+                汇款账户
+              </span>
+          <span class="pull-right text-right">
+                {{item.userCode}}
+              </span>
+        </div>
+    </div>
+</ion-content>

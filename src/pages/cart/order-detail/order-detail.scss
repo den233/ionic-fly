@@ -1,0 +1,122 @@
+page-order-detail {
+  .scroll-content{
+    background: #f0f2f7;
+  }
+  .icon-gouwuche-dingdan-pxdingdan{
+    color: #ffa185;
+  }
+  .icon-gouwuche-dingdan-pxwuliu{
+    color: #b3b3ff;
+  }
+  .icon-gouwuche-dingdan-pxdizhi{
+    color: #6ccbff;
+  }
+  .icon-tabbar-shouye-xuanzhong{
+    color: #0f9999;
+    font-size: 18px;
+  }
+  .icon-gouwuche-dingdan-pxshijian{
+    color: #adb2cc;
+  }
+  .msg-span{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    color: #666;
+  }
+  .pv {
+    width: 7.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    line-height: 1.5rem;
+    text-align: center;
+    border: 0.1rem #ffe6cc solid;
+    border-radius: 0.2rem;
+    font-size: 12px;
+    color: #ffa64c;
+  }
+  .order-grid{
+    margin-bottom: 1rem;
+    background: #fff;
+  }
+  .title-span{
+    padding-left: 5px;
+  }
+
+  .cart-main {
+    border-bottom: 1px #eee solid;
+    background: #ffffff;
+
+    &>ion-row {
+      align-items: center;
+    }
+
+    .pic {
+      max-width: 9.0rem;
+      max-height: 9.0rem;
+    }
+
+    .name {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .p-l-0 {
+      padding-left: 0;
+    }
+
+    .p-0 {
+      padding: 0;
+    }
+
+  }
+  .package-main{
+    background: #fafafa;
+  }
+
+  .text-right{
+    text-align: right;
+  }
+
+  .small-pic{
+    width:6rem;
+    height:6rem;
+  }
+
+  .price,
+  .number{
+    padding:0;
+  }
+
+  .number{
+    position: relative;
+    top: 3px;
+  }
+
+  .order-count{
+    position: relative;
+    bottom: 14px;
+  }
+
+  .order-longrich{
+    background: #ffffff;
+    border-bottom: 1px #eee solid;
+    margin-bottom: 0;
+  }
+
+  .po-1{
+    position: relative;
+    top:1px;
+  }
+
+  .text-warning{
+    color: #ffb266;
+  }
+
+  .p-t-0{
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,90 @@
+
+
+<ion-content class="content-primary">
+  <div class="bg-pic-main">
+    <div class="wrap" id="container">
+      <p class="sub-title">{{MAX}}&nbsp;本月考核</p>
+      <h2 class="main-title">{{isFinished}}</h2>
+      <span class="date">到期时间&nbsp;{{MAX}}</span>
+    </div>
+  </div>
+
+  <ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()"  left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>重销零售</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-header #container id="head-container" class="hide">
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()"  left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>重销零售</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-list no-margin>
+  <ion-item>
+    <ion-label>
+      <i class="iconfont i-date">&#xe686;</i>
+      <span class="title">考核日历</span>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<div padding-bottom>
+    <div class="card-wrap" *ngFor="let item of repeatList;let i = index;">
+        <ion-grid class="card">
+          <ion-row class="b-b p-b">
+            <ion-col text-left col-9>
+              <span class="month">{{item.MONTH}}月</span>
+              <span class="year">.{{item.YEAR}}</span>
+            </ion-col>
+            <ion-col text-right col-3>
+              <span class="text-primary status" *ngIf="item.AMOUNT >= 100">已达标</span>
+              <span class="text-gray status" *ngIf="item.AMOUNT < 100">未达标</span>
+            </ion-col>
+          </ion-row>
+          <ion-row class="b-b">
+            <ion-col text-left col-6>
+              <p class="title">本期达成（元）</p>
+              <h2 class="money">{{item.AMOUNT}}</h2>
+            </ion-col>
+            <ion-col text-left col-6>
+              <p class="title">本期PV值</p>
+              <h2 class="money">{{item.PPV}}</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-right col-12>
+              <p class="bottom" (click)="toggle(item)">
+                  <span class="tip">本期订单</span>&nbsp;<span class="text-primary">1</span>
+                  <i [class]="item.isShow ? 'iconfont i-arrow active' : 'iconfont i-arrow'">&#xe678;</i>
+              </p>
+              <div text-left class="sales-detail" *ngIf="item.isShow">
+                <p>订单编号：{{item.PO_MEMBER_ORDER}}</p>
+                <p>购买期数：{{item.REPEAT_MONTH}}个月</p>
+                <p>订单金额：&yen;{{item.ORDER_AMOUNT}}&nbsp;<span class="text-primary">每期&yen;{{item.AMOUNT}}</span></p>
+                <p>订单PV：{{item.ORDER_PV}}&nbsp;<span class="text-primary">每期{{item.PPV}}</span></p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="show-default" *ngIf="showNull">
+        <img src="../../assets/img/bg_null_data.png">
+        <p class="message">没有相关数据</p>
+      </div>
+
+</div>
+
+
+</ion-content>

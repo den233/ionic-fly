@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-title>{{registerResult}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary">
+  <div class="wrap" margin padding text-center>
+    <i class="iconfont success" *ngIf="isOk">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-wode-xinhuiyuanzhuce-chenggong"></use>
+    </svg></i>
+    <i class="iconfont fail" *ngIf="!isOk">&#xe652;</i>
+    <p [class.success]="isOk">{{tip}}</p>
+    <div class="result-main">
+        <ion-row>
+          <ion-col>
+            <span class="text-grey">转账金额</span>
+            <span>{{transferMoney}}</span>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col>
+          <span class="text-grey">{{transferType == 3 ? '钱包' : '奖金'}}余额</span>
+          <span>{{transferType == 3 ? payObj.wallet : payObj.bonus}}</span>
+        </ion-col>
+      </ion-row>
+    </div>
+    <!-- <button type="submit" (click)="goOrder()" ion-button color="winter" block>复制会员信息</button> -->
+    <button type="submit" (click)="goHome()" ion-button color="secondary" block>返回首页</button>
+  </div>
+</ion-content>

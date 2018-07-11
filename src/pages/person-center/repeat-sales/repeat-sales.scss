@@ -1,0 +1,179 @@
+page-repeat-sales {
+  .toolbar-ios-winter .toolbar-background-ios {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .toolbar-ios-winter .toolbar-title-ios,
+  .toolbar-ios-winter .bar-button-clear-ios,
+  .toolbar-ios-winter .bar-button-default-ios {
+    color: #fff;
+  }
+
+  .bg-pic-main {
+    position: relative;
+    overflow: hidden;
+    background: #4bcaae url("../../../assets/img/re-sell-bg.jpg") no-repeat;
+    background-size: cover;
+    height: 187px;
+    .wrap {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      .sub-title {
+        padding: 25px 0 14px;
+        font-size: 1.4rem;
+        margin: 0;
+      }
+      .main-title {
+        font-size: 2.4rem;
+        margin: 0;
+        padding: 0;
+      }
+      .date {
+        margin: 20px 0;
+        display: inline-block;
+        font-size: 1.4rem;
+        background-color: #fff;
+        color: #42c6b7;
+        border-radius: 30px;
+        padding: 3px 15px;
+      }
+    }
+  }
+
+  .i-date {
+    color: #42c6b7;
+    font-size: 2.2rem;
+    vertical-align: middle;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .card-wrap {
+    width: calc(100% - 24px);
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    // .line {
+    //   position: relative;
+    //   width: 21px;
+    //   height: 100%;
+    //   float: left;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: #42c6b7;
+        border: 2px solid #f0f2f7;
+        top: 20px;
+        left: 6px;
+        z-index: 10;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background-color: #b8c2cc;
+        top: 0;
+        left: 10px;
+        z-index: 9;
+      }
+    // }
+
+    .card {
+      border-radius: 5px;
+      background-color: #fff;
+      float: right;
+      width: calc(100% - 21px);
+      margin-top: 15px;
+      padding: 15px 15px 11px;
+      .month {
+        font-size: 1.8rem;
+      }
+      .year {
+        font-size: 1.2rem;
+        color: #aaaaaa;
+      }
+      .status {
+        font-size: 1.4rem;
+      }
+      .title {
+        margin: 0;
+        padding: 10px 0 5px 15px;
+        font-size: 1.2rem;
+        color: #aaaaaa;
+      }
+      .money {
+        margin: 0;
+        padding-left: 15px;
+        font-size: 1.8rem;
+        font-weight: normal;
+        color: #666666;
+        padding-bottom: 10px;
+      }
+      .bottom {
+        margin: 0;
+        padding: 10px 0 0;
+        .tip {
+          color: #666666;
+          font-size: 1.4rem;
+        }
+        .i-arrow{
+          color: #ccc;
+          font-size: 1.2rem;
+          display: inline-block;
+          transition: all .5s;
+        }
+        .i-arrow.active{
+          transform: rotate(180deg);
+          -webkit-transform:rotate(180deg);
+          vertical-align: text-top;
+        }
+      }
+      .sales-detail{
+        border-left: 2px solid #42c6b7;
+        p{
+          color: #666;
+          font-size: 1.2rem;
+          margin: 0;
+          padding: 5px 0 0 10px;
+        }
+      }
+    }
+    .col {
+      padding: 0;
+    }
+  }
+  .b-b {
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  #head-container{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+  }
+
+  #head-container .toolbar-ios-winter .toolbar-background-ios {
+    background: #fff;
+    border-color: #EAEAEA;
+  }
+
+  #head-container .toolbar-ios-winter .toolbar-title-ios,
+  #head-container .toolbar-ios-winter .bar-button-clear-ios,
+  #head-container .toolbar-ios-winter .bar-button-default-ios {
+    color: #000;
+  }
+
+}

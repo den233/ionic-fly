@@ -1,0 +1,142 @@
+page-transfer-account {
+  .txt {
+    font-size: 1.4rem;
+    color: #333;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    color: #666;
+  }
+
+  .tabs {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #eeeeee;
+    .tab-item {
+      display: block;
+      width: 50%;
+      float: left;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      background-color: #fff;
+      font-size: 1.6rem;
+      .i-left {
+        font-size: 22px;
+        color: #99b9e4;
+        vertical-align: top;
+      }
+      .i-right {
+        font-size: 23px;
+        color: #ffd580;
+        vertical-align: top;
+      }
+      &.active {
+        background-color: #12b3b3;
+        color: #fff;
+        .i-left {
+          color: #fff;
+        }
+        .i-right {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .wallet-list {
+    background: #fff;
+    padding: 0 1.2rem;
+    line-height: 5rem;
+    .col {
+      padding: 0;
+    }
+  }
+
+  .text-rmb {
+    font-size: 19px;
+    position: relative;
+    bottom: 2px;
+    line-height: normal;
+  }
+
+  .text-num {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    bottom: 12px;
+    font-size: 29px;
+    width: 80%;
+    border: none;
+  }
+  .cash-all {
+    padding: 0 12px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    background: #fff;
+    border-top: 1px #eee solid;
+  }
+  .text-blue {
+    color: #4ca6ff;
+  }
+
+  // modal
+  .bg-model {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    .model-box {
+      position: absolute;
+      top: 13%;
+      left: 4%;
+      border-radius: 8px;
+      max-width: 92%;
+      background-color: #fff;
+      overflow-y: auto;
+      h3 {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 18px;
+        padding: 10px 15px;
+        i {
+          float: right;
+          color: #808080;
+        }
+      }
+      .content {
+        padding: 0 15px 10px 15px;
+        max-height: 250px;
+        overflow: auto;
+      }
+      .footer {
+        padding: 10px 15px 0 15px;
+        .footer-btn {
+          background: #12b3b3;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          color: #fff;
+          border-radius: 5px;
+          padding: 15px 0;
+          font-size: 18px;
+          margin-top: 10px;
+        }
+        input[type="checkbox"] {
+          margin-right: 5px;
+          top: 1px;
+          position: relative;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}

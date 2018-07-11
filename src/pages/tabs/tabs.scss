@@ -1,0 +1,85 @@
+page-tabs {
+  .tab-button-icon {
+    font-size: 18px !important;
+    height: 25px !important;
+    margin-top: 0 !important;
+    padding-top: 4px !important;
+  }
+  .tab-button {
+    height: 45px !important;
+    min-height: 45px !important;
+  }
+
+  .tabbar {
+    background-color: #fff !important;
+    border-top: 0 !important;
+    box-shadow: 0 -1px 3px #ccc;
+  }
+}
+
+@font-face {
+  font-family: "Ionicons";
+  src: url('../../assets/tab/iconfont.eot'); /* IE9*/
+  src: url('../../assets/tab/iconfont.eot#iefix')
+      format('embedded-opentype'),
+    url('../../assets/tab/iconfont.woff') format('woff'),
+    url('../../assets/tab/iconfont.ttf') format('truetype'),
+    url('../../assets/tab/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+// .iconfont {
+//   font-family:"iconfont" !important;
+//   font-size:16px;
+//   font-style:normal;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+.ion-md-home:before {
+  content: "\e638";
+}
+.ion-ios-home:before {
+  content: "\e638";
+}
+.ion-ios-home-outline:before {
+  content: "\e637";
+}
+
+
+
+.ion-md-cart:before {
+  content: "\e634";
+}
+.ion-ios-cart:before {
+  content: "\e634";
+}
+.ion-ios-cart-outline:before {
+  content: "\e633";
+}
+
+.ion-md-person:before {
+  content: "\e636";
+}
+.ion-ios-person:before {
+  content: "\e636";
+}
+.ion-ios-person-outline:before {
+  content: "\e635";
+}
+
+.ion-md-goods:before {
+  content: "\e66a";
+}
+.ion-ios-goods:before {
+  content: "\e66a";
+}
+.ion-ios-goods-outline:before {
+  content: "\e66b";
+}
+.tabs-ios .tab-button:hover:not(.disable-hover), .tabs-ios .tab-button[aria-selected=true]{
+  color: #12b3b3;
+}
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon{
+  color: #12b3b3;
+}
+

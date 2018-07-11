@@ -1,0 +1,62 @@
+page-charge-result {
+  .wrap {
+    background-color: #fff;
+    border-radius: 5px;
+    p{
+      font-size: 2rem;
+    }
+    .iconfont{
+      font-size: 8rem;
+    }
+    .success {
+      color: #5feda6;
+    }
+
+    .success{
+      color: #52cc8f;
+      svg{
+        width: 120px;
+        height: 120px;
+        margin-top: 34px;
+      }
+    }
+
+    .fail {
+      color: #cccccc;
+    }
+
+    [color='winter']{
+      border:1px #ccc solid;
+      margin-bottom: 1rem;
+    }
+
+    .result-main{
+      padding:.8rem 1rem;
+      margin-bottom: 3rem;
+
+      ion-col{
+        text-align: left;
+      }
+
+      .text-grey{
+        color: #999999;
+        width: 50%;
+        display: inline-block;
+        text-align: right;
+      }
+    }
+
+    .pv {
+      width: 7.5rem;
+      height: 1.5rem;
+      display: inline-block;
+      line-height: 1.5rem;
+      text-align: center;
+      border: 0.1rem #ffe6cc solid;
+      border-radius: 0.2rem;
+      font-size: 12px;
+      color: #ffa64c;
+      margin-left: 0.5rem;
+    }
+  }
+}

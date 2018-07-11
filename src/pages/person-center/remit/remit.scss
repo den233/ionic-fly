@@ -1,0 +1,97 @@
+page-remit {
+
+  .text-theme{
+    color: #13bfbf;
+  }
+
+  .toolbar-ios{
+    padding:4px 12px;
+  }
+
+  .segment-ios .segment-button{
+    font-size: 14px;
+    color: #666666;
+    background: #fff;
+    border: none;
+    line-height:2.8rem;
+  }
+
+  .toolbar-ios .segment-button ion-icon{
+    line-height: inherit;
+    position: relative;
+    top: 3px;
+    font-size: 17px;
+  }
+
+  .toolbar-ios{
+    border-bottom: 1px #eeeeee solid;
+  }
+
+  .segment-ios .segment-button.segment-activated{
+    color: #12B3B3;
+    background: #fff;
+
+    ion-icon{
+      transform: rotate(180deg) translateY(2px);
+    }
+  }
+
+  .remit-list{
+    padding:12px 0 10px;
+    background: #fff;
+
+    .title{
+      padding:0 12px 12px;
+      border-bottom: 1px #eee solid;
+    }
+
+    .main{
+      padding:0 12px;
+      text-align: center;
+
+      .money{
+        padding:24px 12px;
+        border-bottom: 1px #eee dashed;
+      }
+
+      h2{
+        margin:0;
+        font-weight: normal;
+        font-size: 26px;
+
+        small{
+          font-size: 14px;
+          padding-right: 3px;
+        }
+      }
+    }
+
+    .bottom{
+      padding:0 12px;
+    }
+  }
+
+  .box-shadow{
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .scroll-content{
+    background: #f0f4f7;
+  }
+
+  .text-warning{
+    color: #ffa64c;
+  }
+  .text-success{
+    color: #66cc77;
+  }
+  
+  .text-theme{
+    button{
+      background: transparent;
+      color: #13bfbf;
+      font-size: 14px;
+    }
+  }
+
+}

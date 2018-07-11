@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>银行卡</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary" padding-bottom>
+  <button (click)="goBankEdit()" class="m-t" no-lines ion-item>
+    <i class="iconfont package">&#xe66f;</i>
+    <span class="txt">添加银行卡</span>
+  </button>
+  <ion-grid *ngFor="let item of items" class='card-wrap'>
+    <ion-row  (click)="selectBank(item)" no-padding>
+      <ion-col text-center col-2>
+        <div class="bank-wrap">
+          <svg viewBox="0,0,50,50" class="bank" aria-hidden="true">
+            <use xlink:href="#icon-wode-shezhi-yinhangqia-moren"></use>
+          </svg>
+        </div>
+      </ion-col>
+      <ion-col col-8>
+        <p class="text-white f-1-6" no-margin>{{item.BANK}}</p>
+        <p class="text-light-gray f-1-5" no-margin>储蓄卡</p>
+        <p class="text-white f-1-6">{{item.BANKName}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <div text-center>
+          <i (click)="goBankEdit(item)" class="iconfont text-white f-2">&#xe673;</i>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--null data-->
+  <div class="show-default" *ngIf="showNull">
+    <img src="../../../assets/img/bg_null_data.png">
+    <p class="message">没有相关数据</p>
+  </div>
+
+</ion-content>

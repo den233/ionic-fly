@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">积分明细</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="white">
+    <div class="tab-sort">
+      <ion-segment [(ngModel)]="sortType" (ionChange)="changeType($event)">
+        <ion-segment-button col-4 value="sortAll">
+          全部交易
+          <ion-icon name='md-arrow-dropdown' class="tab-sort-arrow"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button (click)="timeTrade($event)"  col-4 value="sortTime">
+          {{timeType.name}}
+          <ion-icon name='md-arrow-dropdown' class="tab-sort-arrow"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item-group *ngFor="let item of items">
+    <ion-item-divider>{{item.DEAL_DATE}}</ion-item-divider>
+    <ion-list class="pay-type borderTop">
+      <ion-item (click)="toggle(item)">
+        <ion-avatar item-start>
+          <i class="iconfont icon-wode-qianbao-jilu-jiangjin" *ngIf="item.DEAL_TYPE == 'A'"></i>
+          <i class="iconfont icon-wode-qianbao-jilu-tuikuan" *ngIf="item.DEAL_TYPE == 'D'"></i>
+        </ion-avatar>
+        <h3 *ngIf="item.DEAL_TYPE == 'A'">收入</h3>
+        <h3 *ngIf="item.DEAL_TYPE == 'D'">支出</h3>
+        <p class="small text-gray">{{item.DEAL_DATE}}</p>
+        <ion-note item-end class="text-lightdark">
+          <label class="text-price" *ngIf="item.DEAL_TYPE == 'A'">+{{item.MONEY}}</label>&nbsp;
+          <label class="text-price"  *ngIf="item.DEAL_TYPE == 'D' && item.MONEY > 0">-{{item.MONEY}}</label>&nbsp;
+          <i [class]="item['isOpen'] ? 'iconfont i-arrow active' : 'iconfont i-arrow'">&#xe678;</i>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-list class="detail-zhedie-money clearfix text-lightdark" *ngIf="item['isOpen']">
+      <label>{{item.NOTES ? item.NOTES : '暂无数据'}}</label>
+    </ion-list>
+  </ion-item-group>
+
+  <!--null data-->
+  <div class="show-default" *ngIf="showNull">
+    <img src="../../../assets/img/bg_null_data.png">
+    <p class="message">没有相关数据</p>
+  </div>
+
+</ion-content>

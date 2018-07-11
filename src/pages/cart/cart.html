@@ -1,0 +1,204 @@
+
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-title align-title="center">购物车</ion-title>
+    <ion-buttons right [hidden]="showNull">
+		<button (click)="edit()" [hidden]='isEdit'>编辑</button>
+		<button (click)="edit()" class="text-red" [hidden]='!isEdit'>完成</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+	<!--下拉刷新-->
+	<ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!showNull">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="加载中...">
+		</ion-refresher-content>
+	</ion-refresher>
+	<div class="cart-tip" *ngIf="tipShow" [hidden]="showNull">
+		<i class="iconfont icon-gouwuche-tips-laba"></i>
+		请选择订单类型后再进行下单
+		<i class="iconfont icon-gouwuche-tips-guanbi" (click)="tipHide()"></i>
+	</div>
+
+	<!--<div class="goodclass m-b">-->
+		<!--<ion-grid class='cart-main super-main' *ngFor="let item of goodsList;let i = index;">-->
+			<!--<ion-row>-->
+				<!--<ion-col col-1 *ngIf='isEdit'>-->
+					<!--<ion-checkbox [(ngModel)]="item.isCheck" (click)="updateCheck(item)"></ion-checkbox>-->
+				<!--</ion-col>-->
+				<!--<ion-col col-4>超值卡商品</ion-col>-->
+				<!--<ion-col class="be-right">-->
+					<!--<p (click)="modalGoods()" class="text-right">选择-->
+						<!--<i class="iconfont icon-shouye-tiaozhuanjiantou"></i>-->
+					<!--</p>-->
+				<!--</ion-col>-->
+			<!--</ion-row>-->
+		<!--</ion-grid>-->
+		<!--<ion-grid class='cart-main super-main-content' *ngFor="let item of goodsList;let i = index;">-->
+			<!--<ion-row>-->
+				<!--<ion-col col-3 (click)="goGoodsDetail(item)">-->
+					<!--<img [src]="imgUrl+item.IMAGE_LINK" onerror='this.src="../../../assets/img/null-img.png"' class="pic be-small">-->
+				<!--</ion-col>-->
+				<!--<ion-col>-->
+					<!--<ion-row (click)="goGoodsDetail(item)">-->
+						<!--<ion-col col-12 class='p-l-0'>-->
+							<!--<span class="name">-->
+								<!--{{item.PRODUCT_NAME}}-->
+							<!--</span>-->
+						<!--</ion-col>-->
+						<!--<ion-col col-12 class='p-l-0'>-->
+							<!--<span class="pv">-->
+								<!--PV: +${{item.MP_PV}}-->
+							<!--</span>-->
+						<!--</ion-col>-->
+					<!--</ion-row>-->
+				<!--</ion-col>-->
+				<!--<ion-col col-3 class="text-right super-attr p-0" >-->
+						<!--<p class='p-0'>&yen;&nbsp;2300</p>-->
+						<!--<p class='p-0 text-gray'>x&nbsp;3</p>-->
+
+				<!--</ion-col>-->
+			<!--</ion-row>-->
+		<!--</ion-grid>-->
+	<!--</div>-->
+
+	<ion-grid class='cart-main' *ngFor="let item of goodsList;let i = index;">
+		<ion-row>
+			<ion-col col-1 *ngIf='isEdit'>
+				<ion-checkbox [(ngModel)]="item.isCheck" (click)="updateCheck(item)"></ion-checkbox>
+			</ion-col>
+			<ion-col col-4 (click)="goGoodsDetail(item)">
+				<img  [src]="imgUrl+item.IMAGE_LINK" onerror='this.src="../../../assets/img/null-img.png"'  class="pic">
+			</ion-col>
+			<ion-col>
+				<ion-row (click)="goGoodsDetail(item)">
+					<ion-col col-12 class='p-l-0'>
+						<span class="name">
+							{{item.PRODUCT_NAME}}
+						</span>
+					</ion-col>
+					<ion-col col-12 class='p-l-0'>
+						<span class="pv">
+							PV: +${{item.MP_PV}}
+						</span>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-6 class='p-0 text-red'>
+						&yen;&nbsp;{{item.FP_PRICE}}
+					</ion-col>
+					<ion-col col-6 class='p-0'>
+						<span class="num-container">
+							<label class="reduce" (click)="reduce(item,i)"><i class="iconfont icon-gouwuche-shuliangjian"></i></label>
+							<input type="number" class="number" value="{{item.QTY}}" [(ngModel)]="item.QTY"  (ngModelChange)="inputCheck(item)" >
+							<label class="add" (click)="add(item)"><i class="iconfont icon-gouwuche-shuliangjia"></i></label>
+						</span>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<!--null data-->
+	<div class="show-default" *ngIf="showNull">
+		<img src="../../assets/img/bg_null_data.png">
+		<p class="message">购物车为空</p>
+	</div>
+</ion-content>
+
+
+<ion-footer class='cart-footer' *ngIf="!showNull">
+	<!-- 选择类型 -->
+	<div [hidden]='isEdit'>
+		<ion-toolbar class="footer-choose">
+			<div class="type-main clearfix">
+				<div class="type-number pull-left">
+					<i class="iconfont icon-gouwuche-dingdanleixing"></i>
+					共2种订单类型
+				</div>
+				<div class="type-btn pull-right" (click)='modalTrigger()'>
+					选择订单类型
+				</div>
+			</div>
+		</ion-toolbar>
+		<div [ngClass]="{'cart-modal': true,'show':modalShow}" (click)='modalTrigger()'></div>
+		<div [ngClass]="{'cart-choose': true,'show':modalShow}">
+			<div class="cart-type-head">
+				<span class="title">选择订单类型</span>
+				<i class="iconfont icon-gouwuche-tips-guanbi" (click)='modalTrigger()'></i>
+			</div>
+			<div class="cart-type-list clearfix" (click)='goType(item)' *ngFor="let item of orderTypes">
+				<div class="pull-left">
+					<h4>{{item.VALUE_TITLE}}</h4>
+					<label *ngIf="item.VALUE_CODE == 20">升级单是为了提升会员级别</label>
+					<label *ngIf="item.VALUE_CODE == 30">重消单是为了获取重消奖</label>
+					<label *ngIf="item.VALUE_CODE == 13">用于完成回填成为正式会员</label>
+				</div>
+				<span class="pull-right choose">选择<i class="iconfont icon-shouye-tiaozhuanjiantou"></i></span>
+			</div>
+		</div>
+	</div>
+
+	<div [ngClass]="{'cart-modal': true,'show':goodsShow}" (click)='modalGoods()'></div>
+	<div class="modal" [ngClass]="{'cart-choose': true,'show':goodsShow}">
+		<div class="cart-type-head">
+			<span class="title">选择超值卡商品</span>
+			<i class="iconfont icon-gouwuche-tips-guanbi" (click)='modalGoods()'></i>
+		</div>
+		<div class="goodclass">
+			<ion-grid class='cart-main super-main-content' *ngFor="let item of goodsList;let i = index;">
+				<ion-row>
+					<ion-col>
+						<ion-checkbox></ion-checkbox>
+					</ion-col>
+					<ion-col col-3 (click)="goGoodsDetail(item)">
+						<img [src]="imgUrl+item.IMAGE_LINK" onerror='this.src="../../../assets/img/null-img.png"' class="pic be-small">
+					</ion-col>
+					<ion-col>
+						<ion-row (click)="goGoodsDetail(item)">
+							<ion-col col-12 class='p-l-0'>
+							<span class="name">
+								{{item.PRODUCT_NAME}}
+							</span>
+							</ion-col>
+							<ion-col col-12 class='p-l-0'>
+							<span class="pv">
+								PV: +${{item.MP_PV}}
+							</span>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col col-3 class="text-right super-attr p-0" >
+						<p class='p-0'>&yen;&nbsp;2300</p>
+						<p class='p-0 text-gray'>x&nbsp;3</p>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<ion-toolbar class=" be-choose ">
+				<div class="type-main ">
+					<div class="type-number pull-left">
+						已选择1/1件
+					</div>
+					<div class="type-btn pull-right" (click)='modalGoods()'>
+						确定
+					</div>
+				</div>
+			</ion-toolbar>
+		</div>
+	</div>
+	<!-- 全选删除 -->
+	<ion-toolbar [hidden]='!isEdit' class="footer-choose">
+		<div class="type-main clearfix">
+			<div class="type-number pull-left" (click)="checkAll()">
+				<ion-checkbox [(ngModel)]="isAllCheck"></ion-checkbox>
+				<span class="all-check">全选</span>
+			</div>
+			<div class="del-btn pull-right" (click)='delAllCheck()'>
+				删除
+			</div>
+		</div>
+	</ion-toolbar>
+</ion-footer>
+

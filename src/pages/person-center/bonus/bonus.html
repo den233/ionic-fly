@@ -1,0 +1,66 @@
+
+
+<ion-content>
+
+  <div class="bg-pic-main">
+    <img src="../../../assets/img/bonus-bg.png" class="bg-pic" style="height: 340px;
+    width: 100%;">
+    <!--<div class="bonus-list clearfix">-->
+      <!--<div class="pull-left list">-->
+        <!--<span class="title">累计奖金</span>-->
+        <!--<label class="number">{{bonus.all}}</label>-->
+      <!--</div>-->
+      <!--<div class="pull-left list">-->
+        <!--<span class="title">本周累计</span>-->
+        <!--<label class="number">{{bonus.week}}</label>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+
+  <ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()"  left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>奖金</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="wallet-main" id="container">
+    <span>奖金余额（元）</span>
+    <h2>{{wallet}}</h2>
+    <button (click)="cash()">我要提现</button>
+  </div>
+
+
+  <ion-row class="wallet-list m-t" (click)="bonusDetail()">
+    <ion-col class="text-left">
+      <i class="iconfont icon-wode-qianbao-jilu i-icons m-r"></i>
+      奖金明细
+    </ion-col>
+    <ion-col class="text-right">
+      <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+    </ion-col>
+  </ion-row>
+  <ion-row class="wallet-list m-t" (click)="tradeDetail()">
+    <ion-col class="text-left">
+      <i class="iconfont icon-wode-jiangjin-jiaoyimingxi i-icons m-r"></i>
+      交易明细
+    </ion-col>
+    <ion-col class="text-right">
+      <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+    </ion-col>
+  </ion-row>
+  <ion-row class="wallet-list m-t" (click)="cancelBonus()">
+    <ion-col class="text-left">
+      <i class="iconfont icon-wode-jiangjin-quxiao i-icons m-r"></i>
+      取消提现
+    </ion-col>
+    <ion-col class="text-right">
+      <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,24 @@
+page-feed-back {
+  .wrap {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 45px;
+    p{
+      font-size: 2rem;
+    }
+    .iconfont{
+      font-size: 12rem;
+    }
+    .success {
+      color: #5feda6;
+    }
+
+    p.success{
+      color: #52cc8f;
+    }
+
+    .fail {
+      color: #cccccc;
+    }
+  }
+}

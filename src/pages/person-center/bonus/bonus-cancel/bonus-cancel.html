@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons (click)="goBack()"  left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">取消提现</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content full-padding>
+  <!--<div class="remit-list box-shadow m-b" (click)="remitDetail(item)" *ngFor="let item of allList">-->
+    <!--<div class="title clearfix">-->
+      <!--<div class="pull-left">-->
+        <!--<span class="text-gray">汇款方式</span>-->
+        <!--&nbsp;-->
+        <!--<span class="text-lightdark">{{item.typeName}}</span>-->
+      <!--</div>-->
+      <!--<div class="pull-right">-->
+        <!--<span class="text-warning" *ngIf="item.status == '1'">未审核</span>-->
+        <!--<span class="text-success" *ngIf="item.status == '2'">已审核</span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="main">-->
+      <!--<div class="money">-->
+        <!--<span class="text-gray">汇款金额</span>-->
+        <!--<h2><small>&yen;</small>{{item.remitMoney}}</h2>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="bottom m-t">-->
+        <!--<span class="text-gray">-->
+          <!--<i class="iconfont m-r icon-wode-huikuan-qia"></i>-->
+          <!--汇入账户-->
+        <!--</span>-->
+      <!--<span class="text-lightdark">-->
+          <!--&nbsp;{{item.accountName}}-->
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div class="bottom m-t">-->
+        <!--<span class="text-gray">-->
+          <!--<i class="iconfont m-r icon-wode-huikuan-shijian"></i>-->
+          <!--汇款时间-->
+        <!--</span>-->
+      <!--<span class="text-lightdark">-->
+          <!--&nbsp;{{item.accountDate}}-->
+        <!--</span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--null data-->
+  <!--<div class="show-default" *ngIf="!allList.length">-->
+    <!--<img src="../../assets/img/bg_null_data.png">-->
+    <!--<p class="message">列表为空</p>-->
+  <!--</div>-->
+</ion-content>

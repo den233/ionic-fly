@@ -1,0 +1,162 @@
+page-bonus-cash {
+  .pay-type{
+    .item-ios{
+      padding-left: 1.2rem;
+      background: #fff;
+      border-bottom: 1px #eee solid !important;
+      font-size: 14px;
+    }
+
+    .icon-wode-shezhi-yinhangqia-zhaoshang{
+      font-size: 30px;
+      color: #e41e26;
+    }
+
+    [item-start]{
+      margin-right: 8px;
+      margin-top: 10px;
+    }
+
+    .small{
+      font-size: 13px;
+      color: #999;
+    }
+  }
+
+  .list-ios > .item-block:first-child{
+    border-top: 1px #eee solid;
+  }
+
+  .scroll-content{
+    background: #f0f2f7;
+  }
+  
+  .icon-shouye-tiaozhuanjiantou{
+    font-size: 13px;
+    color: #ccc;
+  }
+
+  ion-avatar{
+    padding: 4px;
+    border: 1px #eee solid;
+    border-radius: 50%;
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .wallet-list{
+    background: #fff;
+    padding:0 1.2rem;
+    line-height: 5rem;
+    .col{
+      padding:0;
+    }
+  }
+
+  .money-main{
+    display: flex;
+    align-items: center;
+  }
+
+  .text-rmb{
+    font-size: 19px;
+    line-height: normal;
+  }
+
+  .text-num{
+    font-size: 29px;
+    width: 80%;
+    border: none;
+  }
+
+  .list-ios{
+    margin-bottom: 10px;
+  }
+
+  .cash-all{
+    padding:0 12px;
+    height:50px;
+    line-height: 50px;
+    font-size: 13px;
+    background: #fff;
+    border-top: 1px #eee solid;
+  }
+  
+  .text-blue{
+    color: #4ca6ff;
+  }
+  
+  .text-yellow{
+    color: #ffd580;
+  }
+
+  .all-btn{
+    background: none;
+    position: relative;
+    top: 18px;
+    font-size: 13px;
+  }
+
+  .warning-tip{
+    margin:0;
+    padding:0;
+    line-height: 25px;
+  }
+
+  // modal
+  .bg-model{
+    position:absolute;
+    top:0%;
+    left:0%;
+    background:rgba(0,0,0,0.3);
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    .model-box{
+      position: absolute;
+      top: 13%;
+      left: 4%;
+      border-radius: 8px;
+      max-width: 92%;
+      background-color: #fff;
+      overflow-y :auto;
+      h3{
+        text-align: center;
+        margin-top: 5px;
+        font-size: 18px;
+        padding: 10px 15px;
+        i{
+          float: right;
+          color: #808080;
+        }
+      }
+      .content{
+        padding: 0 15px 10px 15px;
+        max-height: 250px;
+        overflow: auto;
+      }
+      .footer{
+        padding: 10px 15px 0 15px;
+        .footer-btn{
+          background: #12b3b3;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          color: #fff;
+          border-radius: 5px;
+          padding: 15px 0;
+          font-size: 18px;
+          margin-top: 10px;
+        }
+        input[type="checkbox"]{
+          margin-right: 5px;
+          top: 1px;
+          position: relative;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}

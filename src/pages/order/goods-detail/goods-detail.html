@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div class="type-all">
+      <span (click)="segmentChanged('goods')" [class]="parentTab == 'goods' ? 'order-type act' : 'order-type'">商品</span>
+      <span (click)="segmentChanged('detail')" [class]="parentTab == 'detail' ? 'order-type act' : 'order-type'">详情</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionScroll)="onScroll($event)" class="content-primary">
+  <!-- image -->
+  <div class="goods-slide" id="goods">
+    <ion-slides *ngIf="images && images.length" (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let img of images">
+        <img [src]="imgUrl+img">
+      </ion-slide>
+    </ion-slides>
+    <img *ngIf="!images.length" src='../../../assets/img/goods-null.png'>
+    <p class="bottom-bar">
+      <!--<span class="badge">{{currentIndex+1}}/{{images ? images.length : 0}}</span>-->
+    </p>
+  </div>
+  <!-- info -->
+  <ion-row class="wrap">
+    <p class="title">{{item.PRODUCT_NAME}}</p>
+    <p class="description">{{item.REMARK}}</p>
+    <ion-col no-padding col-7 text-left>
+      <!-- TODO 重消单,金额字段是:MP_PRICE,MP_PV -->
+      <span class="price">&yen;&nbsp;{{ price}}</span>&nbsp;
+      <span class="pv">PV: +${{ pv }}</span>
+    </ion-col>
+    <ion-col no-padding col-5 text-right>
+      <span class="number">商品编号：{{item.PRODUCT_NO}}</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid no-padding>
+    <div class='size' (click)="showModal()">
+        <label for="">规格</label>
+        <span>选择颜色分类</span>
+       
+    </div>
+    <!-- number -->
+    <!-- <div *ngIf="!isFirst">
+      <ion-row *ngIf="!isHidCart" class="bg-white m-t p" >
+        <ion-col col-6 class='f-1-5'>商品数量</ion-col>
+        <ion-col col-6>
+          <div>
+            <span class="num-container">
+                <label class="reduce" (click)="reduce(item,i)"><i class="iconfont icon-gouwuche-shuliangjian"></i></label>
+                <input type="number" class="number" value="{{item.QTY}}" [(ngModel)]="item.QTY" (ngModelChange)="inputCheck(item)" >
+                <label class="add" (click)="add(item)"><i class="iconfont icon-gouwuche-shuliangjia"></i></label>
+              </span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div> -->
+    <!-- goods detail -->
+    <ion-row class="bg-white b-b-light p m-t" id="detail">
+      <ion-col col-12 class='f-1-5'>商品详情</ion-col>
+    </ion-row>
+    <div class="images bg-white p" *ngFor="let img of images">
+      <img [src]="imgUrl+img" onerror='this.src="../../../assets/img/goods-null.png"'>
+    </div>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class='goods-footer' *ngIf="!isFirst">
+  <ion-toolbar *ngIf="!isHidCart" no-padding>
+    <ion-row>
+      <ion-col (click)="goHome()" class="b-r-light" text-center col-2>
+        <i class="iconfont i-cart">&#xe637;</i>
+        <p no-margin class="tip">首页</p>
+      </ion-col>
+      <ion-col (click)="goCart()" text-center col-2>
+        <i class="iconfont i-cart">&#xe633;</i>
+        <p no-margin class="tip">购物车</p>
+      </ion-col>
+      <ion-col no-padding col-8>
+        <button (click)="showModal()" class="btn-cart" ion-button>
+          加入购物车
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="isHidCart" no-padding>
+    <ion-row>
+      <!-- <ion-col col-4></ion-col> -->
+      <ion-col (click)="goHome()" class="b-r-light" text-center col-6>
+        <i class="iconfont i-cart">&#xe637;</i>
+        <p no-margin class="tip">首页</p>
+      </ion-col>
+      <ion-col (click)="goCart()" text-center col-6>
+        <i class="iconfont i-cart">&#xe633;</i>
+        <p no-margin class="tip">购物车</p>
+      </ion-col>
+      <!-- <ion-col col-4></ion-col> -->
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+ 
+    <modal #childA [modals]="modals"  (onVoted)="closeModal($event)"></modal>  

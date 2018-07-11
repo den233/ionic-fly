@@ -1,0 +1,165 @@
+.bg-model1{
+    position:absolute;
+    top:0%;
+    left:0%;
+    background:rgba(0,0,0,0.3);
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    .model-box{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 8px;
+      width: 100%;
+      height: 80%;
+      background-color: #fff;
+        .pic{
+          width: 60px;
+          float: left;
+          position: absolute;
+          left: 5px;
+          top: -10px;
+        }
+        .b-b{
+            text-align: center;
+            margin-top: 5px;
+            font-size: 16px;
+            padding: 10px 15px;
+            height: 90px;
+            i{
+                float: right;
+                color: #808080;
+            }
+            .top{
+              position: absolute;
+              left:75px;
+              text-align: left;
+              top: 10px;
+              max-width: 16rem;
+              .title-mony{
+                color:red;
+                font-weight: bold
+              }
+            }
+        }
+        .content{
+            padding: 0 5px 10px 5px;
+            height: calc(100% - 200px);
+            overflow: auto;
+            .title-size{
+              margin-top:15px;
+            }
+           
+            .flex1{
+              float: left;
+              margin-right:10px;
+              margin-top:10px;
+              .item-inner{
+                border-bottom:none;
+              }
+              .item-ios .radio-ios {
+                margin: 0 11px 0 0;
+            }
+            
+            .label-ios{
+              margin-top:0;
+              margin-bottom:0
+            }
+            .item-block{
+              min-height:3rem;
+            }
+              .item-ios{
+                padding-left: 0;
+                font-size:1.2rem;
+              }
+              
+            }
+            .clear{
+              clear:both;
+            }
+       }
+       .list-ios{
+        margin-bottom:20px;
+      }
+      .item-checkbox{
+        background:#ddd;
+        border-radius: 4px;
+      }
+      .item-checkbox-checked{
+        background:red;
+        color:#fff;
+      }
+      .item-checkbox-disabled{
+          background: #f1f1f1;
+      }
+      .checkbox-icon{display:none;}
+        .footer{
+            padding: 10px 15px 0 15px;
+            .footer-btn{
+                background: #12b3b3;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                color: #fff;
+                border-radius: 5px;
+                padding: 15px 0;
+                font-size: 18px;
+                margin-top: 10px;
+            }
+           
+        }
+    }
+}
+.colorpick{
+  padding-bottom:20px;
+  color: #4ca6ff;
+  float: right;
+  .iconfont{
+     font-size:2.5rem;
+     color: #13bfbf;
+  }
+}
+.colorpick1{
+  padding-bottom:0;
+}
+.bg-model2 {
+  .model-box{
+    height:80%;
+   .checkbox-icon{
+     display: block
+   }
+   .b-b{
+    text-align: center;
+    margin-top: 5px;
+    font-size: 16px;
+    padding: 10px 15px;
+    height: 60px;
+    .top{
+      left: 10px;
+    }
+    .caculate{
+      left: 120px;
+      position: absolute;
+    }
+   }
+   .content{
+     height:calc(100% - 60px);
+   }
+   .del-btn{
+     .iconfont{
+          font-size:3rem;
+          color: #ff4c4c;
+          position: absolute;
+          right: 42px;
+          bottom: 24px;
+     }
+   }
+   .type-btn{
+     background:#13bfbf;
+     padding:10px 20px;
+     color: #fff
+   }
+  } 
+ }

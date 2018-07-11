@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="head-logo">
+    <svg viewBox="0,0,50,50" class="logo" aria-hidden="true">
+      <use xlink:href="#icon-denglu-logoda"></use>
+    </svg>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-list class="login-form">
+      <ion-item>
+        <ion-label class="left-icon" no-margin no-padding col-2>
+          <i class="iconfont icon-large">&#xe65a;</i>
+        </ion-label>
+        <ion-input type="text" placeholder="请输入会员编码" formControlName="name" [(ngModel)]="user.name" clearInput></ion-input>
+        <ion-note item-end col-1>
+          </ion-note>
+      </ion-item>
+      <ion-item margin-top>
+        <ion-label class="left-icon" no-margin no-padding col-2>
+          <i class="iconfont icon-large">&#xe65c;</i>
+        </ion-label>
+        <ion-input [type]="togglePassword" placeholder="请输入登录密码" formControlName="password" [(ngModel)]="user.password" clearInput></ion-input>
+        <ion-note item-end (click)="togglePwd()" col-1>
+          <i *ngIf="togglePassword == 'text'" class="iconfont icon-eyes">&#xe632;</i>
+          <i *ngIf="togglePassword == 'password'" class="iconfont icon-eyes">&#xe631;</i>
+        </ion-note>
+      </ion-item>
+      <ion-row *ngIf="false">
+        <ion-col no-padding col-7>
+          <ion-item>
+            <ion-label class="left-icon" no-margin no-padding col-3>
+              <i class="iconfont icon-large">&#xe658;</i>
+            </ion-label>
+            <ion-input type="text" placeholder="请输入验证码" formControlName="checkcode" [(ngModel)]="user.checkcode" clearInput></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="check-code" no-padding col-5>
+          <img src="../../assets/img/checkcode.jpg" />
+        </ion-col>
+      </ion-row>
+
+
+
+      <div class="wrap">
+        <ion-row class="checkbox-main">
+          <ion-col (click)="save()">
+            <input type="checkbox" id="save-checkbox">&nbsp;
+            <label [ngClass]="{'remeber': isSaveName}">
+              <i class="iconfont icon-gouwuche-dingdan-checkduihao"></i>
+            </label>
+            <label  class="save-remember">记住密码</label>
+          </ion-col>
+          <ion-col>
+            <span class="pull-right tip">下次自动登录</span>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-list>
+    <div padding-left padding-right>
+      <button type="submit" [disabled]="!loginForm.valid" ion-button class="btn-login" block>登录</button>
+    </div>
+  </form>
+  <p class="forget" margin-top (click)='forgetPwd()'>忘记密码？</p>
+</ion-content>

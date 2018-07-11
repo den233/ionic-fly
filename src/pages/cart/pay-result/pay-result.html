@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="winter" class="b-b-shaow">
+    <ion-title>{{feedback}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <div class="wrap" margin padding text-center>
+    <i class="iconfont success" *ngIf="isOk">&#xe651;</i>
+    <i class="iconfont fail" *ngIf="!isOk">&#xe652;</i>
+    <p [class.success]="isOk">{{tip}}</p>
+    <div class="result-main" *ngIf="isOk">
+        <ion-row>
+          <ion-col>
+            <span class="text-grey">支付金额：</span>
+            <span class="text-red">{{money}}元</span>
+            <span class="pv">
+                PV: +${{pv}}
+            </span>
+          </ion-col>
+        </ion-row>
+      <!--<ion-row>-->
+        <!--<ion-col>-->
+          <!--<span class="text-grey">我的余额：</span>-->
+          <!--<span>102.00元</span>-->
+        <!--</ion-col>-->
+      <!--</ion-row>-->
+    </div>
+    <!--<button type="submit" (click)="goOrder()" ion-button color="winter" block>查看订单</button>-->
+    <button type="submit" (click)="goHome()" ion-button color="secondary" block>返回首页</button>
+  </div>
+</ion-content>

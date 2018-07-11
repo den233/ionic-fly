@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar color="winter">
+    <ion-title align-title="center">{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="content-primary">
+  <div class="wrap" margin padding text-center>
+      <i class="iconfont success" *ngIf="isOk">&#xe650;</i>
+      <i class="iconfont fail" *ngIf="isFail">&#xe652;</i>
+      <p [class.success]="isOk">{{tip}}</p>
+    <button type="submit" (click)="goHome()" ion-button color="secondary" block>返回个人资料</button>
+  </div>
+</ion-content>

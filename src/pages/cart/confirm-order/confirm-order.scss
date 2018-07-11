@@ -1,0 +1,302 @@
+page-confirm-order {
+    .list-header-ios{
+        font-size: 15px;
+    }
+    .memberTip{
+        background: #fff;
+        margin: 0.5rem;
+        ion-label{
+          margin: 0.5rem 0.8rem 0.5rem 0;
+        }
+    }
+    .home-title-name{
+        padding:1rem 0 1rem 1.6rem;
+        margin: 0;
+    }
+    .pv {
+        display: inline-block;
+        text-align: center;
+        border: 0.1rem #ffe6cc solid;
+        border-radius: 0.2rem;
+        font-size: 12px;
+        color: #ffa64c;
+    }
+    .goods-list{
+        &.m-t-2{
+            margin-top: 20px;
+        }
+        &.list-ios{
+            margin-bottom: 0;
+        }
+        .name {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+            overflow: hidden;
+            white-space: normal; 
+            font-size: 15px;
+        }
+        .icon-shouye-qianbao{
+            color:#a1b8e6;
+            font-size: 20px;
+            padding-right: 5px;
+        }
+        .icon-gouwuche-dingdan-pxjiangjin{
+            color:#6699ff;
+            font-size: 20px;
+            padding-right: 5px;
+        }
+    }
+    ion-avatar{
+        margin: 0.8rem 0;
+        .goods-img{
+            width: 6rem;
+            height: 6rem;
+        }
+    }
+    .goods-price{
+        position: relative;
+        top: -10px;
+        p:nth-child(1){
+            color: #000;
+        }
+    }
+    .list-ios .item-block .item-inner {
+        border-bottom: 0;
+    }
+    .checkbox-ios .checkbox-icon{
+        font-size: 15px;
+        width: 21px !important;
+        border: 1px solid #cccccc;
+        border-radius: 0.2rem;
+        &.checkbox-checked {
+          color: #fff;
+          background-color: #fafafa;
+          border: 1px solid #cccccc;
+          .checkbox-inner{
+            font-weight: 900;
+            border-color: #666666;
+          }
+        }
+      
+    }
+    .cart-footer {
+		border-top: 0 !important;
+		-webkit-box-shadow: 0 -1px 3px #ccc;
+		box-shadow: 0 -1px 3px #ccc;
+
+
+		.toolbar-ios {
+			padding: 0;
+			line-height: 4.4rem;
+		}
+
+		.type-main {
+			height: 4.4rem;
+            display:flex;
+		}
+
+		.type-number {
+			color: #666666;
+			position: relative;
+            flex: 1;
+
+			.iconfont {
+				color: #13bfbf;
+				position: relative;
+				top: 1px;
+				margin-right: 3px;
+			}
+
+            .total{
+                width: 100%;
+                display: block;
+                line-height: 28px;
+            }
+
+            .pv{
+                width: auto;
+                position: absolute;
+                right: 10px;
+                bottom: 5px;
+            }
+
+		}
+
+		.icon-gouwuche-tips-guanbi {
+			position: absolute;
+			right: 1.2rem;
+			font-size: 1.2rem;
+			color: #fff;
+			width: 2.5rem;
+			height: 2.5rem;
+			display: block;
+			background: #ddd;
+			border-radius: 50%;
+			line-height: 2.5rem;
+			top: 0.9rem;
+		}
+
+		.type-btn {
+			width: 35%;
+			height: 100%;
+			background-color: #13bfbf;
+			color: #fff;
+			text-align: center;
+            position: relative;
+            left: 4px;
+		}
+
+		.del-btn {
+			width: 35%;
+			height: 100%;
+			background-color: #ff4c4c;
+			color: #fff;
+			text-align: center;
+		}
+
+    }
+    .alert-ios .alert-button:last-child {
+        border-right: 0;
+        color: #12b2b2;
+        font-weight: 500;
+    }
+    .alert-ios .alert-button{
+        color: #666666 !important;
+    }
+    .performance-list{
+        padding: 10px 15px;
+        border:1px solid #c8c7cc;
+        border-radius: 5px;
+        .iconfont{
+            display: none;
+        }
+        &.active{
+            border:1px solid #12b3b3;
+            border-radius: 5px;
+            background: #f2ffff;
+            position: relative;
+            .iconfont{
+                display: block;
+                position: absolute;
+                right: 0;
+                bottom: -1px;
+                color: #12b3b3;
+            }
+        }
+        .n-p-t{
+            padding-top: 0;
+        }
+    }
+    .buyNum{
+        .title{
+            padding-left: 6px;
+            &.list-header-ios{
+                border-bottom: 0;
+            }
+        }
+        padding: 0 10px 10px 10px;
+    }
+
+    .delivery-way{
+        position: absolute;
+        top: -9px;
+        left: 26%;
+        padding-left: 10px;
+        li{
+            list-style: none;
+            float: left;
+            padding:5px 10px;
+            border-radius: 20px;
+            background: #edeff2;
+            color: #aaa;
+            margin-right: 10px;
+            &.active{
+                background: #12b3b3;
+                color: #fff;
+            }
+        }
+    }
+     // modal
+     .bg-model{
+        position:absolute;
+        top:0%;
+        left:0%;
+        background:rgba(0,0,0,0.3);
+        width:100%;
+        height:100%;
+        position:fixed;
+        z-index:9999;
+        .model-box{
+            position: absolute;
+            top: 13%;
+            left: 4%;
+            border-radius: 8px;
+            max-width: 92%;
+            background-color: #fff;
+            overflow-y :auto;
+            h3{
+                text-align: center;
+                margin-top: 5px;
+                font-size: 18px;
+                padding: 10px 15px;
+                i{
+                    float: right;
+                    color: #808080;
+                }
+            }
+            .content{
+                padding: 0 15px 10px 15px;
+                max-height: 250px;
+                overflow: auto;
+            }
+            .footer{
+                padding: 10px 15px 0 15px;
+                .footer-btn{
+                    background: #12b3b3;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    color: #fff;
+                    border-radius: 5px;
+                    padding: 15px 0;
+                    font-size: 18px;
+                    margin-top: 10px;
+                }
+                input[type="checkbox"]{
+                    margin-right: 5px;
+                    top: 1px;
+                    position: relative;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+
+    .address-wrap{
+        padding-bottom: 1rem;
+    }
+
+    .tip{
+        text-align: center;
+        margin: 0;
+        padding: 1rem 0;
+        .txt{
+          color: #aaa;
+          display: block;
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+        }
+        .add-btn{
+          margin: 0;
+          color: #333;
+          padding: 0.5rem;
+          font-size: 1.4rem;
+          border:1px solid #ccc;
+          border-radius: 5px;
+        }
+    }
+
+    
+}

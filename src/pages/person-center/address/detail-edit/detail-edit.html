@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">详细地址</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <form [formGroup]="form">
+    <textarea rows="3" class="detail" [(ngModel)]='detail' formControlName="detail" placeholder="请输入详细地址">
+      
+    </textarea>
+    <div padding-left padding-right>
+      <button type="submit" (click)="submit()" [disabled]="!form.valid" ion-button color="secondary" block>保存</button>
+    </div>
+  </form>
+</ion-content>

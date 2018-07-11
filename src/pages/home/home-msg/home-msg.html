@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar class="b-b-shaow text-center" color="winter">
+        <ion-title [hidden]="true">消息</ion-title>
+        <div class="type-all">
+            <span (click)="changeStatus(1)" [ngClass]="{'order-type':true,'act':parentTab == 1}">最新资讯</span>
+            <span (click)="changeStatus(2)" [ngClass]="{'order-type':true,'act':parentTab == 2}">业务通知</span>
+            <span (click)="changeStatus(3)" [ngClass]="{'order-type':true,'act':parentTab == 3}">系统通知</span>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="content-primary">
+    <div *ngFor="let item of items;let i=index;" class="msgList" (click)="goDetail(item.AA_NO)">
+        <div class="msg-time">{{item.CREATE_TIME}}</div>
+        <div class="msg-content">
+            <h2 class="ellipsis">{{item.SUBJECT}}</h2>
+            <p class="ellipsis-3 txt">{{item.SUBJECT}}</p>
+            <span class="msg-detail">查看详情
+                <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+            </span>
+        </div>
+    </div>
+    <!--null data-->
+    <div class="show-default" *ngIf="!items.length">
+        <img src="../../assets/img/bg_null_data.png">
+        <p class="message">列表为空</p>
+    </div>
+</ion-content>

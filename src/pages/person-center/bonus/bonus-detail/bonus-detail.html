@@ -1,0 +1,102 @@
+<ion-content>
+  <div class="bg-pic-main">
+    <img src="../../../assets/img/bonus-bg2.png" class="bg-pic">
+  </div>
+
+  <ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()" left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>奖金明细</ion-title>
+      <!--<ion-buttons (click)="chooseTime()" right>-->
+        <!--<button ion-button icon-only>-->
+          <!--<i class="iconfont icon-wode-fuwuhuiyuan-riqi"></i>-->
+        <!--</button>-->
+      <!--</ion-buttons>-->
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-header #container id="head-container" class="hide">
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()" left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>奖金明细</ion-title>
+      <!--<ion-buttons (click)="chooseTime()" right>-->
+        <!--<button ion-button icon-only>-->
+          <!--<i class="iconfont icon-wode-fuwuhuiyuan-riqi"></i>-->
+        <!--</button>-->
+      <!--</ion-buttons>-->
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="bonus-detail-main ">
+    <div class="pannel box-shadow clearfix">
+      <div class="time pull-left">
+        <div class="round">
+          <div class="round-inner">
+            <h2 class="text-light-dark">近期</h2>
+            <span class="text-gray">{{currentYear}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="list pull-right">
+        <p class="item" style="position: relative;top: 10px;">
+          <i class="iconfont icon-wode-jiangjinmingxi-shijian"></i>
+          {{startdate}}~{{enddate}}
+        </p>
+        <p class="item">
+          &nbsp;
+        </p>
+        <p class="item" text-wrap style="position: relative;bottom: 10px;">
+          <i class="iconfont icon-wode-jiangjinmingxi-shouru"></i>
+          收入：
+          <span class="text-price">{{inputTotal}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <ion-list class="pay-type">
+    <div *ngFor="let item of items">
+      <ion-item (click)="detail(item)">
+        <ion-avatar item-start>
+          <h3>{{item.day}}&nbsp;日</h3>
+          <span class="date">{{item.year_month}}</span>
+        </ion-avatar>
+        <h3 class="small">奖金总额&nbsp;{{item.BONUS_PV}}</h3>
+        <p class="small">应发奖金&nbsp;{{item.SEND_MONEY}}</p>
+        <ion-note item-end>
+          <span class="text-price">
+            <span *ngIf="item.SEND_MONEY > 0">+</span>{{item.SEND_MONEY}}</span>&nbsp;
+          <i [class]="item['isOpen'] ? 'iconfont i-arrow active' : 'iconfont i-arrow'" class="iconfont icon-tongyong-zhedie">&#xe678;</i>
+        </ion-note>
+      </ion-item>
+      <div *ngIf="item['isOpen']">
+        <ion-list *ngFor="let detail of item['list']" class="detail-zhedie-money clearfix text-lightdark">
+          <label class="pull-left">{{detail.name}}</label>
+          <label class="pull-right">
+            <span *ngIf="item.SEND_MONEY > 0">+</span>{{detail.value}}</label>
+        </ion-list>
+      </div>
+    </div>
+    <!--null data-->
+    <div class="show-default" *ngIf="showNull">
+      <img src="../../../assets/img/bg_null_data.png">
+      <p class="message">没有相关数据</p>
+    </div>
+  </ion-list>
+
+  <!-- 时间筛选 -->
+  <div class="modal-select box-shadow" *ngIf="modalShow">
+    <ul>
+      <li *ngFor="let date of filter" (click)="select(date)">{{date.title}}</li>
+    </ul>
+  </div>
+
+</ion-content>

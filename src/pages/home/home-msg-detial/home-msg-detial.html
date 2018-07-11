@@ -1,0 +1,31 @@
+<!--
+  Generated template for the HomeMsgDetialPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="winter">
+    <ion-title>消息详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="msg-box">
+    <ion-list-header>
+        <p class="msg-title">{{item.SUBJECT}}</p>
+        <p>
+          <span class="tip">{{infoType == 1 ? '最新资讯' : (infoType == 2 ? '业务通知' : '系统通知')}}</span>
+         {{item.CREATE_TIME | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </p>
+    </ion-list-header>
+    <ion-item no-lines>
+      <div id="msg-content" class="msg-content">
+          
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

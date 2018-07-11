@@ -1,0 +1,106 @@
+page-bonus-points {
+  .wallet-total{
+    background: #ffffff;
+    height:18rem;
+    text-align:center;
+    position: relative;
+
+    ion-row{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%,-50%,0);
+    }
+  }
+  .scroll-content{
+    background: #f0f2f7;
+  }
+  .wallet-number{
+    font-size: 28px;
+    color: #000;
+  }
+
+  [p-b-0]{
+    padding-bottom: 0;
+  }
+  .wallet-list{
+    background: #fff;
+    padding:0 1.2rem;
+    height:5rem;
+    line-height: 5rem;
+    .col{
+      padding:0;
+    }
+    .icon-shouye-tiaozhuanjiantou{
+      font-size: 11px;
+      color: #ccc;
+    }
+    .icon-wode-qianbao-jilu,
+    .icon-wode-qianbao-chongzhi{
+      font-size: 18px;
+      position: relative;
+      top:1px;
+    }
+
+    .icon-wode-qianbao-chongzhi{
+      color: #12b2b2;
+    }
+  }
+
+  //.bg-pic-main{
+  //  height:440px;
+  //  width: 100%;
+  //  position: relative;
+  //}
+
+  .bg-pic{
+    //position: absolute;
+    //left: 0;
+    //top:0;
+  }
+
+  .toolbar-ios-winter .toolbar-background-ios{
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .toolbar-ios-winter .toolbar-title-ios, .toolbar-ios-winter .bar-button-clear-ios, .toolbar-ios-winter .bar-button-default-ios{
+    color: #fff;
+  }
+
+  .wallet-main{
+    width: 240px;
+    height: 240px;
+    background: url("../../../assets/img/purse-q.png") no-repeat center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translate3d(-50%, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    span{
+      color: #ccf7ff;
+    }
+
+    h2{
+      font-size:23px;
+      margin-top: 1.3rem;
+      color: #fff;
+    }
+
+    button{
+      background: none;
+      width:109px;
+      height:37px;
+      background: url("../../../assets/img/purse-btn.png") no-repeat center;
+      background-size: cover;
+      color: #fff;
+    }
+  }
+
+}

@@ -1,0 +1,32 @@
+page-result {
+	.scroll-content {
+		background-color: #f0f2f7
+	}
+
+	.main {
+		background-color: #fff;
+		text-align: center;
+		padding: 3.5rem 0;
+
+		p {
+			font-size: 16px;
+			color: #52cc8f;
+			margin-top: 0.5rem;
+		}
+
+	}
+
+	.success {
+		font-size: 120px;
+		color: #5feda6;
+	}
+
+	.btn-login {
+		background-color: #12b3b3 !important;
+		color: #fff !important;
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+
+}

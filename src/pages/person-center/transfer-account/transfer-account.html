@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">转账</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <ul class="tabs">
+    <li (click)="changeTab(3)" [class]="tabType==3 ? 'active tab-item': 'tab-item'">
+      <i class="iconfont i-left">&#xe63e;</i>&nbsp;钱包转账</li>
+    <li (click)="changeTab(1)" [class]="tabType==1 ? 'active tab-item': 'tab-item'">
+      <i class="iconfont i-right">&#xe691;</i>&nbsp;奖金转账</li>
+  </ul>
+  <form [formGroup]="form">
+    <ion-list no-margin>
+      <ion-item class="m-t">
+        <ion-label class="title" fixed>转入会员账户
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-input class='txt' type="text" placeholder="请输入" formControlName="account" [(ngModel)]="transfer.account" clearInput></ion-input>
+        <button ion-button (click)="searchUser()" color='secondary' item-end>查询</button>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label class="title" fixed>转入会员姓名</ion-label>
+        <span class="txt" item-end>{{transfer.name}}</span>
+      </ion-item>
+      <ion-row class="wallet-list m-t">
+        <ion-col class="text-left" col-12>
+          <span class="text-lightdark">转出金额（元）</span>
+        </ion-col>
+        <ion-col class="text-left" col-12>
+          <span class="text-rmb pull-left p-r">&yen;</span>
+          <input type="number" placeholder="0.00" class="text-num pull-left" formControlName="money" [(ngModel)]="transfer.money">
+        </ion-col>
+      </ion-row>
+      <ion-item *ngIf="form.controls.money.invalid  && form.controls.money.dirty" no-lines>
+        <span class="title text-red" fixed>请输入正确的金额(小数点后最多保留2位小数)</span>
+      </ion-item>
+      <div class="cash-all clearfix">
+        <span class="pull-left  text-gray f-1-4">
+          钱包可用余额&nbsp;
+          <span *ngIf="tabType == 3" class="text-default">{{payObj.wallet}}</span>
+          <span *ngIf="tabType == 1" class="text-default">{{payObj.bonus}}</span>元
+        </span>
+        <span (click)="transferAll()" class="pull-right text-blue">
+          全部转出
+        </span>
+      </div>
+      <ion-item class="m-t" no-lines>
+        <ion-label class="title" fixed>短信验证码
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-input class='txt' type="number" placeholder="请输入" formControlName="code" [(ngModel)]="transfer.code"></ion-input>
+        <button [disabled]="!verifyCode.disable" (click)="sendCode()" ion-button [color]="btnColor" class="send-code" item-end>{{verifyCode.verifyCodeTips}}</button>
+      </ion-item>
+      <ion-item class="m-t">
+        <ion-label class="title" fixed>转账备注</ion-label>
+        <ion-input class='txt' type="text" placeholder="请输入" formControlName="remark" [(ngModel)]="transfer.remark" clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div padding-top padding-left padding-right>
+    <button no-margin [disabled]="!form.valid" class="btn-light" (click)="transferSure()" ion-button block>确认转账</button>
+  </div>
+</ion-content>
+
+
+<div class="bg-model" *ngIf="model">
+
+  <div class='model-box'>
+    <h3 class="b-b">设置二级密码
+      <i (click)="closeModel()" class="icon-gouwuche-tips-guanbi iconfont"></i>
+    </h3>
+    <div class="content">
+      <ion-list class="login-form">
+        <ion-item>
+          <ion-label class="left-icon" no-margin no-padding col-2>
+            <i class="iconfont icon-large">&#xe65c;</i>
+          </ion-label>
+          <ion-input type="password" placeholder="输入二级密码" [(ngModel)]="user.pass" clearInput></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="login-form" style='padding-top:0;'>
+        <ion-item>
+          <ion-label class="left-icon" no-margin no-padding col-2>
+            <i class="iconfont icon-large">&#xe64a;</i>
+          </ion-label>
+          <ion-input type="password" placeholder="再次输入" [(ngModel)]="user.repass" clearInput></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="footer b-t">
+      <button class="footer-btn" (click)="pwdCheck()">确定</button>
+    </div>
+    </div>
+</div>

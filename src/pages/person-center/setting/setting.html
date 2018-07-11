@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">设置</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <ion-list>
+    <button class="top-bar" margin-top no-lines ion-item (click)="goPersonInfo()">
+      <i class="iconfont package">&#xe65f;</i>
+      <span class="txt">个人资料设置</span>
+    </button>
+    <button class="top-bar" margin-top ion-item (click)="goLoginPassword()">
+      <i class="iconfont package">&#xe65d;</i>
+      <span class="txt">登录密码</span>
+    </button>
+    <button class="top-bar" no-lines ion-item (click)="goSecondPassword()">
+      <i class="iconfont package">&#xe65e;</i>
+      <span class="txt">二级密码</span>
+      <span class="tip" item-end>用于支付/汇款/提现/查询奖金</span>
+    </button>
+
+    <button class="top-bar" margin-top no-lines ion-item (click)="goBankList()">
+      <i class="iconfont package">&#xe661;</i>
+      <span class="txt">银行卡</span>
+      <span *ngIf='bankNum' class="tip" item-end>{{bankNum}}张</span>
+    </button>
+
+    <button class="top-bar" margin-top no-lines ion-item (click)="goAddressList()">
+      <i class="iconfont package">&#xe660;</i>
+      <span class="txt">收货地址</span>
+    </button>
+
+  </ion-list>
+
+  <button margin-top class="btn-light" (click)="logout()" ion-button full>退出登录</button>
+</ion-content>

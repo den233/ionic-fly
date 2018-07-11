@@ -1,0 +1,27 @@
+page-bank-list {
+    .package{
+        color: #a1a7b3;
+        font-size: 2rem;
+        vertical-align: text-top;
+    }
+
+    .bank-wrap{
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    .card-wrap{
+        background-image:-webkit-linear-gradient(-45deg, #a4b1ce 100px, #bcc7e0 200px);
+        // background-color: #a6b3d0;
+        border-radius: 5px;
+        width: calc(100% - 24px);
+        margin: 20px auto 0;
+        height: 120px;
+        .bank{
+            width: 30px;
+        }
+        box-shadow: 0 5px 10px rgba(163, 181, 217, .5);
+    }
+}

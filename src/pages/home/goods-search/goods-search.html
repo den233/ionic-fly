@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <form [formGroup]="form">
+      <div class="search-bar">
+        <div class="search-input-container">
+          <select class="select" (change)="change()"  formControlName="orderType"  [(ngModel)]="orderType">
+            <option *ngFor="let item of orderTypes" [value]="item.VALUE_CODE">{{item.VALUE_TITLE}}</option>
+          </select>
+          <input type="text" formControlName="keyWord"  [(ngModel)]="keyWord" class="form-control" placeholder="搜索商品名称、编号">
+        </div>
+        <button type="button" class="btn-right" (click)="search()">搜索</button>
+      </div>
+    </form>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary">
+  <!-- good -->
+  <ion-grid *ngFor="let item of items;let i=index;" class='cart-main'>
+    <ion-row>
+      <ion-col class="goods-img" no-padding (click)="goGoodsDetail(item)" col-4>
+        <img [src]="imgUrl+item.IMAGE_LINK" onerror='this.src="../../../assets/img/null-img.png"' class="pic">
+      </ion-col>
+      <ion-col class="goods-info" no-padding>
+        <ion-row>
+          <ion-col class="goods-name" no-padding col-12 class='p-l-0'>
+            <span (click)="goGoodsDetail(item)" class="name">
+              <i *ngIf="item.PRODUCT_CATEGORY == 18" class="f-1-5 iconfont text-green-blue">&#xe689;</i>&nbsp;{{item.PRODUCT_NAME}}
+            </span>
+          </ion-col>
+          <ion-col cno-padding col-12 class='p-l-0 goods-pv'>
+            <span class="pv">
+              PV: +${{orderType == '30' ? item.MP_PV : item.FP_PV}}
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col no-padding col-6 class='text-red goods-price'>
+            &yen;&nbsp;{{orderType == '30' ? item.MP_PRICE : item.FP_PRICE}}
+          </ion-col>
+          <ion-col no-padding col-6 class='p-0 goods-cart' text-right>
+            <i (click)="addCart(item)" class="iconfont i-add">&#xe63b;</i>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--null data-->
+  <div class="show-default" *ngIf="showNull">
+    <img src="../../assets/img/bg_null_data.png">
+    <p class="message">没有相关数据</p>
+  </div>
+
+</ion-content>

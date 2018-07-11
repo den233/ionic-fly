@@ -1,0 +1,213 @@
+page-serve-member {
+    .person-card {
+        border-radius: 0.5rem;
+        background: url("../../assets/img/bg_p_c_top.jpg") no-repeat top left;
+        background-size: 100% 100%;
+        padding-top: 1rem;
+        -moz-box-shadow: 0px 5px 20px rgba(25,178,255,0.5);
+        -webkit-box-shadow: 0px 5px 20px rgba(25,178,255,0.5);
+        box-shadow: 0px 5px 20px rgba(25,178,255,0.5);
+        &.no-bg{
+            background: #fff !important;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            width: 85%;
+            -moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+            .serve-box{
+                font-size: 14px;
+                background:#fff;
+                height: 5rem;
+                line-height: 5rem;
+                padding-left: 10px;
+                margin-top: 0;
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                color: #ccc;
+                .num{
+                    color: #19b2ff;
+                }
+                .serve-btn{
+                    float: right;
+                    background: #19b2ff;
+                    padding: 10px;
+                    border-radius: 5px;
+                    display: block;
+                    color: #fff;
+                    position: relative;
+                    top: 13px;
+                    right: 10px;
+                }
+            }
+            .avator {
+              padding-left: 1rem;
+              background-color: #fff;
+              border-radius: 50%;
+              border-radius: 50%;
+              float: left;
+              border: 1px solid #eee;
+              width: 5.5rem;
+              height: 5.5rem;
+              position: relative;
+              .iconfont {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #d3dbe6;
+                font-size: 4rem;
+              }
+            }
+            .info {
+              color: #000;
+              float: left;
+              padding-left: 10px;
+              h3 {
+                font-size: 1.7rem;
+                padding: 0;
+                margin: 5px 0;
+                .male {
+                  color: #ffafe1;
+                }
+                .female {
+                  color: #1ee9ff;
+                }
+              }
+        
+              .tag {
+                display: inline-block;
+                border: 1px solid #eeeeee;
+                border-radius: 30px;
+                padding: 2px 10px;
+                font-size: 1.2rem;
+                color: #000;
+                .level {
+                  width: 15px;
+                  transform: translateY(2px);
+                }
+                .member {
+                  width: 15px;
+                  transform: translateY(2px);
+                }
+              }
+            }
+        }
+        .serve-box{
+            font-size: 14px;
+            height: 5rem;
+            line-height: 6rem;
+            padding-left: 10px;
+            margin-top: 10px;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            color: #fff;
+            .num{
+                color: #19b2ff;
+            }
+            .serve-btn{
+                float: right;
+                background: #19b2ff;
+                padding: 10px;
+                border-radius: 5px;
+                display: block;
+                color: #fff;
+                position: relative;
+                top: 19px;
+                right: 10px;
+            }
+        }
+        .avator {
+          padding-left: 1rem;
+          background-color: #fff;
+          border-radius: 50%;
+          border-radius: 50%;
+          float: left;
+          border: 5px solid #fff;
+          width: 5.5rem;
+          height: 5.5rem;
+          position: relative;
+          .iconfont {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #13b6b0;
+            font-size: 4rem;
+          }
+        }
+        .info {
+          color: #fff;
+          float: left;
+          padding-left: 10px;
+          h3 {
+            font-size: 1.7rem;
+            padding: 0;
+            margin: 5px 0;
+            .male {
+              color: #ffafe1;
+            }
+            .female {
+              color: #1ee9ff;
+            }
+          }
+    
+          .tag {
+            display: inline-block;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 2px 10px;
+            font-size: 1.2rem;
+            .level {
+              width: 15px;
+              transform: translateY(2px);
+            }
+            .member {
+              width: 15px;
+              transform: translateY(2px);
+            }
+          }
+        }
+    }
+
+    .member-box{
+        position: relative;
+        .serve-lines{
+            padding-left: 1.5rem;
+            margin-top: 0;
+            li{
+                list-style: none;
+                width: 100%;
+                border-left:2px solid #666666;  
+            }
+            .first{
+                height: 11rem;
+                border-bottom:2px solid #666666;
+            }
+            .second{
+                height: 22rem;
+                border-left:2px solid #666666;
+                border-bottom:2px solid #666666;
+            }
+            
+        }
+    }
+    .result-main{
+        padding:.8rem 1rem;
+        background: #fcfcfc;
+        border:1px #eeeeee solid;
+        margin: 10px 10px 0 10px;
+  
+        ion-col{
+          text-align: left;
+          padding: 0;
+        }
+  
+        .text-grey{
+          color: #999999;
+        }
+      }
+}

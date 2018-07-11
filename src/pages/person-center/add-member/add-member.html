@@ -1,0 +1,194 @@
+<!--
+  Generated template for the AddMemberPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="winter" class="b-b-shaow">
+       <ion-buttons (click)="goBack()"  left>
+          <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      </ion-buttons>
+      <ion-title>新会员注册</ion-title>
+      <ion-buttons right>
+          <button ion-button icon-only [disabled]="!addMemberForm.valid" (click)="next()" style="color:#12b3b3;">下一步</button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary">
+  <form [formGroup]="addMemberForm">
+    <ion-list>
+        <ion-list>
+          <ion-grid class="member-bar b-b">
+              <span class="member-bar-title">推荐/安置人信息</span>
+          </ion-grid>
+          <ion-item>
+                <ion-label fixed>销售人员编码<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                          placeholder="请输入"
+                          formControlName="recommendNo"
+                          [(ngModel)]="member.recommendNo"
+                          ></ion-input>
+                <button ion-button (click)="registerMember('checkRecommendNo',member.recommendNo)" color='secondary' item-end>查询</button>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>服务人编码<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                            placeholder="请输入"
+                            formControlName="linkNo"
+                            [(ngModel)]="member.linkNo"
+                             ></ion-input>
+                <button ion-button (click)="registerMember('checkLinkNo',member.linkNo)" color='secondary' item-end>查询</button>
+            </ion-item>
+            <ion-item *ngIf="referrerInfo.sellShow">
+                <ion-label fixed>销售人员姓名</ion-label>
+                <ion-input type="text"
+                            placeholder="暂无姓名"
+                            formControlName="sellName"
+                            [(ngModel)]="referrerInfo.sellName"
+                            readonly></ion-input>
+                        
+            </ion-item>
+            <ion-item *ngIf="referrerInfo.serveShow">
+                <ion-label fixed>服务人姓名</ion-label>
+                <ion-input type="text"
+                            formControlName="serveName"
+                            placeholder="暂无姓名"
+                            [(ngModel)]="referrerInfo.serveName"
+                            readonly></ion-input>
+                        
+            </ion-item>
+        </ion-list>
+
+        <ion-list>
+            <ion-grid class="member-bar b-b">
+                <span class="member-bar-title">个人基础信息</span>
+            </ion-grid>
+            <ion-item>
+                <ion-label fixed>姓名<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                          formControlName="miUserName"
+                          placeholder="请输入"
+                          max="20"
+                          [(ngModel)]="member.miUserName" ></ion-input>
+            </ion-item>
+            <p padding-left *ngIf="addMemberForm.controls.miUserName.invalid  && addMemberForm.controls.miUserName.dirty" class="text-red">请输入中文或英文</p>
+            <ion-item>
+                <ion-label fixed>手机号<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text" placeholder="请输入"
+                           formControlName="mobiletele"
+                           [(ngModel)]="member.mobiletele" 
+                           
+                        ></ion-input>
+            </ion-item>
+            <p padding-left *ngIf="addMemberForm.controls.mobiletele.invalid  && addMemberForm.controls.mobiletele.dirty" class="text-red">请输入正确的手机号码格式</p>
+            <ion-item>
+                <ion-label fixed>性别<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-select formControlName="sex" [(ngModel)]="member.sex" okText="确认" cancelText="取消">
+                    <ion-option *ngFor="let sex of sexList" value="{{sex.id}}">{{sex.name}}</ion-option>
+                </ion-select>
+                <i class="iconfont" style="color:#ccc;font-size:15px;" item-end>&#xe640;</i>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>证件类型<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-select formControlName="papertype" [(ngModel)]="member.papertype" okText="确认" cancelText="取消">
+                    <!-- <ion-option selected value="" style="font-size:15px">证件类型</ion-option> -->
+                    <ion-option *ngFor="let type of typeList" value="{{type.id}}">{{type.name}}</ion-option>
+                </ion-select>
+                <i class="iconfont" style="color:#ccc;font-size:15px;" item-end>&#xe640;</i>
+            </ion-item>
+            <ion-item class="idtype">
+              <ion-label fixed>证件号码<span class="text-red padding-left-xs">*</span></ion-label>
+              <ion-input type="text"
+                        formControlName="papernumber"
+                        placeholder="请输入"
+                        (ngModelChange)="idTyeCheck()" 
+                      [(ngModel)]="member.papernumber" style="width:100%;margin:0;"></ion-input>
+            </ion-item>
+            <p padding-left *ngIf="addMemberForm.controls.papernumber.invalid  && addMemberForm.controls.papernumber.dirty" class="text-red">请输入正确的证件号码格式</p>
+            <ion-item>
+                <ion-label>所在地区<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-multi-picker item-content [multiPickerColumns]="cityColumns"
+                                  cancelText="取消"
+                                  doneText="确认"
+                                  formControlName="area"
+                                  [(ngModel)]="init.area"
+                        ></ion-multi-picker>
+            </ion-item>
+
+            <ion-item>
+                <ion-label fixed>详细地址<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                            formControlName="address"
+                            placeholder="请输入"
+                            max="50"
+                            [(ngModel)]="member.address" ></ion-input>
+            </ion-item>
+        </ion-list> 
+
+        <ion-list>
+            <ion-grid class="member-bar b-b">
+                <span class="member-bar-title">收货人信息</span>
+                <span class="member-bar-btn" (click)="copy()">复制基础信息</span>
+            </ion-grid>
+            <ion-item>
+                <ion-label fixed>收货人<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                          formControlName="poFirstName"
+                          placeholder="请输入"
+                          [(ngModel)]="member.poFirstName" ></ion-input>
+            </ion-item>
+            <p padding-left *ngIf="addMemberForm.controls.miUserName.invalid  && addMemberForm.controls.miUserName.dirty" class="text-red">请输入中文或英文</p>
+            <ion-item>
+                <ion-label fixed>手机号<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text" placeholder="请输入"
+                           formControlName="poMobiletele"
+                           [(ngModel)]="member.poMobiletele" 
+                           
+                        ></ion-input>
+            </ion-item>
+            <ion-item id="poArea" >
+                <ion-label>所在地区<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-multi-picker item-content [multiPickerColumns]="cityColumns"
+                                  cancelText="取消"
+                                  doneText="确认"
+                                  formControlName="poArea"
+                                  [(ngModel)]="init.poArea"
+                        ></ion-multi-picker>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>详细地址<span class="text-red padding-left-xs">*</span></ion-label>
+                <ion-input type="text"
+                            formControlName="poAddress"
+                            placeholder="请输入"
+                            max="50"
+                            [(ngModel)]="member.poAddress" ></ion-input>
+            </ion-item>
+        </ion-list>
+    </ion-list>
+</form>
+</ion-content>
+<div class ="bg-model" *ngIf="model">
+　　<div class = 'model-box'>
+        <h3 class="b-b">隆力奇会员注册协议<i (click)="goBack()" class="icon-gouwuche-tips-guanbi iconfont"></i></h3>
+        <div class="content">
+            为了明确双方的权利和义务，规范双方业务行为，改善客服服务，本着平等互利的原则，推荐会员（即推荐人以下简称"甲方"）与被推荐会员（即被推荐人以下简称"乙方"）就新会员注册的相关事宜达成本承诺，承诺双方应予遵守。
+            <p>01、甲方介绍乙方成为隆力奇会员，甲方必须与乙方签定承诺书。</p>
+            <p>02、乙方在承诺书上点击同意即视为认可该承诺书的内容，属自愿行为。</p>
+            <p>03、甲方不得代替乙方确认承诺书，一经查实，甲方承担所有责任。</p>
+            <p>04、甲方不得收取乙方的报单金额和任何费用，告知乙方将钱款直接打入隆力奇指定账户和如何购买产品。</p>
+            <p>05、订货之日起30天内产品完好包装不影响二次销售的，可办理退货，需扣除相关费用等，并取消经销商资格；超过30天的订货不再办理退货手续（可换货）。</p>
+            <p>06、甲方没有用诱导、欺骗、宣传暴富等手段骗取乙方成为会员。</p>
+            <p>07、甲方没有向乙方宣传发展下线和以拉人头式的销售模式。</p>
+            <p>08、甲方没有向乙方承诺在一定时间内能达到具体多少收入等。</p>
+            <p>09、甲方未与乙方签定承诺书的，乙方出现任何问题均由甲方负责解决。</p>
+        </div>
+        <div class="footer b-t">
+            <label><input type="checkbox" value="" [(ngModel)]="isAgree" (ngModelChange)="toggleCheckIn($event)"/>我已阅读并同意以上协议</label> 
+            <button class="footer-btn" [disabled]="isRegister" (click)="register()">开始注册</button>
+        </div>
+　　</div>
+</div>

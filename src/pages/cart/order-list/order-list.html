@@ -1,0 +1,85 @@
+
+<ion-header>
+  <ion-navbar class="b-b-shaow text-center" color="winter">
+    <ion-title [hidden]="true">longrich</ion-title>
+    <div class="type-all">
+      <span (click)="changeStatus(0)" [ngClass]="{'order-type':true,'act':now_status == 0}">全部</span>
+      <span (click)="changeStatus(1)" [ngClass]="{'order-type':true,'act':now_status == 1}">待发货</span>
+      <span (click)="changeStatus(2)" [ngClass]="{'order-type':true,'act':now_status == 2}">待收货</span>
+      <span (click)="changeStatus(99)" [ngClass]="{'order-type':true,'act':now_status == 99}">已完成</span>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="cart-sort m-t"  *ngFor="let item of switchList;let i = index;">
+    <ion-grid class="cart-package-title">
+      <ion-row class="cart-package">
+        <ion-col class="check" col-1>
+          <i class="iconfont icon-tabbar-shouye-xuanzhong"></i>
+        </ion-col>
+        <ion-col col-8>
+          订单：{{item.MEMBER_ORDER_NO}}
+        </ion-col>
+        <ion-col col-3 class="text-right text-warning" *ngIf="item.STATUS == '1' &&  item.IS_EXPORTED_NC != '3'">
+            待发货
+        </ion-col>
+        <ion-col col-3 class="text-right text-red" *ngIf="item.STATUS == '1' &&  item.IS_EXPORTED_NC == '3'">
+            待收货
+        </ion-col>
+        <ion-col col-3 class="text-right text-grey" *ngIf="item.STATUS == '99'">
+            已完成
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class='cart-main package-main' *ngIf="item.shoppings.length == 1" (click)="orderDetail(item)">
+      <div *ngFor="let good of item.shoppings;">
+        <ion-row>
+          <ion-col col-3>
+            <img  [src]="imgUrl+good.IMAGE_LINK" onerror='this.src="assets/img/null-img.png"' class="small-pic">
+          </ion-col>
+          <ion-col>
+            <ion-row>
+              <ion-col col-12 class='p-l-0'>
+                <span class="name">
+                   {{good.PRODUCT_NAME}}
+                </span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+    <ion-grid class='cart-main package-main' *ngIf="item.shoppings.length > 1" (click)="orderDetail(item)">
+      <ion-row>
+        <ion-col col-3 *ngFor="let good of item.shoppings;">
+          <img [src]="imgUrl+good.IMAGE_LINK" onerror='this.src="assets/img/null-img.png"' class="small-pic">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="cart-package-title">
+      <ion-row class="cart-package">
+        <ion-col class="text-right">
+          <span class="text-grey p-r" *ngIf="item.ORDER_TYPE == '10'">首单/升级单</span>
+          <span class="text-grey p-r" *ngIf="item.ORDER_TYPE == '30'">重消单</span>
+          <span class="p-r">商品共&nbsp;{{item.SUM_QTY}}&nbsp;件</span>
+          <span>合计&nbsp;<label class="color-theme">{{item.AMOUNT}}</label>&nbsp;元</span>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="item.STATUS == '2'">
+        <ion-col>
+          <button ion-button class="small-btn pull-right" (click)="sure(item.MO_ID)">确认收货</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <!--null data-->
+  <div class="show-default" *ngIf="!switchList.length">
+    <img src="../../assets/img/bg_null_data.png">
+    <p class="message">订单列表为空</p>
+  </div>
+</ion-content>

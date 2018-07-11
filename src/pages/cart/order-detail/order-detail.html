@@ -1,0 +1,157 @@
+
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">订单详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-grid class="order-grid">
+    <ion-row>
+      <ion-col col-1>
+          <i class="iconfont icon-gouwuche-dingdan-pxdingdan"></i>
+      </ion-col>
+      <ion-col>
+          <span class="msg-span">订单状态：
+            <label class="text-warning" *ngIf="allList.STATUS == '1'">
+            已付款
+            </label>
+            <label class="text-red" *ngIf="allList.STATUS == '2'">
+                待收货
+            </label>
+            <label class="text-grey" *ngIf="allList.STATUS == '99'">
+                已完成
+            </label>
+          </span>
+          <span class="msg-span">订单号：{{allList.MEMBER_ORDER_NO}}</span>
+          <span class="msg-span">订单金额：&yen;{{allList.AMOUNT}}</span>
+          <!--<span class="msg-span">支付方式：{{allList.DEDUCT_ROUTE}}</span>-->
+          <span class="msg-span">订单奖励：
+            <span class="pv">
+                PV: +${{allList.PV_AMT}}
+            </span>
+          </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="order-grid">
+    <ion-row>
+      <ion-col col-1>
+        <i class="iconfont icon-gouwuche-dingdan-pxwuliu"></i>
+      </ion-col>
+      <ion-col *ngIf="allList.DELIVERY == '2'">
+        <span class="msg-span">物流公司：{{allList.WAYBILL_SENDER}}</span>
+        <span class="msg-span">物流单号：{{allList.WAYBILL}}</span>
+      </ion-col>
+      <ion-col *ngIf="allList.DELIVERY == '1'">
+        <span class="msg-span">送货方式：商品自提</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="order-grid">
+    <ion-row>
+      <ion-col col-1></ion-col>
+      <ion-col>
+        <span class="title-span">收货：{{allList.FIRST_NAME}}  {{allList.MOBILETELE}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-1>
+        <i class="iconfont icon-gouwuche-dingdan-pxdizhi"></i>
+      </ion-col>
+      <ion-col>
+        <span class="msg-span">{{allList.ADDRESS}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="order-longrich">
+    <ion-row>
+      <ion-col col-1>
+        <i class="iconfont icon-tabbar-shouye-xuanzhong"></i>
+      </ion-col>
+      <ion-col>
+        <span class="title-span">隆力奇</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class='cart-main package-main' *ngFor="let good of allList.shoppings;">
+    <ion-row>
+      <ion-col col-3>
+        <img  [src]="imgUrl+good.IMAGE_LINK" onerror='this.src="assets/img/null-img.png"' class="small-pic">
+      </ion-col>
+      <ion-col class=" p-t-0">
+        <ion-row>
+          <ion-col col-12 class='p-l-0 p-t-0'>
+              <span class="name">
+                  {{good.PRODUCT_NAME}}
+              </span>
+          </ion-col>
+          <ion-col col-12 class='p-l-0'>
+              <span class="pv">
+                  PV: +${{good.PV}}
+              </span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-3 class="no-padding text-right">
+        <ion-row class="order-count">
+          <ion-col col-12 class="price">
+            &yen;&nbsp;{{good.PRICE}}
+          </ion-col>
+          <ion-col col-12 class="number text-gray">
+            ×&nbsp;{{good.QTY}}
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="order-longrich">
+    <ion-row>
+      <ion-col col-4>
+        商品金额
+      </ion-col>
+      <ion-col class="text-right">
+        <span class="msg-span po-1">&yen;&nbsp;{{allList.AMOUNT}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        运费
+      </ion-col>
+      <ion-col class="text-right">
+        <span class="msg-span po-1">+&nbsp;&yen;&nbsp;0</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col class="text-right">
+        <span class="msg-span po-1 text-red f-1-6">合计：&nbsp;&yen;&nbsp;{{allList.AMOUNT}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="order-grid m-t">
+    <ion-row>
+      <ion-col col-1>
+        <i class="iconfont icon-gouwuche-dingdan-pxshijian"></i>
+      </ion-col>
+      <ion-col>
+        <span class="msg-span">下单时间：{{allList.SUBMIT_TIME}}</span>
+        <span class="msg-span">付款时间：{{allList.SUBMIT_TIME}}</span>
+        <span class="msg-span">发货时间：{{allList.WAYBILL_DATE}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

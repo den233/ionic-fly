@@ -1,0 +1,55 @@
+page-old-member-activation {
+    .list-ios {
+        margin: -1px 0 10px 0;
+    }
+    ion-app.ios [padding], ion-app.ios [padding] .scroll-content{
+        padding: 0 !important;
+    }
+    ion-label{
+        font-size: 15px;
+        color: #666666;
+    }
+    input::-webkit-input-placeholder { /* WebKit browsers */ 
+        font-size:15px;
+        } 
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+        font-size:15px;
+        } 
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+        font-size:15px;
+        } 
+        :-ms-input-placeholder { /* Internet Explorer 10+ */ 
+        font-size:15px;
+        }
+
+    .member-bar{
+        padding: 23px 0 20px;
+        margin-top:10px;
+        position:relative;
+        background-color:#fafafa;
+    
+        .member-bar-title{
+            position:absolute;
+            top:15px;
+            display:inline-block;
+            padding-left:16px;
+            height:15px;
+            line-height:13px;
+            padding-top:2px;
+            color:#808080; 
+            font-size: 15px;
+        }
+
+        .member-bar-btn{
+            color:#12b3b3; 
+            position:absolute;
+            top:15px;
+            right:0px;
+            display:inline-block;
+            padding-right:5px;
+            height:15px;
+            line-height:13px;
+            padding-top:2px;
+          }
+    }
+}

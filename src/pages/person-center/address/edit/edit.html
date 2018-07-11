@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">{{title}}</ion-title>
+    <ion-buttons right>
+      <button class="f-1-6" [disabled]='!form.valid' end (click)="submit()" icon-only color="secondary" ion-button>
+        提交
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item margin-top>
+        <ion-label class="title" fixed>收货人
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-input class='txt' type="text" placeholder="请输入" formControlName="username" [(ngModel)]="address.username" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>手机
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-input class='txt' maxlength="11" type="text" placeholder="请输入" formControlName="phone" [(ngModel)]="address.phone"
+          clearInput></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls.phone.invalid  && form.controls.phone.dirty">
+        <p class="text-red">请输入正确的手机号码格式</p>
+      </ion-item>
+      <ion-item>
+          <ion-label class="title" fixed>所在地区
+            <span class="text-red">*</span>
+          </ion-label>
+          <ion-multi-picker item-content class="txt" 
+            [multiPickerColumns]="cityColumns" 
+            cancelText="取消" 
+            doneText="确认" 
+            formControlName="area"
+            [(ngModel)]="area">
+          </ion-multi-picker>
+          <ion-icon class="arrow-right" small ios="ios-arrow-forward" md="md-arrow-forward" item-right></ion-icon>
+        </ion-item>
+        <ion-item no-lines margin-bottom>
+          <ion-label class="title" fixed>详细地址
+            <span class="text-red">*</span>
+          </ion-label>
+          <ion-input class='txt' type="text" placeholder="请输入" formControlName="address" [(ngModel)]="address.address" clearInput></ion-input>
+        </ion-item>
+
+      <ion-item>
+        <ion-label class="title" fixed>固定电话</ion-label>
+        <ion-input class='txt' type="text" placeholder="(非必填)" formControlName="tel" [(ngModel)]="address.tel" clearInput></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls.tel.invalid  && form.controls.tel.dirty">
+        <p class="text-red">请输入正确的固定电话格式</p>
+      </ion-item>
+      <ion-item margin-bottom>
+        <ion-label class="title" fixed>邮编</ion-label>
+        <ion-input class='txt' type="number" placeholder="(非必填)" formControlName="postalcode" [(ngModel)]="address.postalcode" clearInput></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls.postalcode.invalid  && form.controls.postalcode.dirty">
+        <p class="text-red">请输入正确的邮编格式</p>
+      </ion-item>
+      <ion-item *ngIf="address.id">
+        <span item-start class="title text-default">设为默认地址</span>
+        <ion-toggle [disabled]="address.ISDEFAULT" (ionChange)="setDefaultAddress()" formControlName="isDefault" item-end color="secondary" [(ngModel)]="address.ISDEFAULT"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <button *ngIf="address.id" margin-top class="btn-light" (click)="remove()" ion-button full>删除地址</button>
+</ion-content>

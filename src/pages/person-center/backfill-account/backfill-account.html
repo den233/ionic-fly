@@ -1,0 +1,36 @@
+
+
+<ion-content>
+  
+  <div class="bg-pic-main">
+    <img src="../../../assets/img/purse-bg.png" class="bg-pic">
+  </div>
+
+  <ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()"  left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>回填账户</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="wallet-main" id="container">
+      <span>回填资金（元）</span>
+      <h2>{{wallet}}</h2>
+  </div>
+
+
+  <ion-row class="wallet-list m-t" (click)="tradeDetail()">
+    <ion-col class="text-left">
+      <i class="iconfont icon-wode-qianbao-jilu m-r"></i>
+      回填明细
+    </ion-col>
+    <ion-col class="text-right">
+      <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

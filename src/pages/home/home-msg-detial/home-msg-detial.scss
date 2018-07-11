@@ -1,0 +1,31 @@
+page-home-msg-detial {
+    .msg-box{
+        .msg-title{
+            color:#333333;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        p{
+            padding-top: 0.5rem;
+            font-weight: 100;
+            font-size: 12px;
+            .tip{
+                color: #12b3b3;
+                padding: 0.1rem 0.2rem;
+                border-radius: 20px;
+                border: 1px solid #12b3b3;
+                display: inline-block;
+            }
+        }
+        .msg-content{
+            white-space: pre-line;
+            font-size: 15px;
+            color: #333333;
+            p{
+                font-size: 1.5rem;
+                color: #333333;
+            }
+        }
+    }
+
+}

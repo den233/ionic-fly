@@ -1,0 +1,145 @@
+<ion-header>
+    <ion-toolbar class="b-b-shaow" color="winter">
+        <ion-title align-title="center">
+            <i class="iconfont icon-shouye-daohanglanlogo"></i>
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="goMsg()">
+                <i class="iconfont icon-shouye-xinxizhongxin"></i>
+                <!-- <span *ngIf="isMsg" class="msg-tip"></span> -->
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+    <ion-slides (ionSlideTap)="detail()" autoplay='4000' loop='true' pager class="home-banner">
+        <ion-slide>
+            <a>
+                <img src="../assets/img/home-banner1.jpg"/>
+            </a>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-grid class="home-entrance bg-white">
+        <ion-row class="padding-top">
+            <ion-col text-center (click)="addMember()">
+                <img class="home-menu-icon" src="../../assets/img/home-entry-member.png">
+                <p>新增会员</p>
+            </ion-col>
+            <ion-col text-center (click)="addOrder()" *ngIf="ifOrderType">
+                <img class="home-menu-icon" src="../../assets/img/home-entry-order.png">
+                <p>新增订单</p>
+            </ion-col>
+            <ion-col text-center (click)="goGoods()">
+                <img class="home-menu-icon" src="../../assets/img/home-entry-goods.png">
+                <p>商品分类</p>
+            </ion-col>
+            <ion-col text-center (click)="chargeBalance()">
+                <img class="home-menu-icon" src="../../assets/img/home-entry-money.png">
+                <p>充值钱包</p>
+            </ion-col>
+            <ion-col text-center (click)="goBonus(true)">
+                <img class="home-menu-icon" src="../../assets/img/home-entry-bonus.png">
+                <p>奖金提现</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-row class="bg-white home-money m-t">
+      <ion-col padding-left class="b-r">
+        <div>
+            <p>现金账户</p>
+            <span *ngIf="!addMoneyShow" class="text-red blod price"  (click)="goWallet()">{{wallet ? wallet : 0}}</span>
+            <span *ngIf="addMoneyShow" class="text-gray blod price"  (click)="goWallet()">******</span>
+        </div>
+        <div>
+          <i *ngIf="!addMoneyShow" class="eyes iconfont icon-shouye-yanjing-kai" (click)="moneyShowClick('1')"></i>
+          <i *ngIf="addMoneyShow" class="eyes iconfont icon-shouye-yanjing-bishang" (click)="moneyShowClick('2')"></i>
+        </div>
+      </ion-col>
+      <ion-col padding-left>
+          <div>
+            <p>奖金余额</p>
+            <!--<span *ngIf="!useMoneyShow" class="text-blue blod price"  (click)="goBonus()">{{bonus.balance}}</span>-->
+            <!--<span *ngIf="useMoneyShow" class="text-gray blod price"  (click)="goBonus()">***</span>-->
+            <span class="text-gray blod price"  (click)="goBonus(false)">******</span>
+            <!--<p><i style="color: #CBCBCB;" class="iconfont icon-shouye-zuijinyizhoudongtai"></i>近一周-->
+              <!--<span class="week text-gray">{{bonus.balanceWeek}}</span></p>-->
+          </div>
+          <!--<div>-->
+            <!--<i *ngIf="!useMoneyShow" class="eyes iconfont icon-shouye-yanjing-kai" (click)="moneyShowClick('3')"></i>-->
+            <!--<i *ngIf="useMoneyShow" class="eyes iconfont icon-shouye-yanjing-bishang" (click)="moneyShowClick('4')"></i>-->
+          <!--</div>-->
+      </ion-col>
+    </ion-row>
+    <!-- <ion-list style="margin-bottom:0;">
+        <ion-item (click)="goWallet()">
+            <ion-avatar item-start class="avatar-wallet" style="margin: 8px 0 8px 0;">
+                <img src="../../assets/img/qb.png" alt="" style="border-radius:0;">
+            </ion-avatar>
+            <p>
+                <span>电子钱包</span>
+                <span class="text-green">&nbsp;{{wallet}}</span>
+            </p>
+            <i item-end style="color: #CBCBCB;" class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+        </ion-item>
+    </ion-list> -->
+
+    <ion-grid class="bg-white home-title m-t">
+        <p padding-left class="home-title-name blod">新品推荐
+            <!--<span class="home-title-en">COMMODITY</span>-->
+            <span class="home-title-en">日用品</span>
+        </p>
+        <ion-row class="b-t padding-top">
+            <ion-col col-6 text-center class="b-r" *ngFor="let item of newsList">
+                <p class="news-title text-red">{{item.MAIN_TITLE}}</p>
+                <span class="sub-title text-gray">{{item.SUB_TITLE}}</span>
+                <ion-row class="news-img">
+                    <ion-col col-6 text-center (click)="goodsDetail(item,item.CATEGORY1,item.PRODUCT_NO1,item.FP_PRICE1,item.PRODUCT_NAME1,item.UNI_NO1)">
+                        <img [src]="imgUrl+item.PRODUCT_IMG1" onerror='this.src="../../assets/img/goods-null.png"' class="small-pic">
+                    </ion-col>
+                    <ion-col col-6 text-center (click)="goodsDetail(item,item.CATEGORY2,item.PRODUCT_NO2,item.FP_PRICE2,item.PRODUCT_NAME2,item.UNI_NO2)">
+                        <img [src]="imgUrl+item.PRODUCT_IMG2" onerror='this.src="../../assets/img/goods-null.png"' class="small-pic">
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+    <!-- <ion-grid margin-top class="bg-white home-title">
+        <p padding-left class="home-title-name blod">新闻资讯
+          <span class="home-title-en">NEWS</span> 
+        </p>
+        <div class="home-new-banner">          
+            <img src="../../assets/img/news.jpg" alt="">
+        </div>
+    </ion-grid> -->
+
+</ion-content>
+<div class="bg-model" *ngIf="model">
+
+    <div class='model-box'>
+        <h3>选择订单类型
+            <i (click)="close()" class="icon-gouwuche-tips-guanbi iconfont"></i>
+        </h3>
+        <div class="content order-type-main">
+            <ion-list>
+                <ion-item [ngStyle]="{'background-color': num%2 == 0 ? 'rgba(76,160,255,1)' : 'rgba(245,93,106,1)'}" no-lines class="type-list" (click)="goodsList(item.VALUE_CODE,item.VALUE_TITLE)" *ngFor="let item of orderTypes; let num = index">
+                    <ion-avatar item-start>
+                        <img src="../../assets/img/order_type_icon.png">
+                    </ion-avatar>
+                    <p>{{item.VALUE_TITLE}}</p>
+                    <span *ngIf="item.VALUE_CODE == 20">升级单是为了提升会员级别</span>
+                    <span *ngIf="item.VALUE_CODE == 30">重消单是为了获取重消奖</span>
+                    <span *ngIf="item.VALUE_CODE == 13">用于完成回填成为正式会员</span>
+                    <ion-note item-end class="model-btn" [ngStyle]="{'color': num%2 == 0 ? 'rgba(76,160,255,1)' : 'rgba(245,93,106,1)'}">选择</ion-note>
+                </ion-item>
+            </ion-list>
+        </div>
+        </div>
+    <div class="model-icon">
+        <img src="../../assets/img/top-icon.png" alt="">
+    </div>
+
+</div>

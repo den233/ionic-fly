@@ -1,0 +1,37 @@
+
+
+<ion-content>
+  
+  <div class="bg-pic-main">
+    <img src="../../../assets/img/purse-bg.png" class="bg-pic">
+  </div>
+
+  <ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+      <ion-buttons (click)="goBack()"  left>
+        <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>消费积分</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="wallet-main" id="container">
+      <span>积分余额</span>
+      <h2>{{wallet}}</h2>
+      <!-- <button (click)="chargeBalance()">立即充值</button> -->
+  </div>
+
+
+  <ion-row class="wallet-list m-t" (click)="tradeDetail()">
+    <ion-col class="text-left">
+      <i class="iconfont icon-wode-qianbao-jilu m-r"></i>
+      积分明细
+    </ion-col>
+    <ion-col class="text-right">
+      <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

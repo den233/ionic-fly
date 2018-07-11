@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons (click)="goBack()"  left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">新增汇款单</ion-title>
+    <ion-buttons right class="text-theme" >
+      <button (click)="add()" [disabled]="!remitForm.valid">提交</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="add-list clearfix m-t">
+        <span class="text-lightdark pull-left text-left">
+            用户编号
+        </span>
+        <span class="pull-right text-right">
+              {{usercode}}
+        </span>
+    </div>
+
+    <form  [formGroup]="remitForm">
+        <div class="title m-t">汇入信息</div>
+        <div class="add-list clearfix">
+          <span class="text-lightdark pull-left text-left">
+              汇入账户<label class="text-red">*</label>
+          </span>
+            <span class="pull-right text-right sel-container">
+                <ion-select [(ngModel)]="allData.receiveAccountNo" formControlName="bank" cancelText="取消" okText="确定">
+                  <ion-option *ngFor="let item of accountList" value="{{item.VALUE_CODE}}">{{item.VALUE_TITLE}}</ion-option>
+                </ion-select>
+                <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+          </span>
+        </div>
+        <div class="add-list clearfix">
+            <span class="text-lightdark pull-left text-left">
+                汇款方式<label class="text-red">*</label>
+            </span>
+            <span class="pull-right text-right sel-container">
+                  <ion-select  [(ngModel)]="allData.remitRegType" formControlName="type" cancelText="取消" okText="确定">
+                    <ion-option value="1">现金</ion-option>
+                  </ion-select>
+                  <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+            </span>
+        </div>
+        <div class="add-list clearfix">
+            <span class="text-lightdark pull-left text-left">
+              汇款金额（元）<label class="text-red">*</label>
+          </span>
+            <span class="pull-right text-right">
+                <input type='number' placeholder="0.00" formControlName="money" [(ngModel)]="allData.remitMoney">
+          </span>
+        </div>
+        <span padding-left *ngIf="remitForm.controls.money.invalid  && remitForm.controls.money.dirty" class="text-red warning-tip">请输入正确的汇款金额</span>
+
+        <div class="title m-t">汇款人信息</div>
+        <div class="add-list clearfix">
+          <span class="text-lightdark pull-left text-left">
+              汇款人姓名<label class="text-red">*</label>
+          </span>
+            <span class="pull-right text-right">
+                <input type='text' placeholder="请输入" formControlName="username" [(ngModel)]="allData.remitName">
+          </span>
+        </div>
+        <div class="add-list clearfix">
+          <span class="text-lightdark pull-left text-left">
+              汇款人手机<label class="text-red">*</label>
+          </span>
+            <span class="pull-right text-right">
+                <input type='number' placeholder="请输入" formControlName="tel" [(ngModel)]="allData.phone" >
+          </span>
+        </div>
+        <span padding-left *ngIf="remitForm.controls.tel.invalid  && remitForm.controls.tel.dirty" class="text-red warning-tip">请输入正确的手机号码</span>
+        <ion-item>
+            <ion-label fixed>汇款时间<label class="text-red">*</label></ion-label>
+            <ion-datetime  [(ngModel)]="allData.remitTime"  formControlName="date" displayFormat="YYYY-MM-DD HH:mm:ss" placeholder="请选择时间" cancelText="取消" doneText="确认">
+            </ion-datetime>
+        </ion-item>
+
+        <div class="add-list clearfix">
+          <span class="text-lightdark pull-left text-left">
+              汇款地点<label class="text-red">*</label>
+          </span>
+            <span class="pull-right text-right">
+                <input type='text' placeholder="请输入" formControlName="addr"  [(ngModel)]="allData.remitAddress">
+          </span>
+        </div>
+    </form>
+
+</ion-content>

@@ -1,0 +1,262 @@
+<!--
+  Generated template for the ConfirmOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+         <ion-buttons (click)="goBack()"  left>
+            <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>确认订单</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-primary">
+    <!-- 首单不显示类型 -->
+    <ion-row class="bg-white" *ngIf="orderType.value != 10">
+        <ion-col padding-left text-left col-8>
+            <ion-label class="b-l-item">
+                <i style="color:#ff9977" class="iconfont">&#xe655;</i>
+                <span class="text-gray">订单类型：{{orderType.name}}</span> 
+            </ion-label>
+        </ion-col>
+    </ion-row>
+
+    <!-- 送货方式 -->
+    <ion-list  class="bg-white goods-list m-t">
+        <ion-list-header>
+                送货方式
+                <ul class="delivery-way">
+                    <li class="express active" [ngClass]="{'active':way == 2}" (click)="deliveryWay(2)" >快递</li>
+                    <li class="take" [ngClass]="{'active':way == 1}"  (click)="deliveryWay(1)">自提</li>
+                </ul>
+        </ion-list-header>
+        <!-- 没地址 -->
+        <div class="address-wrap" mb-10 *ngIf="way == 2">
+            <ion-item no-lines *ngIf="isAddress"  (click)="editAddress()">
+                <h3>收货人：{{takeGoods.name}}&nbsp;&nbsp;&nbsp;{{takeGoods.mobiletele}}</h3>
+                <p class="addr-name">
+                    <i style="color:#319eff;" class="iconfont icon-gouwuche-dingdan-pxdizhi"></i>{{takeGoods.areaStr}}</p>
+                    <i  *ngIf="orderType.value != 10" item-end style="color: #CBCBCB;" class="iconfont">&#xe640;</i>    
+            </ion-item>
+            <div class="tip m-b" *ngIf="!isAddress"  (click)="addAddress()">
+                <span class="txt">暂无收货地址</span>
+                <span class="add-btn">
+                <i class="iconfont text-blue" style="margin-right: 5px;">&#xe698;</i>
+                新增地址
+                </span>
+                    
+            </div>
+        </div>
+        <!-- 自提 -->
+        <div class="address-wrap" mb-10 *ngIf="way == 1">
+            <ion-item no-lines>
+                <p class="addr-name">
+                    <i style="color:#08d08c;margin-right:5px;" class="iconfont icon-gouwuche-dingdan-pxziti"></i>
+                    <span class="text-default">前往公司自提</span>
+                    <span style="white-space: normal;">(28天内无人自提，系统将自动发货到默认地址)</span>
+                </p>
+            </ion-item>
+        </div>
+    </ion-list>
+
+    <ion-list  class="bg-white goods-list m-t-2">
+        <ion-list-header>
+            商品列表
+        </ion-list-header>
+        
+        <div class="cart-sort" *ngFor="let item of goods">
+            <ion-grid class='cart-main package-main'>
+                <ion-row>
+                    <ion-col col-3>
+                        <img [src]="imgUrl+item.IMAGE_LINK" onerror='this.src="../../../assets/img/null-img.png"' class="small-pic">
+                    </ion-col>
+                    <ion-col>
+                        <ion-row>
+                            <ion-col col-12 class='p-l-0'>
+                                  <span class="name">
+                                      {{item.PRODUCT_NAME}}
+                                  </span>
+                            </ion-col>
+                            <!-- <ion-col col-12 class='p-l-0'>
+                                <span class="color" >
+                                    {{item.SHOES_COLOUR}};{{item.SHOES_SIZE}}
+                                </span>
+                            </ion-col> -->
+                            <ion-col col-12 class='p-l-0'>
+                                  <span class="pv">
+                                      PV: +${{item.FP_PV}}
+                                  </span>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col col-3 class="no-padding text-right">
+                        <ion-row>
+                            <ion-col col-12 class="price">
+                                &yen;&nbsp;{{item.FP_PRICE}}
+                            </ion-col>
+                            <ion-col col-12 class="number text-gray">
+                                ×&nbsp;{{item.QTY}}
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <ion-row class="bg-white b-t p">
+                <ion-col col-4 class="bg-white" text-left>
+                  商品金额
+                </ion-col>
+                <ion-col col-8 class="bg-white text-red" text-right>
+                    ￥{{total.money}}
+                </ion-col>
+            </ion-row>
+      </ion-list>
+
+      <!-- 重销单显示期数 -->
+      <!--<ion-grid class="buyNum bg-white m-t" *ngIf="orderType.value == 30">-->
+            <!--<ion-list-header class="title">-->
+                    <!--购买期数-->
+            <!--</ion-list-header>-->
+            <!--<ion-row class="bg-white text-gray b-b performance-list m-b" [ngClass]="{'active':num == 1}" (click)="selectNum(1)">-->
+                <!--<ion-col text-left col-7>-->
+                    <!--<span class="f-1-5 text-default">-->
+                         <!--<label style="font-size:16px;">一个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-right col-5 class='text-green-blue'>-->
+                    <!--<span>-->
+                        <!--指标：100元-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-left col-8 class="n-p-t">-->
+                    <!--<span class="f-1-5 text-gray f-1-2 ">-->
+                        <!--<label style="font-size:12px">购买一个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<i class="icon-gouwuche-dingdan-xuanzhongjiaobiao iconfont"></i>-->
+            <!--</ion-row>-->
+            <!--<ion-row class="bg-white text-gray b-b performance-list m-b"  [ngClass]="{'active':num == 3}" (click)="selectNum(3)">-->
+                <!--<ion-col text-left col-7>-->
+                    <!--<span class="f-1-5 text-default">-->
+                            <!--<label style="font-size:16px;">三个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-right col-5 class='text-green-blue'>-->
+                    <!--<span>-->
+                        <!--指标：300元-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-left col-7 class="n-p-t">-->
+                    <!--<span class="f-1-5 text-gray f-1-2 ">-->
+                        <!--<label style="font-size:12px">购买三个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<i class="icon-gouwuche-dingdan-xuanzhongjiaobiao iconfont"></i>-->
+            <!--</ion-row>-->
+            <!--<ion-row class="bg-white text-gray b-b performance-list m-b"  [ngClass]="{'active':num ==6}" (click)="selectNum(6)">-->
+                <!--<ion-col text-left col-7>-->
+                    <!--<span class="f-1-5 text-default">-->
+                            <!--<label style="font-size:16px;">六个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-right col-5 class='text-green-blue'>-->
+                    <!--<span>-->
+                        <!--指标：600元-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-left col-7 class="n-p-t">-->
+                    <!--<span class="f-1-5 text-gray f-1-2 ">-->
+                        <!--<label style="font-size:12px">购买六个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<i class="icon-gouwuche-dingdan-xuanzhongjiaobiao iconfont"></i>-->
+            <!--</ion-row>-->
+            <!--<ion-row class="bg-white text-gray b-b performance-list m-b"  [ngClass]="{'active':num == 12}" (click)="selectNum(12)">-->
+                <!--<ion-col text-left col-7>-->
+                    <!--<span class="f-1-5 text-default">-->
+                            <!--<label style="font-size:16px;">一年</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-right col-5 class='text-green-blue'>-->
+                    <!--<span>-->
+                        <!--指标：1200元-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col text-left col-7 class="n-p-t">-->
+                    <!--<span class="f-1-5 text-gray f-1-2 ">-->
+                        <!--<label style="font-size:12px">购买一个月</label>-->
+                    <!--</span>-->
+                <!--</ion-col>-->
+                <!--<i class="icon-gouwuche-dingdan-xuanzhongjiaobiao iconfont"></i>-->
+            <!--</ion-row>-->
+    <!--</ion-grid>-->
+
+      <ion-list class="bg-white goods-list  m-t-2 m-b">
+          <ion-list-header>
+              支付方式
+          </ion-list-header>
+          <ion-item>
+              <ion-label>
+                  <i class="iconfont icon-shouye-qianbao"></i><span class="blod">现金账户</span>{{payObj.wallet}}
+              </ion-label>
+              <ion-label text-right item-end style="font-size:14px;">支付￥{{payObj.reality_wallet}}<i class="m-l iconfont text-blue" (click)="selectPayWay(1)">&#xe68d;</i></ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>
+                  <i class="iconfont icon-gouwuche-dingdan-pxjiangjin"></i><span class="blod">电子钱包</span>{{payObj.bonus}}
+              </ion-label>
+              <ion-label text-right item-end style="font-size:14px;">支付￥{{payObj.reality_bonus}}<i class="m-l iconfont text-blue" (click)="selectPayWay(2)">&#xe68d;</i></ion-label>
+          </ion-item>
+      </ion-list>
+</ion-content>
+
+<ion-footer class='cart-footer'>
+    <ion-toolbar>
+      <div class="type-main clearfix">
+        <div class="type-number pull-right text-right p-r">
+            <span class="pv">
+              PV: +${{total.pv}}
+            </span>
+            <span class="total">
+                实付:￥{{total.money}}
+            </span>
+        </div>
+        <div class="type-btn pull-right" (click)='sPwd()'>
+          立即支付
+        </div>
+      </div>
+    </ion-toolbar>
+</ion-footer>
+<div class ="bg-model" *ngIf="model">
+　　<div class = 'model-box'>
+        <h3 class="b-b">设置二级密码<i (click)="closeModel()" class="icon-gouwuche-tips-guanbi iconfont"></i></h3>
+        <div class="content">
+            <ion-list class="login-form">
+                <ion-item>
+                    <ion-label class="left-icon" no-margin no-padding col-2>
+                        <i class="iconfont icon-large">&#xe65c;</i>
+                    </ion-label>
+                    <ion-input type="password" placeholder="输入二级密码" [(ngModel)]="user.pass" clearInput></ion-input>
+                </ion-item>
+            </ion-list>
+        
+            <ion-list class="login-form" style='padding-top:0;'>
+                <ion-item>
+                    <ion-label class="left-icon" no-margin no-padding col-2>
+                        <i class="iconfont icon-large">&#xe64a;</i>
+                    </ion-label>
+                    <ion-input type="password" placeholder="再次输入"  [(ngModel)]="user.repass" clearInput></ion-input>
+                </ion-item>
+            </ion-list>
+            <!-- <p padding-left *ngIf="pwdCheckShow" class="text-red">两次输入密码不一致</p> -->
+        </div>
+        <div class="footer b-t">
+            <button class="footer-btn" (click)="pwdCheck()">确定</button>
+        </div>
+　　</div>
+</div>

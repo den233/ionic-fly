@@ -1,0 +1,87 @@
+<!--
+  Generated template for the OldMemberActivationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar color="winter" class="b-b-shaow">
+         <ion-buttons (click)="goBack()"  left>
+            <button ion-button icon-only>
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>老会员激活</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only [disabled]="!addMemberForm.valid" (click)="next()" style="color:#12b3b3;">下一步</button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="content-primary">
+    <form [formGroup]="addMemberForm" (ngSubmit)="next()">
+      <ion-list>
+          <ion-list style="margin-top:10px;">
+                <ion-grid class="member-bar b-b">
+                    <span class="member-bar-title">老会员信息</span>
+                    <span class="member-bar-btn" (click)="registerMember()">查询</span>
+                </ion-grid>
+              <ion-item>
+                  <ion-label fixed>老会员编号<span class="text-red padding-left-xs">*</span></ion-label>
+                  <ion-input type="text"
+                            formControlName="userCode"
+                            placeholder="请输入"
+                            [(ngModel)]="member.userCode" clearInput></ion-input>
+                          
+              </ion-item>
+              <ion-item no-lines *ngIf="oldMember.membername != ''">
+                    <ion-label fixed>老会员姓名</ion-label>
+                    <ion-input type="text"
+                               placeholder="暂无姓名"
+                              formControlName="membername"
+                              [(ngModel)]="oldMember.membername"
+                              clearInput disabled="true"></ion-input>
+                            
+                </ion-item>
+          </ion-list>
+  
+          <ion-list>
+              <ion-grid class="member-bar b-b">
+                  <span class="member-bar-title">基本信息</span>
+              </ion-grid>
+              <ion-item>
+                  <ion-label fixed>收货人<span class="text-red padding-left-xs">*</span></ion-label>
+                  <ion-input type="text"
+                            formControlName="poFirstName"
+                            placeholder="请输入"
+                            [(ngModel)]="member.poFirstName" clearInput></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label fixed>手机号<span class="text-red padding-left-xs">*</span></ion-label>
+                  <ion-input type="text" placeholder="请输入"
+                             formControlName="poMobiletele"
+                             [(ngModel)]="member.poMobiletele" 
+                             clearInput
+                          ></ion-input>
+              </ion-item>
+              <p padding-left *ngIf="addMemberForm.controls.poMobiletele.invalid  && addMemberForm.controls.poMobiletele.dirty" class="text-red">请输入正确的手机号码格式</p>
+              <ion-item>
+                  <ion-label>所在地区<span class="text-red padding-left-xs">*</span></ion-label>
+                  <ion-multi-picker item-content [multiPickerColumns]="cityColumns"
+                                    cancelText="取消"
+                                    doneText="确认"
+                                    formControlName="poArea"
+                                    [(ngModel)]="init.poArea"
+                          ></ion-multi-picker>
+              </ion-item>
+              <ion-item>
+                  <ion-label fixed>详细地址<span class="text-red padding-left-xs">*</span></ion-label>
+                  <ion-input type="text"
+                              formControlName="poAddress"
+                              placeholder="请输入"
+                              [(ngModel)]="member.poAddress" clearInput></ion-input>
+              </ion-item>
+          </ion-list>
+      </ion-list>
+  </form>
+  </ion-content>

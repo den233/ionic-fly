@@ -1,0 +1,10 @@
+<ion-list [(ngModel)]="type" radio-group no-margin>
+  <ion-item>
+    <ion-label>{{type2.name}}</ion-label>
+    <ion-radio (ionSelect)="radioChange(type2)" checked="type" value="{{type2.value}}"></ion-radio>
+  </ion-item>
+  <ion-item *ngFor="let item of data;let i = index;">
+    <ion-label>{{item.name}}</ion-label>
+    <ion-radio (ionSelect)="radioChange(item)" checked="type" value="{{item.value}}"></ion-radio>
+  </ion-item>
+</ion-list>

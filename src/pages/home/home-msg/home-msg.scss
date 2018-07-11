@@ -1,0 +1,40 @@
+page-home-msg {
+  .msgList {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    .msg-time {
+      margin: 0 auto 10px;
+      width: 140px;
+      font-size: 12px;
+      background: #d8dbde;
+      padding: 0.5rem 0;
+      text-align: center;
+      border-radius: 30px;
+      color: #fff;
+    }
+    .msg-content {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px 10px 10px;
+      border-radius: 5px;
+      h2 {
+        color: #333;
+        font-size: 16px;
+      }
+      .txt {
+        color: #999999;
+        font-size: 14px;
+      }
+    }
+    .msg-detail {
+      color: #999999;
+      padding: 10px 0;
+      font-size: 12px;
+      i {
+        font-size: 12px;
+        vertical-align: middle;
+      }
+    }
+  }
+}

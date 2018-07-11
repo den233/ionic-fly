@@ -1,0 +1,85 @@
+page-remit-new {
+  .text-theme{
+    button{
+      background: transparent;
+      color: #13bfbf;
+      font-size: 14px;
+    }
+  }
+
+  .add-list{
+    padding:12px;
+    font-size: 14px;
+    background: #fff;
+    border-bottom: 1px #eee solid;
+
+    input{
+      border:none;
+    }
+  }
+
+  .title{
+    padding:10px 12px;
+    font-size: 14px;
+    background: #fafafa;
+    border-bottom: 1px #eee solid;
+    color: #999999;
+  }
+
+  .scroll-content{
+    background: #f0f4f7;
+  }
+
+  /**
+  选择框
+   */
+  .select-ios{
+    padding:0;
+    height:20px;
+  }
+
+  ion-select{
+    max-width: 100%;
+  }
+
+  .select-ios .select-icon{
+    display: none;
+  }
+
+  .sel-container{
+    position: relative;
+    padding-right: 15px;
+    width:50%;
+    height:20px;
+  }
+  
+  .icon-shouye-tiaozhuanjiantou{
+    color: #ccc;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
+
+  .datetime-ios{
+    padding:0;
+  }
+
+  .item-ios{
+    padding-left: 12px;
+
+    .label{
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  [padding-left]{
+    padding-left: 12px !important;
+  }
+
+  .datetime-ios .datetime-placeholder{
+    font-size: 14px;
+    color: #666;
+  }
+}

@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-toolbar class="b-b-shaow" color="winter">
+		<ion-buttons left>
+			<button (click)="goBack()" ion-button icon-only>
+				<ion-icon name="arrow-back"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title align-title="center">忘记密码</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+	<form [formGroup]="loginForm" (ngSubmit)="next()">
+		<ion-list class="login-form">
+			<ion-item>
+				<ion-label class="left-icon" no-margin no-padding col-2>
+					<i class="iconfont icon-large">&#xe65c;</i>
+				</ion-label>
+				<ion-input type="password" [placeholder]="placeholder" formControlName="pass" [(ngModel)]="user.pass" clearInput></ion-input>
+			</ion-item>
+		</ion-list>
+
+		<ion-list class="login-form" style='padding-top:0;'>
+			<ion-item>
+				<ion-label class="left-icon" no-margin no-padding col-2>
+					<i class="iconfont icon-large">&#xe64a;</i>
+				</ion-label>
+				<ion-input type="password" placeholder="再次输入" formControlName="repass" [(ngModel)]="user.repass" clearInput></ion-input>
+			</ion-item>
+		</ion-list>
+
+		<div padding-left padding-right>
+			<button type="submit" [disabled]="!loginForm.valid" ion-button class="btn-login" block>完成</button>
+		</div>
+	</form>
+</ion-content>

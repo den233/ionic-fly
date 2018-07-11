@@ -1,0 +1,73 @@
+
+<ion-header>
+  <ion-toolbar color="winter" class="b-b-shaow">
+    <ion-buttons (click)="goBack()"  left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>充值余额</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="chargeForm" (ngSubmit)="charge()">
+    <ion-row class="wallet-list m-b">
+      <ion-col class="text-left">
+        <i class="iconfont icon-shouye-qianbao m-r"></i>
+        余额
+        <span class="p-l text-lightdark">{{wallet}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="wallet-list m-b">
+      <ion-col class="text-left" col-12 style="height: 40px;">
+        <span class="text-lightdark">充值金额（元）</span>
+      </ion-col>
+      <ion-col class="text-left money-main" col-12>
+        <span class="text-rmb pull-left p-r">&yen;</span>
+        <input type="number" placeholder="0.00" formControlName="money" [(ngModel)]="chargeCount" (keyup)="inputCharge()" class="text-num pull-left">
+      </ion-col>
+      <p padding-left *ngIf="chargeForm.controls.money.invalid  && chargeForm.controls.money.dirty" class="text-red warning-tip">请输入正确的金额</p>
+    </ion-row>
+
+    <ion-list class="pay-type">
+      <ion-list-header>付款方式</ion-list-header>
+      <ion-item>
+        <ion-avatar item-start>
+          <i class="iconfont icon-wode-qianbao-chongzhi-zhifubao"></i>
+        </ion-avatar>
+        <h3>支付宝</h3>
+        <p class="small">推荐支付宝用户使用</p>
+        <ion-note item-end>
+          <input type="checkbox" id="save-checkbox2" formControlName="check"  [(ngModel)]="isChoose"  checked="checked">&nbsp;
+          <label for="save-checkbox2">
+            <i></i>
+          </label>
+        </ion-note>
+      </ion-item>
+      <!--<ion-item>-->
+        <!--<ion-avatar item-start>-->
+          <!--<i class="iconfont icon-wode-qianbao-chongzhi-weixin"></i>-->
+        <!--</ion-avatar>-->
+        <!--<h3>微信</h3>-->
+        <!--<p class="small">推荐微信用户使用</p>-->
+        <!--<ion-note item-end>-->
+          <!--<input type="checkbox" id="save-checkbox2">&nbsp;-->
+          <!--<label for="save-checkbox2">-->
+            <!--<i></i>-->
+          <!--</label>-->
+        <!--</ion-note>-->
+      <!--</ion-item>-->
+    </ion-list>
+
+    <div padding-left padding-right>
+      <button [disabled]="!chargeForm.controls.money.valid" type="submit" ion-button class="btn-login" block>立即充值</button>
+    </div>
+  </form>
+
+  <div id="payContainer" [innerHTML]="payBody"></div>
+
+
+</ion-content>

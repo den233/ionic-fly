@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="b-b-shaow" color="winter">
+    <ion-buttons (click)="goBack()"  left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">奖金提现</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="bonusForm" (ngSubmit)="cash()">
+  <ion-list class="pay-type m-t" (click)="chooseBank()">
+    <ion-item>
+      <ion-avatar item-start>
+        <svg viewBox="0,0,50,50" class="bank" aria-hidden="true">
+          <use xlink:href="#icon-wode-shezhi-yinhangqia-moren"></use>
+        </svg>
+      </ion-avatar>
+      <h3>{{bankList.BANK}}</h3>
+      <p class="small" *ngIf="bankList.BANKCARD">尾号{{bankList.BANKCARD.slice(-4)}}</p>
+      <p class="small" *ngIf="!bankList.BANKCARD">暂无银行卡,点击添加</p>
+      <input type="hidden" value="{{bankList.BANKCARD}}" formControlName="banks">
+      <ion-note item-end>
+        <i class="iconfont icon-shouye-tiaozhuanjiantou"></i>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-row class="wallet-list">
+    <ion-col class="text-left" col-12 style="height: 40px;">
+      <span class="text-lightdark">提现金额（元）</span>
+    </ion-col>
+    <ion-col class="text-left money-main" col-12>
+      <span class="text-rmb pull-left p-r">&yen;</span>
+      <input type="number" placeholder="0.00" formControlName="money" [(ngModel)]="bonusCount" class="text-num pull-left" value="">
+    </ion-col>
+    <p padding-left *ngIf="bonusForm.controls.money.invalid  && bonusForm.controls.money.dirty" class="text-red warning-tip">请输入正确的金额</p>
+  </ion-row>
+
+  <div class="cash-all clearfix">
+      <span class="pull-left text-lightdark">
+        <i class="iconfont icon-wode-tixian-jiangjin m-r text-yellow"></i>
+        可提现奖金&nbsp;{{wallet}}
+      </span>
+      <button class="pull-right text-blue all-btn" (click)="chargeAll()" [disabled]="wallet<=0">
+        全部提现
+      </button>
+  </div>
+
+  <div padding-left padding-right style="margin-top: 20px;">
+    <button [disabled]="!bonusForm.controls.money.valid" type="submit" ion-button class="btn-login" block>立即提现</button>
+  </div>
+  </form>
+</ion-content>
+
+<div class="bg-model" *ngIf="model">
+  <div class='model-box'>
+    <h3 class="b-b">设置二级密码
+      <i (click)="closeModel()" class="icon-gouwuche-tips-guanbi iconfont"></i>
+    </h3>
+    <div class="content">
+      <ion-list class="login-form">
+        <ion-item>
+          <ion-label class="left-icon" no-margin no-padding col-2>
+            <i class="iconfont icon-large">&#xe65c;</i>
+          </ion-label>
+          <ion-input type="password" placeholder="输入二级密码" [(ngModel)]="user.pass" clearInput></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="login-form" style='padding-top:0;'>
+        <ion-item>
+          <ion-label class="left-icon" no-margin no-padding col-2>
+            <i class="iconfont icon-large">&#xe64a;</i>
+          </ion-label>
+          <ion-input type="password" placeholder="再次输入" [(ngModel)]="user.repass" clearInput></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="footer b-t">
+      <button class="footer-btn" (click)="pwdCheck()">确定</button>
+    </div>
+  </div>
+</div>

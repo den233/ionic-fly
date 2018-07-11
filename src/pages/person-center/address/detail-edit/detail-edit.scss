@@ -1,0 +1,37 @@
+page-address-detail-edit {
+  .txt {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .title{
+    font-size: 1.5rem;
+    color: #666;
+  }
+  .level {
+    width: 15px;
+    transform: translateY(2px);
+  }
+  .member {
+    width: 15px;
+    transform: translateY(2px);
+  }
+  .male {
+    color: #ffafe1;
+  }
+  .female {
+    color: #1ee9ff;
+  }
+  .detail{
+    width: calc(100% - 33px);
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    display: block;
+    margin-top: 20px;
+    resize: none;
+    margin-bottom: 15px;
+    border: none;
+    padding: 5px;
+  }
+}

@@ -1,0 +1,29 @@
+page-person-info {
+  .txt {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  .i-right {
+    font-size: 1.3rem;
+    color: #F2F1EF;
+    font-weight: normal;
+  }
+  .title{
+    font-size: 1.5rem;
+    color: #666;
+  }
+  .level {
+    width: 17px;
+    transform: translateY(2px);
+  }
+  .member {
+    width: 17px;
+    transform: translateY(2px);
+  }
+  .male {
+    color: #ffafe1;
+  }
+  .female {
+    color: #1ee9ff;
+  }
+}

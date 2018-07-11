@@ -1,0 +1,114 @@
+page-sell-performance {
+    .modal-select{
+        width: 180px;
+        height: 200px;
+        background: #fff;
+        position: absolute;
+        right: 11px;
+        top: 40px;
+    
+        ul{
+          margin:0;
+          padding:0;
+        }
+        li{
+          list-style: none;
+          height:50px;
+          line-height:50px;
+          border-bottom: 1px #eee solid;
+          text-indent: 20px;
+          &.active{
+            background: #13bfbf;
+            color: #fff;
+          }
+        }
+    }
+
+    .box-shadow{
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    } 
+    .toolbar-background {
+        background: url(../../assets/img/achievement-t.png) no-repeat top left !important;
+        background-size: 100% 100% !important;
+        border-width: 0 !important;
+        color: #fff;
+    }
+    .toolbar-title {
+        color: #fff !important;
+    }
+    .person-card {
+        background: url("../../assets/img/achievement-b.png") no-repeat top left;
+        background-size: 100% 100%;
+        height: 140px;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        .b-r{
+            border-right: 1px solid #e68250 !important;
+        }
+        .user{
+            .title{
+                color: #fff2b2;
+                margin-bottom: 10px;
+            }
+            span{
+                color: #fff;
+                font-size: 16px
+            }
+            padding:0;
+        }
+        .performance{
+            .title{
+                color: #fff2b2;
+                margin-bottom: 10px;
+                .tip{
+                    color: #fff;
+                    font-size: 12px;
+                    padding-left: 10px;
+                }
+            }
+            span{
+                color: #fff;
+                font-size: 24px;
+            }
+            padding: 0 0 0 1.5rem;
+        }
+
+      }
+      .grid{
+          padding:0;
+      }
+      .performance-list{
+        padding: 14px 10px;
+      }
+      .report-type{
+          color:#333333;
+      }
+
+    .performance-box{
+        background: #fff;
+        border-radius: 5px;
+        .iconfont{
+            color: #ff7c62;
+            position: relative;
+            top: 10px;
+        }
+        p{
+            font-size: 12px;
+        }
+        h2{
+            font-size: 18px;
+        }
+        .item-ios ion-avatar[item-left], .item-ios ion-thumbnail[item-left], .item-ios ion-avatar[item-start], .item-ios ion-thumbnail[item-start] {
+            margin: 8px 0;
+            text-align: center;
+        }
+        .item-ios {
+            padding-left: 0;
+        }
+        .item-inner{
+            padding-right: 0;
+        }
+    }
+}

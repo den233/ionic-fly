@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="winter">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title align-title="center">{{title}}</ion-title>
+    <ion-buttons right>
+      <button [disabled]="!form.valid" class="f-1-6" end (click)="submit()" icon-only color="secondary" ion-button>
+        保存
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-primary">
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item margin-top no-lines>
+        <ion-label class="title" fixed>户名
+        </ion-label>
+        <span class="txt" item-end>{{username}}</span>
+      </ion-item>
+      <ion-item margin-top>
+        <ion-label class="title" fixed>开户银行
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-select cancelText="取消" okText="确定" class="txt" placeholder="请选择" formControlName="bank" [(ngModel)]="bank.BANK" interface="popover">
+          <ion-option *ngFor="let item of bankList" [value]="item['VALUE_TITLE']">{{item['VALUE_TITLE']}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label class="title" fixed>开户行支行</ion-label>
+        <ion-input class='txt' type="text" placeholder="请输入" formControlName="branch" [(ngModel)]="bank.BANKADDRESS" clearInput></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-label class="title" fixed>银行账户
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-input class='txt' type="text" (input)="checkAccout()" placeholder="请输入" formControlName="account" [(ngModel)]="bank.BANKCARD" clearInput></ion-input>
+      </ion-item>
+      <ion-item *ngIf="error" no-lines>
+        <span class="title text-red" fixed>请输入正确的金银行卡</span>
+      </ion-item>
+      <ion-item margin-top>
+        <ion-label class="title" fixed>所在地区
+          <span class="text-red">*</span>
+        </ion-label>
+        <ion-multi-picker item-content class="txt" [multiPickerColumns]="cityColumns" cancelText="取消" doneText="确认" formControlName="area"
+          [(ngModel)]="area">
+        </ion-multi-picker>
+        <ion-icon small ios="ios-arrow-forward" class="text-gray" md="md-arrow-forward" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <button *ngIf="bank.ID" margin-top class="btn-light" (click)="remove()" ion-button full>删除银行卡</button>
+</ion-content>

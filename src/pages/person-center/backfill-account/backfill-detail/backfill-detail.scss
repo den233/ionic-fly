@@ -1,0 +1,133 @@
+page-backfill-detail {
+    .segment-ios .segment-button{
+        font-size: 14px;
+        color: #666666;
+        background: #fff;
+        border: none;
+        line-height:2.8rem;
+      }
+    
+      .toolbar-ios .segment-button ion-icon{
+        line-height: inherit;
+        position: relative;
+        top: 3px;
+        font-size: 17px;
+      }
+    
+      .toolbar-ios{
+        border-bottom: 1px #eeeeee solid;
+      }
+    
+      .segment-ios .segment-button.segment-activated{
+        color: #12B3B3;
+        background: #fff;
+    
+        ion-icon{
+          transform: rotate(180deg) translateY(2px);
+        }
+      }
+    
+      .item-divider-ios{
+        padding-left: 12px;
+        background: #f5f8ff;
+        font-size: 14px;
+        color: #666;
+      }
+    
+      .pay-type{
+        .item-ios{
+          padding-left: 1.2rem;
+          background: #fff;
+          border-bottom: 1px #eee solid !important;
+          font-size: 14px;
+        }
+    
+        .icon-wode-qianbao-jilu-xiaofei{
+          font-size: 40px;
+          color: #b3daff;
+        }
+    
+        .icon-wode-qianbao-jilu-jiangjin{
+          font-size: 40px;
+          color: #b3c0ff;
+        }
+    
+        .icon-wode-qianbao-jilu-chongzhi{
+          font-size: 40px;
+          color: #ffc0b3;
+        }
+    
+        .icon-wode-qianbao-jilu-tuikuan{
+          font-size: 40px;
+          color: #c3d4e6;
+        }
+    
+        [item-start]{
+          margin-right: 10px;
+          margin-top: 9px;
+        }
+    
+        .small{
+          font-size: 13px;
+          color: #999;
+        }
+    
+        .icon-tongyong-zhedie{
+          font-size: 11px;
+          color: #cfcfcf;
+        }
+      }
+    
+      .list-ios .item-block .item-inner{
+        border-bottom: none;
+      }
+    
+      .list-ios > .item-block:first-child{
+        border-top: none;
+      }
+    
+      .borderTop{
+        border-top: 1px #ddd solid;
+      }
+    
+      .list-ios{
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+    
+      .item-ios [item-right], .item-ios [item-end]{
+        margin-right: 4px;
+      }
+    
+      .label-ios {
+        margin: 12px 8px 11px 0;
+      }
+    
+    
+      .detail-zhedie-money{
+        padding:12px;
+        background: #fafafa;
+        font-size: 13px;
+    
+        &:nth-of-type(odd)
+        {
+          background:#fafafa;
+        }
+        &:nth-of-type(even)
+        {
+          background:#f2f2f2;
+        }
+      }
+    
+      .i-arrow {
+        color: #ccc;
+        font-size: 1.2rem;
+        display: inline-block;
+        transition: all 0.5s;
+      }
+      .i-arrow.active {
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        vertical-align: text-top;
+      }
+}

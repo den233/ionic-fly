@@ -1,0 +1,134 @@
+page-charge-balance {
+  .wallet-list{
+    background: #fff;
+    padding:0 1.2rem;
+    line-height: 5rem;
+    .col{
+      padding:0;
+    }
+    .icon-shouye-tiaozhuanjiantou{
+      font-size: 11px;
+      color: #ccc;
+    }
+    .icon-shouye-qianbao{
+      font-size: 18px;
+      position: relative;
+      top:1px;
+      color: #a1b8e6;
+    }
+  }
+
+  .money-main{
+    display: flex;
+    align-items: center;
+  }
+
+  .text-rmb{
+    font-size: 19px;
+    line-height: normal;
+  }
+
+  .text-num{
+    font-size: 29px;
+    width: 80%;
+    border: none;
+  }
+
+  .scroll-content{
+    background: #f0f2f7;
+  }
+
+  .pay-type{
+    .item-ios{
+      padding-left: 1.2rem;
+      background: #fff;
+      border-bottom: 1px #eee solid !important;
+      font-size: 14px;
+    }
+    
+    .icon-wode-qianbao-chongzhi-zhifubao{
+      font-size: 30px;
+      color: #009fe8;
+    }
+
+    .icon-wode-qianbao-chongzhi-weixin{
+      font-size: 30px;
+      color: #37bf50;
+    }
+
+    [item-start]{
+      margin-right: 5px;
+      margin-top: 15px;
+    }
+    
+    .small{
+      font-size: 13px;
+      color: #999;
+    }
+  }
+
+  ion-note {
+    margin-right: 0;
+  }
+
+  #save-checkbox,
+  #save-checkbox2{
+    opacity: 0;
+    display: none;
+
+    & + label{
+      width: 20px;
+      height: 20px;
+      position: relative;
+      display: inline-block;
+      border: 1px #12b3b3 solid;
+      border-radius: 50%;
+      position: relative;
+      top: 4px;
+
+      i{
+        width:10px;
+        height:10px;
+        border-radius: 50%;
+        background: #12b3b3;
+        opacity: 0;
+        display: block;
+        position: absolute;
+        left:50%;
+        top: 50%;
+        transform: translate3d(-50%,-50%,0);
+      }
+    }
+
+    &:checked + label{
+      i{
+        opacity: 1;
+      }
+    }
+  }
+
+  .list-ios .item-block .item-inner{
+    border-bottom: none;
+  }
+
+  .btn-login {
+    background-color: #2bc1c1;
+    color: #fff !important;
+  }
+
+  .list-ios{
+    margin-bottom: 20px;
+  }
+
+  .item-ios [item-right], .item-ios [item-end]{
+    margin-right: 4px;
+  }
+
+
+  .warning-tip{
+    margin:0;
+    padding:0;
+    line-height: 25px;
+  }
+
+}
