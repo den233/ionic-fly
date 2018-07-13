@@ -6,9 +6,9 @@ export const PRODUCT = {
 export const DEV = {
      //url:'http://192.168.120.22:8081'//施久清
      //url:'http://192.99.99.43',//测试服务器地址
-     //url:'http://192.168.120.202:8780',//王文东
+     url:'http://192.168.120.202:8780',//王文东
      imgUrl:'http://img1.longliqi.com',
-     url:'http://xieku.longliqi.com'//鞋库
+     //url:'http://xieku.longliqi.com'//鞋库
 
         // url: "http://192.99.99.43" ,//开发
      //   url: "http://192.168.128.133:8090" //小金测试
@@ -21,7 +21,7 @@ export const DEV = {
     // url: "http://yg.longliqi.com", //远光测试站
     // url: "http://hd.longliqi.com", //宏德测试站
     // url: "http://xh.longliqi.com", //星火测试站
-    // url: "http://hm.longliqi.com", //和美测试站
+     //url: "http://hm.longliqi.com", //和美测试站
     // url: "http://flower.longliqi.com", //花儿测试站
     // url: "http://jsy.longliqi.com", //经盛裕测试站
     // url: "http://tz.longliqi.com", //天泽测试站

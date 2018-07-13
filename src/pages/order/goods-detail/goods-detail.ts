@@ -24,7 +24,7 @@ import { modals } from '../../../service/service';
   selector: "page-goods-detail",
   templateUrl: "goods-detail.html"
 })
- 
+
 export class GoodsDetailPage {
   @ViewChild(Content) content: Content;
   @ViewChild(Slides) slides: Slides;
@@ -39,7 +39,7 @@ export class GoodsDetailPage {
   images = [];
   category = "";
   productno = "";
- 
+
   item = {
     UNI_NO: "",
     PRODUCT_NO: "",
@@ -57,7 +57,7 @@ export class GoodsDetailPage {
   price: any;
   pv: any;
   isFirst:false;
- 
+
   constructor(
     public appCtrl: App,
     public navCtrl: NavController,
@@ -90,7 +90,7 @@ export class GoodsDetailPage {
     loading.present();
     return loading;
   }
-  
+
   showToast(msg: string) {
     let toast = this.toastCtrl.create({
       message: msg,
@@ -102,30 +102,30 @@ export class GoodsDetailPage {
   }
   showMenu(){
     let actionSheet = this.actionSheetCtrl.create(
-        { title: '菜单标题', 
-          buttons: [ 
-              { text: '销毁', 
+        { title: '菜单标题',
+          buttons: [
+              { text: '销毁',
                //销毁对话框
-                role: 'destructive', 
+                role: 'destructive',
                 handler: () => {
-                   console.log('Destructive clicked'); 
+                   console.log('Destructive clicked');
                    this. showInfo("点击了销毁");
                 }
-              }, 
-              { text: '删除', 
-                handler: () => { 
-                    console.log('Archive clicked'); 
-                    this. showInfo("点击了删除");
-                } 
               },
-               { text: '取消', 
+              { text: '删除',
+                handler: () => {
+                    console.log('Archive clicked');
+                    this. showInfo("点击了删除");
+                }
+              },
+               { text: '取消',
                  //删除数据
-                 role: 'cancel', 
-                 handler: () => { 
-                     console.log('Cancel clicked'); 
-                    } 
-               }] 
-        }); 
+                 role: 'cancel',
+                 handler: () => {
+                     console.log('Cancel clicked');
+                    }
+               }]
+        });
 
         //显示下拉菜单
         actionSheet.present();
@@ -148,17 +148,16 @@ showInfo(msg){
     toast.present();//符合触发条件后立即执行显示。
 }
   closeModal(){
-    this.modals.model=0 
+    this.modals.model=0
   }
   showModal(){
     console.log(this.orderType)
-    this.modals.model=1
     this.modals.value=this.item;
     this.modals.ordertype=this.orderType;
     this.modals.UNI_NO=this.item.UNI_NO;
     this.modals.PRODUCT_NO=this.item.PRODUCT_NO
     this.child1.getColor('detail');
-    
+
   }
 
   goBack() {
@@ -311,6 +310,6 @@ showInfo(msg){
     }
     item["QTY"] = num;
   }
-  
+
 
 }

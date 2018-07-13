@@ -35,7 +35,7 @@ export class TypeOrderPage {
     public checkALL=false;
     public lists:boolean=false;
     public shopArray=[];
- 
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -68,12 +68,12 @@ export class TypeOrderPage {
     }
 
     ionViewDidEnter() {
-         
+
         this.getCartList();
        // this.checkIds = [];
        // this.totalPrice = this.totalPv = 0;
     }
-    
+
     /**
      * 下拉刷新
      * @param refresher
@@ -137,10 +137,10 @@ export class TypeOrderPage {
     updateCheck(item){
 
         if(item['isCheck']){
-            this.checkIds.push(item.PRODUCT_NO);
+            this.checkIds.push(item.UNI_NO);
         }else{
             for (let i = 0; i < this.checkIds.length; i++) {
-                if (this.checkIds[i] == item.PRODUCT_NO) this.checkIds.splice(i,1);
+                if (this.checkIds[i] == item.UNI_NO) this.checkIds.splice(i,1);
             }
         }
         if(!this.checkIds.length){
@@ -173,7 +173,7 @@ export class TypeOrderPage {
 
     }
 
-   
+
     /**
      * 多选
      */
@@ -194,7 +194,7 @@ export class TypeOrderPage {
                     this.goodsList[i]['isCheck'] = true;
                     this.checkIds.push(this.goodsList[i].UNI_NO);
                 }
-               
+
             }
         }
 
@@ -278,7 +278,7 @@ export class TypeOrderPage {
         }
 
     }
-   
+
     /*
       将商品加入购物清单
       @param item  选择的商品的信息
@@ -287,28 +287,27 @@ export class TypeOrderPage {
     addCart(item,index) {
         console.log('item',item)
        console.log('this.modals.shopArray',this.modals.shopArray)
-        this.modals.model=1
         this.modals.UNI_NO= item.UNI_NO;
         this.modals.PRODUCT_NO=item.PRODUCT_NO;
         this.modals.value=item;
-        
+
         this.child1.getColor('typeOrder');
      }
      confirm(val){
-         
+
          this.shopArray=val.shopArray;
          this.checkIds=val.checkIds;
          this.closeModal();
          this.caculate();
      }
-     
+
       shopList(){
         this.lists=true;
       }
       closeModal(){
         this.modals.model=0;
         this.lists=false;
-        
+
       }
       delHandle(item,index){
         // this.shopArray[index].isCheck=false;
@@ -317,12 +316,12 @@ export class TypeOrderPage {
          if(this.checkIds.length>0){
              for(var i=0;i<this.checkIds.length;i++){
                  let chekid=this.checkIds[i];
-                  if(chekid==item.PRODUCT_NO){
+                  if(chekid==item.UNI_NO){
                       this.checkIds.splice(i,1);
                   }
              }
          }
-          this.caculate(); 
+          this.caculate();
       }
     goGoodsDetail(item) {
 
@@ -335,7 +334,7 @@ export class TypeOrderPage {
         } else {
             this.navCtrl.push("goodsDetail", {
                 category: item.PRODUCT_CATEGORY,
-                productno: item.PRODUCT_NO,
+                productno: item.UNI_NO,
                 orderType: this.ordertype
             });
         }

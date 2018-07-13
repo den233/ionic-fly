@@ -3,7 +3,7 @@ import {Output,EventEmitter,Component,Input}from '@angular/core';
 import { CommonService } from "../../providers/common.service";
 import { DEV } from "../../providers/config";
 import {base,unique} from '../../providers/base';
- 
+
 import {
   App,
   NavController,
@@ -25,7 +25,7 @@ export class ModalComponent {
  imgUrl=DEV.imgUrl;
   @Input() modals:any;
   @Output() onVoted = new EventEmitter<boolean>();
-  
+
   constructor(
     public appCtrl: App,
     public navCtrl: NavController,
@@ -35,20 +35,23 @@ export class ModalComponent {
     public toastCtrl: ToastController,
 		public modalCtrl:base
   ) {
-    
+
   }
-  ngOnInit() { 
-    console.log(this.modals)
+  ngOnInit() {
+
     this.modals.shopArray=[];
     this.modals.goodList={};
-
+    this.modals.colorCheck=false;
+    this.modals.sizeCheck=false;
+    this.modals.colorGroup1=[];
+    this.modals.sizeGroup1=[];
  }
     // 初始化loading
     createLoading() {
       let loading = this.loadingCtrl.create({
         spinner: "ios"
       });
-      
+
       loading.present();
       return loading;
     }
@@ -62,6 +65,29 @@ export class ModalComponent {
       toast.present(toast);
     }
   getColor(type){
+        console.log('this.modals',this.modals)
+    if(this.modals.value.shoesGroup==undefined){
+      let str = localStorage.getItem('principal');
+      let inputs = {
+       strAction: "postAppProductCar",
+       productid: this.modals.value.UNI_NO,
+       ordertype:this.modals.ordertype,
+       usercode:str,
+       qty: '1'
+     };
+
+         this.commonService.order(inputs).subscribe(
+             data => {
+                  this.showToast("成功加入购物车");
+             },
+             err => {
+
+               console.error("ERROR", err);
+             }
+           );
+
+      return
+    }
     this.modals.model=1;
     this.modals.cartImg=this.modals.value.IMAGE_LINK!=null?this.imgUrl+this.modals.value.IMAGE_LINK:''
     let data1={
@@ -75,15 +101,15 @@ export class ModalComponent {
         if (data.statusCode == 0) {
           let body = data.body;
           let result =this.modals.result= body["data"] || [];
-        
+
     //第一步 去重获取颜色和尺寸两个数组
         var colorarray=unique(result,'SHOES_COLOUR');
         var sizearray=unique(result,'SHOES_SIZE');
         //第二部 将每种颜色对应的尺寸加到children数组
-         
+
         var colorArray=this.modals.colorArray=this.modalCtrl.getColorSize(result,colorarray,'SHOES_COLOUR','SHOES_SIZE')
         var sizeArray=this.modals.sizeArray=this.modalCtrl.getColorSize(result,sizearray,'SHOES_SIZE','SHOES_COLOUR')
-      
+
        this.modals.colorGroup1=colorArray.map(v=>{
            return {
               name:v.SHOES_COLOUR,
@@ -102,7 +128,7 @@ export class ModalComponent {
              children:v.children
           }
        })
-      }  
+      }
       },
       err => {
         loading && loading.dismiss(); //关闭加载框
@@ -110,15 +136,15 @@ export class ModalComponent {
     )
   }
   updateCucumber(checked,index){
-    
+
     this.modals.colorCheck=checked;
     if(checked==true){
       this.modals.typeGroup.color=this.modals.colorGroup1[index].name;
-      this.modals.PRODUCT_NO=this.modals.colorGroup1[index].PRODUCT_NO;
+      this.modals.UNI_NO=this.modals.colorGroup1[index].UNI_NO;
       if(this.modals.sizeCheck==false){
         this.modals.select_type='请选择 尺码'
       }else{
-       
+
         this.modals.select_type='已选：'+this.modals.typeGroup.color+this.modals.typeGroup.size
       }
     }else{
@@ -128,7 +154,7 @@ export class ModalComponent {
         this.modals.select_type='请选择 颜色'
       }
     }
-   
+
   for(var i=0;i<this.modals.colorGroup1.length;i++){
     if(i!=index){
       this.modals.colorGroup1[i].checked=false
@@ -143,7 +169,7 @@ export class ModalComponent {
           item1.disabled=false;
           item1.UNI_NO=item.UNI_NO;
         }
-        
+
       }
   }
   for(var i=0;i<this.modals.sizeGroup1.length;i++){
@@ -165,7 +191,7 @@ sizeCucumber(checked,index){
       if(this.modals.colorCheck==false){
         this.modals.select_type='请选择 颜色'
       }else{
-       
+
         this.modals.select_type='已选：'+this.modals.typeGroup.color+this.modals.typeGroup.size
       }
     }else{
@@ -190,9 +216,9 @@ sizeCucumber(checked,index){
         console.log(item.name)
         if(item.name==item1.name){
           item1.disabled=false;
-          item1.PRODUCT_NO=item.PRODUCT_NO;
+          item1.UNI_NO=item.UNI_NO;
         }
-        
+
       }
   }
   for(var i=0;i<this.modals.colorGroup1.length;i++){
@@ -214,7 +240,7 @@ sizeCucumber(checked,index){
           　i['style'].display='none';　　　
         });
     }else{
-       
+
       [].forEach.call(document.querySelectorAll(".tabbar"), function(i,v){
           　i['style'].display='flex'　　　
         });
@@ -222,29 +248,42 @@ sizeCucumber(checked,index){
   }
   confirm(){
     console.log(this.modals.result)
-    
-       for(var i=0;i<this.modals.result.length;i++){
-         var item=this.modals.result[i];
-              if(item.SHOES_SIZE==this.modals.typeGroup.size&&item.SHOES_COLOUR==this.modals.typeGroup.color){
-                this.modals.PRODUCT_NO=item.PRODUCT_NO;
-              }
-       }
+
+       // for(var i=0;i<this.modals.result.length;i++){
+       //   var item=this.modals.result[i];
+       //        if(item.SHOES_SIZE==this.modals.typeGroup.size&&item.SHOES_COLOUR==this.modals.typeGroup.color){
+       //          this.modals.UNI_NO=item.UNI_NO;
+       //        }
+       // }
+      if(this.modals.colorGroup1.length>0){
+            if(this.modals.colorCheck==false ){
+              this.showToast("请选择商品颜色");
+              return
+            }
+      }
+      if(this.modals.sizeGroup1.length>0){
+        if(this.modals.sizeCheck==false){
+          this.showToast("请选择商品尺寸");
+          return
+        }
+      }
+     
        let str = localStorage.getItem('principal');
        let inputs = {
         strAction: "postAppProductCar",
-        productid: this.modals.PRODUCT_NO,
+        productid: this.modals.UNI_NO,
         ordertype:this.modals.ordertype,
         usercode:str,
         qty: '1'
       };
-      
+
       this.commonService.order(inputs).subscribe(
           data => {
-             
+
             this.closeModal();
           },
           err => {
-           
+
             console.error("ERROR", err);
           }
         );

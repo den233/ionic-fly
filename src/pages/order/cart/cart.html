@@ -79,7 +79,7 @@
 							{{item.PRODUCT_NAME}}
 						</span>
 					</ion-col>
-					<ion-col col-12 class='p-l-0'>
+					<ion-col col-12 class='p-l-0' *ngIf='item.SHOES_COLOUR||item.SHOES_SIZE' >
 							<span class="SHOES_COLOUR">
 							<span *ngIf='item.SHOES_COLOUR&&item.SHOES_COLOUR!=""'>{{item.SHOES_COLOUR}}; </span>{{item.SHOES_SIZE}}
 							</span>
@@ -206,4 +206,3 @@
 		</div>
 	</ion-toolbar>
 </ion-footer>
-

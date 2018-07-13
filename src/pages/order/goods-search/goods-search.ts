@@ -42,7 +42,7 @@ export class GoodsSearchPage {
     PRODUCT_CATEGORY: "",
     REMARK: ""
   };
- 
+
   private form: FormGroup;
   constructor(
     public appCtrl: App,
@@ -141,7 +141,7 @@ export class GoodsSearchPage {
       res => {
         if (res.statusCode == 0) {
           let result = res.body['data'] || [];
-          
+
           for(let item of result){
             if(item['VALUE_CODE'] != '10'){
               this.orderTypes.push(item);
@@ -178,19 +178,18 @@ export class GoodsSearchPage {
       });
     }
   }
-  
+
 closeModal(){
- 
+
 }
   //add cart
   addCart(item,img) {
     this.modals.ordertype=this.orderType;
-    this.modals.model=1;
     this.modals.value=item;
     this.modals.UNI_NO=item.UNI_NO;
     this.modals.PRODUCT_NO=item.PRODUCT_NO
     this.child1.getColor();
  }
-  
+
 
 }

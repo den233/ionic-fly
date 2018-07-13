@@ -3,7 +3,7 @@ import {Output,EventEmitter,Component,Input}from '@angular/core';
 import { CommonService } from "../../providers/common.service";
 import { DEV } from "../../providers/config";
 import {base,unique} from '../../providers/base';
- 
+
 import {
   App,
   NavController,
@@ -23,13 +23,7 @@ import {
 })
 export class ModalComponenta {
  imgUrl=DEV.imgUrl;
-  goodsList={
-  UNI_NO:'',
-  disabled:false,
-  QTY:1,
-  PRODUCT_NO:'',
-  PRODUCT_NAME:''
- };
+   
   @Input() modals:any;
   @Output() onVoted = new EventEmitter<boolean>();
   @Output() onVoted1 = new EventEmitter<boolean>();
@@ -42,21 +36,22 @@ export class ModalComponenta {
     public toastCtrl: ToastController,
 		public modalCtrl:base
   ) {
-    
+
   }
-  ngOnInit() { 
-    
-      this.modals.shopArray=[];
-      this.modals.goodList={};
-       
-  
+  ngOnInit() {
+    this.modals.shopArray=[];
+    this.modals.goodList={};
+    this.modals.colorCheck=false;
+    this.modals.sizeCheck=false;
+    this.modals.colorGroup1=[];
+    this.modals.sizeGroup1=[];
    }
     // 初始化loading
     createLoading() {
       let loading = this.loadingCtrl.create({
         spinner: "ios"
       });
-      
+
       loading.present();
       return loading;
     }
@@ -70,6 +65,10 @@ export class ModalComponenta {
       toast.present(toast);
     }
   getColor(type){
+    if(this.modals.value.shoesGroup==undefined){
+      this.confirm();
+      return
+    }
     this.modals.model=1;
     this.modals.cartImg=this.modals.value.IMAGE_LINK!=null?this.imgUrl+this.modals.value.IMAGE_LINK:''
     let data1={
@@ -83,15 +82,15 @@ export class ModalComponenta {
         if (data.statusCode == 0) {
           let body = data.body;
           let result =this.modals.result= body["data"] || [];
-        
+
     //第一步 去重获取颜色和尺寸两个数组
         var colorarray=unique(result,'SHOES_COLOUR');
         var sizearray=unique(result,'SHOES_SIZE');
         //第二部 将每种颜色对应的尺寸加到children数组
-         
+
         var colorArray=this.modals.colorArray=this.modalCtrl.getColorSize(result,colorarray,'SHOES_COLOUR','SHOES_SIZE')
         var sizeArray=this.modals.sizeArray=this.modalCtrl.getColorSize(result,sizearray,'SHOES_SIZE','SHOES_COLOUR')
-      
+
        this.modals.colorGroup1=colorArray.map(v=>{
            return {
               name:v.SHOES_COLOUR,
@@ -110,17 +109,17 @@ export class ModalComponenta {
              children:v.children
           }
        })
-      }  
-      
+      }
+
       },
       err => {
         loading && loading.dismiss(); //关闭加载框
       }
     )
-     
+
   }
   updateCucumber(checked,index){
-    
+
     this.modals.colorCheck=checked;
     if(checked==true){
       this.modals.typeGroup.color=this.modals.colorGroup1[index].name;
@@ -128,7 +127,7 @@ export class ModalComponenta {
       if(this.modals.sizeCheck==false){
         this.modals.select_type='请选择 尺码'
       }else{
-       
+
         this.modals.select_type='已选：'+this.modals.typeGroup.color+this.modals.typeGroup.size
       }
     }else{
@@ -138,7 +137,7 @@ export class ModalComponenta {
         this.modals.select_type='请选择 颜色'
       }
     }
-   
+
   for(var i=0;i<this.modals.colorGroup1.length;i++){
     if(i!=index){
       this.modals.colorGroup1[i].checked=false
@@ -153,7 +152,7 @@ export class ModalComponenta {
           item1.disabled=false;
           item1.UNI_NO=item.UNI_NO;
         }
-        
+
       }
   }
   for(var i=0;i<this.modals.sizeGroup1.length;i++){
@@ -175,7 +174,7 @@ sizeCucumber(checked,index){
       if(this.modals.colorCheck==false){
         this.modals.select_type='请选择 颜色'
       }else{
-       
+
         this.modals.select_type='已选：'+this.modals.typeGroup.color+this.modals.typeGroup.size
       }
     }else{
@@ -202,7 +201,7 @@ sizeCucumber(checked,index){
           item1.disabled=false;
           item1.UNI_NO=item.UNI_NO;
         }
-        
+
       }
   }
   for(var i=0;i<this.modals.colorGroup1.length;i++){
@@ -224,7 +223,7 @@ sizeCucumber(checked,index){
           　i['style'].display='none';　　　
         });
     }else{
-       
+
       [].forEach.call(document.querySelectorAll(".tabbar"), function(i,v){
           　i['style'].display='flex'　　　
         });
@@ -234,42 +233,56 @@ sizeCucumber(checked,index){
     let checkIds=[];
     let check=false;
     let goodsList={};
-    
     goodsList=this.modals.value;
+    if(this.modals.colorGroup1.length>0){
+          if(this.modals.colorCheck==false ){
+            this.showToast("请选择商品颜色");
+            return
+          }
+    }
+    if(this.modals.sizeGroup1.length>0){
+      if(this.modals.sizeCheck==false){
+        this.showToast("请选择商品尺寸");
+        return
+      }
+    }
+
+
     goodsList['disabled']=false;
      goodsList['isCheck']=true;
      goodsList['QTY']=1;
 
-     
+
     if(this.modals.shopArray.length==0){
       this.modals.shopArray.push(
         goodsList
       )
     }  else{
-       
+
       for(var i=0;i<this.modals.shopArray.length;i++){
                   let item=this.modals.shopArray[i];
-                 console.log(item['PRODUCT_NO'])
-                  if(item['PRODUCT_NO']===this.modals.PRODUCT_NO){
+                 console.log(item['UNI_NO'])
+                  if(item['UNI_NO']===this.modals.UNI_NO){
                       item.QTY++;
                       check=true;
-                     
+
                      break;
-                  } 
+                  }
            }
            if(check==false){
-             
+
               this.modals.shopArray.push(goodsList)
-           }  
+           }
        }
        for(var i=0;i<this.modals.shopArray.length;i++){
           if(this.modals.shopArray[i]['isCheck']==true){
-             checkIds.push(this.modals.shopArray[i]['PRODUCT_NO']);
+             checkIds.push(this.modals.shopArray[i]['UNI_NO']);
           }
       }
       this.modals.checkIds=checkIds;
       this.onVoted1.emit(this.modals)
-       
+      this.showToast("成功加入购物清单");
+
   }
 
 }

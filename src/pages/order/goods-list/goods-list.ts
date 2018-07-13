@@ -50,7 +50,7 @@ export class GoodsListPage {
     PRODUCT_CATEGORY: "",
     REMARK: ""
   };
-  
+
   constructor(
     public appCtrl: App,
     public navCtrl: NavController,
@@ -62,13 +62,13 @@ export class GoodsListPage {
     let orderType = localStorage.getItem('orderType');
     this.parentTab = (orderType != null && orderType != '' && orderType != 'undefined') ? orderType : "20";
   }
-  
+
   // 初始化loading
   createLoading() {
     let loading = this.loadingCtrl.create({
       spinner: "ios"
     });
-    
+
     loading.present();
     return loading;
   }
@@ -83,7 +83,7 @@ export class GoodsListPage {
   }
 
   ionViewDidEnter() {
-   
+
     this.modals.model = 0;
     if(this.modals.model==1){
       [].forEach.call(document.querySelectorAll(".tabbar"), function(i){　
@@ -210,8 +210,8 @@ export class GoodsListPage {
   }
   closeModal(val){
     console.log(val)
-    
-    
+
+
   }
   goGoodsDetail(item) {
     // 套餐
@@ -231,7 +231,7 @@ export class GoodsListPage {
       });
     }
   }
-  
+
   loadData(refresher, infiniteScroll) {
     let loading = null;
     if (!refresher && !infiniteScroll) {
@@ -309,7 +309,7 @@ export class GoodsListPage {
   //add cart
   addCart(item,img) {
      console.log(item)
-     
+
     let inputs = {
       strAction: "postAppProductCar",
       productid: item.UNI_NO,
@@ -317,25 +317,24 @@ export class GoodsListPage {
       // qty: 1
     };
     this.modals.ordertype=this.parentTab;
-    this.modals.model=1;
     this.modals.value=item;
     this.modals.UNI_NO=item.UNI_NO;
     this.modals.PRODUCT_NO=item.PRODUCT_NO;
     this.child1.getColor();
     if(this.modals.model==1){
       [].forEach.call(document.querySelectorAll(".tabbar"), function(i,v){　
-        
+
           　i['style'].display='none';　　　
 
         });
     }else{
       [].forEach.call(document.querySelectorAll(".tabbar"), function(i,v){
-         
+
           　i['style'].display='flex'　　
-        
+
         　　　
         });
     }
   }
-  
+
   }

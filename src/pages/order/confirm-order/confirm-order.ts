@@ -241,12 +241,12 @@ export class ConfirmOrderPage {
     if (this.payObj.reality_wallet > this.payObj.wallet) {
       console.log('this.payObj.reality_wallet',this.payObj.reality_wallet);
       console.log('this.payObj.wallet',this.payObj.wallet)
-      this.showToast("a余额不足");
+      this.showToast("现金账户余额不足");
       return false;
     }
 
     if (this.payObj.reality_bonus > this.payObj.bonus) {
-      this.showToast("b余额不足");
+      this.showToast("电子钱包余额不足");
       return false;
     }
 
@@ -311,19 +311,19 @@ export class ConfirmOrderPage {
 
   // 二级密码是否存在
   sPwd() {
-   
+
     // 校验余额
     if (this.total.money > this.payObj.wallet) {
       //判断钱包余额
       if (this.total.money > this.payObj.bonus) {
         //判断奖金余额
-        this.showConfirm("1余额不足");
+        this.showConfirm("电子钱包余额不足");
         return;
       }
     } else if (this.total.money > this.payObj.bonus) {
       if (this.total.money > this.payObj.wallet) {
         //判断奖金余额
-        this.showConfirm("2余额不足");
+        this.showConfirm("现金账户余额不足");
         return;
       }
     }

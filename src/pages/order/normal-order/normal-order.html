@@ -46,9 +46,9 @@
 							{{item.PRODUCT_NAME}}
 						</span>
 					</ion-col>
-					<ion-col col-12 class='p-l-0'>
+					<ion-col *ngIf='item.SHOES_COLOUR||item.SHOES_SIZE' col-12 class='p-l-0'>
 							<span class="SHOES_COLOUR">
-							<span *ngIf='item.SHOES_COLOUR!=""'>{{item.SHOES_COLOUR}};</span>{{item.SHOES_SIZE}}
+							<span *ngIf='item.SHOES_COLOUR&&item.SHOES_COLOUR!=""'>{{item.SHOES_COLOUR}};</span>{{item.SHOES_SIZE}}
 							</span>
 						</ion-col>
 					<ion-col col-12 class='p-l-0'>
@@ -59,7 +59,7 @@
 				</ion-row>
 				<ion-row>
 					<ion-col col-6 class='p-0 text-red'>
-						&yen;&nbsp;{{item.MP_PRICE}}
+						  {{item.MP_PRICE}}
 					</ion-col>
 					<ion-col col-6 class='p-0'>
 						<span class="num-container">

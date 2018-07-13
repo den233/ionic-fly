@@ -49,7 +49,7 @@ export class FirstOrderPage {
     colorId:'',
     sizeId:''
   }
-  public PRODUCT_NO='';
+  public UNI_NO='';
   public colorGroup='';
   public sizeGroup='';
   public colorGroup1=[];
@@ -94,7 +94,7 @@ export class FirstOrderPage {
               if(data.statusCode == 0){
 
                   let odata = data.body.data;
-                  
+
                   for(let i = 0; i<odata.length; i++){
 
                       odata[i]['isCheck'] = false;
@@ -147,13 +147,13 @@ export class FirstOrderPage {
 
   updateCheck(item,type:string){
     if(item['isCheck']){
-        this.checkIds.push(item.PRODUCT_NO);
+        this.checkIds.push(item.UNI_NO);
     }else{
         for (let i = 0; i < this.checkIds.length; i++) {
-            if (this.checkIds[i] == item.PRODUCT_NO) this.checkIds.splice(i,1);
+            if (this.checkIds[i] == item.UNI_NO) this.checkIds.splice(i,1);
         }
     }
-    
+
 
     this.caculate();
   }
@@ -306,7 +306,7 @@ export class FirstOrderPage {
       loading.present();
       return loading;
   }
-  
+
   // settle accounts
   settle(){
     console.log('settleTotal',this.settleTotal)
@@ -416,11 +416,11 @@ export class FirstOrderPage {
     this.colorCheck=checked;
     if(checked==true){
       this.typeGroup.color=this.colorGroup1[index].name;
-      this.PRODUCT_NO=this.colorGroup1[index].PRODUCT_NO;
+      this.UNI_NO=this.colorGroup1[index].UNI_NO;
       if(this.sizeCheck==false){
         this.select_type='请选择 尺码'
       }else{
-       
+
         this.select_type='已选：'+this.typeGroup.color+this.typeGroup.size
       }
     }else{
@@ -430,7 +430,7 @@ export class FirstOrderPage {
         this.select_type='请选择 颜色'
       }
     }
-   
+
       for(var i=0;i<this.colorGroup1.length;i++){
         if(i!=index){
         this.colorGroup1[i].checked=false
@@ -443,9 +443,9 @@ export class FirstOrderPage {
             var item=this.colorGroup1[index].children[k];
             if(item.name==item1.name){
             item1.disabled=false;
-            item1.PRODUCT_NO=item.PRODUCT_NO;
+            item1.UNI_NO=item.UNI_NO;
             }
-            
+
         }
     }
     for(var i=0;i<this.sizeGroup1.length;i++){
@@ -467,11 +467,11 @@ sizeCucumber(checked,index){
   this.sizeCheck=checked;
     if(checked==true){
       this.typeGroup.size=this.sizeGroup1[index].name;
-      this.PRODUCT_NO=this.sizeGroup1[index].PRODUCT_NO;
+      this.UNI_NO=this.sizeGroup1[index].UNI_NO;
       if(this.colorCheck==false){
         this.select_type='请选择 颜色'
       }else{
-       
+
         this.select_type='已选：'+this.typeGroup.color+this.typeGroup.size
       }
     }else{
@@ -495,9 +495,9 @@ sizeCucumber(checked,index){
         var item=this.sizeGroup1[index].children[k];
         if(item.name==item1.name){
           item1.disabled=false;
-          item1.PRODUCT_NO=item.PRODUCT_NO;
+          item1.UNI_NO=item.UNI_NO;
         }
-        
+
       }
   }
   for(var i=0;i<this.colorGroup1.length;i++){
@@ -533,7 +533,7 @@ addCart(item,index,type) {
         });
         alert.present();
         return false;
-    } 
+    }
     if(this.packageArray.length>=1){
         let alert = this.alertCtrl.create({
             subTitle: '套餐只能选择一个',
@@ -542,27 +542,33 @@ addCart(item,index,type) {
         alert.present();
         return false;
     }
-  this.PRODUCT_NO=item.PRODUCT_NO
-   let loading = this.createLoading();
+  this.UNI_NO=item.UNI_NO
+
    this.cartImg=item.IMAGE_LINK!=null?this.imgUrl+item.IMAGE_LINK:''
    //this.select_type='请选择 颜色 尺码'
-   this.model=1;
    this.PRODUCT_NAME=item.PRODUCT_NAME;
    this.FP_PRICE=item.FP_PRICE;
    this.item=item;
    this.listIndex=index;
+   if(item.shoesGroup==undefined){
+      this.confirm();
+      return
+   }
+   let loading = this.createLoading();
+   this.model=1;
+
    //尺码
    let data1={
      strAction:'getAppProductShoesInfo',
      shoesGroup:item.SHOES_GROUP
    }
-    
+
    this.commonService.getSize(data1).subscribe(
      data=>{
        if (data.statusCode == 0) {
          let body = data.body;
          let result =this.result= body["data"] || [];
-         
+
    //第一步 去重获取颜色和尺寸两个数组
        var colorarray=unique(result,'SHOES_COLOUR');
        var sizearray=unique(result,'SHOES_SIZE');
@@ -590,10 +596,10 @@ addCart(item,index,type) {
       })
      // console.log('colorGroup1',this.colorGroup1);
      // console.log('sizeGroup1',this.sizeGroup1);
-     }  
+     }
      },
      err => {
-      
+
      }
    )
    loading && loading.dismiss(); //关闭加载框
@@ -602,7 +608,7 @@ addCart(item,index,type) {
      let check=false;
      this.checkIds=[];
     // console.log('listsArray',listsArray)
-  
+
         //单品
         if(this.checkType=='single'){
             let goodsList={};
@@ -611,79 +617,80 @@ addCart(item,index,type) {
              goodsList['SHOES_SIZE']=this.typeGroup.size;
              goodsList['disabled']=false;
              goodsList['isCheck']=true;
-             goodsList['PRODUCT_NO']=this.PRODUCT_NO;
+             goodsList['UNI_NO']=this.UNI_NO;
              goodsList['QTY']=1;
-        
+
             if(this.shopArray.length==0){
                 this.shopArray.push(
                     goodsList
                 )
-            }  
+            }
             else{
                 for(var i=0;i<this.shopArray.length;i++){
                             let item=this.shopArray[i];
-                           
-                            if(item['PRODUCT_NO']===this.PRODUCT_NO){
+
+                            if(item['UNI_NO']===this.UNI_NO){
                                 item.QTY++;
                                 check=true;
                                 console.log(item['UNI_NO'])
                                break;
-                            } 
+                            }
                      }
                      if(check==false){
                         this.shopArray.push(this.goodsList[this.listIndex])
-                     } 
-                   
+                     }
+
                      console.log('this.shopArray',this.shopArray)
                  }
                  for(var i=0;i<this.shopArray.length;i++){
                      if(this.shopArray[i]['isCheck']==true){
-                        this.checkIds.push(this.shopArray[i]['PRODUCT_NO']);
+                        this.checkIds.push(this.shopArray[i]['UNI_NO']);
                      }
                  }
         }
         //套餐
-        else if(this.checkType="package"){ 
+        else if(this.checkType="package"){
              let packageList={};
              packageList=this.item;
              packageList['SHOES_COLOUR']=this.typeGroup.color;
              packageList['SHOES_SIZE']=this.typeGroup.size;
              packageList['disabled']=false;
              packageList['isCheck']=true;
-             packageList['PRODUCT_NO']=this.PRODUCT_NO;
+             packageList['UNI_NO']=this.UNI_NO;
              packageList['QTY']=1;
-        
+
             if(this.packageArray.length==0){
                 this.packageArray.push(
-                    packageList 
+                    packageList
                 )
-            }  
+            }
             else{
                 for(var i=0;i<this.packageArray.length;i++){
                             let item=this.packageArray[i];
-                           
-                            if(item['PRODUCT_NO']===this.PRODUCT_NO){
+
+                            if(item['UNI_NO']===this.UNI_NO){
                                 item.QTY++;
                                 check=true;
-                                console.log(item['PRODUCT_NO'])
+                                console.log(item['UNI_NO'])
                                break;
-                            } 
+                            }
                      }
                      if(check==false){
                         this.packageArray.push(this.packageList[this.listIndex])
-                     } 
-                   
+                     }
+
                      console.log('this.packageArray',this.packageArray)
                  }
                  for(var i=0;i<this.packageArray.length;i++){
                     if(this.packageArray[i]['isCheck']==true){
-                       this.checkIds.push(this.packageArray[i]['PRODUCT_NO']);
+                       this.checkIds.push(this.packageArray[i]['UNI_NO']);
                     }
-                }  
+                }
         }
         console.log('this.packageArray',this.packageArray)
              this.caculate();
              this.closeModal();
+             this.showToast('成功加入购物清单')
   }
   shopList(){
     this.lists=true;
@@ -692,7 +699,7 @@ addCart(item,index,type) {
     this.model=0;
     this.lists=false;
     this.colorCheck=false;
-    this.sizeCheck=false; 
+    this.sizeCheck=false;
     this.colorGroup1=[];
     this.sizeGroup1=[];
   }
@@ -705,7 +712,7 @@ addCart(item,index,type) {
        if(this.checkIds.length>0){
            for(var i=0;i<this.checkIds.length;i++){
                let chekid=this.checkIds[i];
-                if(chekid==item.PRODUCT_NO){
+                if(chekid==item.UNI_NO){
                     this.checkIds.splice(i,1);
                 }
            }
@@ -716,14 +723,14 @@ addCart(item,index,type) {
        if(this.checkIds.length>0){
            for(var i=0;i<this.checkIds.length;i++){
                let chekid=this.checkIds[i];
-                if(chekid==item.PRODUCT_NO){
+                if(chekid==item.UNI_NO){
                     this.checkIds.splice(i,1);
                 }
            }
        }
       }
-     
-      this.caculate(); 
+
+      this.caculate();
   }
     goGoodsDetail(item) {
 
@@ -736,7 +743,7 @@ addCart(item,index,type) {
         } else {
             this.navCtrl.push("goodsDetail", {
                 category: item.PRODUCT_CATEGORY,
-                productno: item.PRODUCT_NO,
+                productno: item.UNI_NO,
                 first:true
             });
         }
