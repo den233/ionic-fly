@@ -49,19 +49,19 @@ export class FirstOrderPage {
     colorId:'',
     sizeId:''
   }
-  public UNI_NO='';
+  public UNI_NO='';//产品id
   public colorGroup='';
   public sizeGroup='';
-  public colorGroup1=[];
-  public sizeGroup1=[];
-  public cartImg='';
+  public colorGroup1=[];//颜色组
+  public sizeGroup1=[];//尺寸组
+  public cartImg='';//图片
   public select_type="";
   public FP_PRICE='';
   public PRODUCT_NAME='';
   public colorArray=[];
   public sizeArray=[];
   public result=[];
-  public listIndex=0;
+   
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
@@ -340,7 +340,14 @@ export class FirstOrderPage {
   }
 
   add(item){
-      console.log(item)
+    if(this.packageArray.length>=1){
+        let alert = this.alertCtrl.create({
+            subTitle: '套餐只能选择一个',
+            buttons: ['我知道了']
+        });
+        alert.present();
+        return false;
+    }
       item['QTY'] = Math.min(++item['QTY'],999);
       this.caculate();
   }
@@ -549,8 +556,7 @@ addCart(item,index,type) {
    this.PRODUCT_NAME=item.PRODUCT_NAME;
    this.FP_PRICE=item.FP_PRICE;
    this.item=item;
-   this.listIndex=index;
-   if(item.shoesGroup==undefined){
+   if(item.SHOES_GROUP==undefined||item.SHOES_GROUP==null){
       this.confirm();
       return
    }
@@ -637,7 +643,7 @@ addCart(item,index,type) {
                             }
                      }
                      if(check==false){
-                        this.shopArray.push(this.goodsList[this.listIndex])
+                        this.shopArray.push(this.goodsList)
                      }
 
                      console.log('this.shopArray',this.shopArray)
@@ -676,7 +682,7 @@ addCart(item,index,type) {
                             }
                      }
                      if(check==false){
-                        this.packageArray.push(this.packageList[this.listIndex])
+                        this.packageArray.push(this.packageList)
                      }
 
                      console.log('this.packageArray',this.packageArray)

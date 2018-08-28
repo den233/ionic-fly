@@ -65,8 +65,8 @@ export class ModalComponent {
       toast.present(toast);
     }
   getColor(type){
-        console.log('this.modals',this.modals)
-    if(this.modals.value.shoesGroup==undefined){
+        console.log('this.modals',this.modals.value.shoesGroup)
+    if(this.modals.value.SHOES_GROUP==undefined||this.modals.value.SHOES_GROUP==null){
       let str = localStorage.getItem('principal');
       let inputs = {
        strAction: "postAppProductCar",

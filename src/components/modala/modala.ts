@@ -65,7 +65,7 @@ export class ModalComponenta {
       toast.present(toast);
     }
   getColor(type){
-    if(this.modals.value.shoesGroup==undefined){
+    if(this.modals.value.SHOES_GROUP==undefined||this.modals.value.SHOES_GROUP==null){
       this.confirm();
       return
     }
